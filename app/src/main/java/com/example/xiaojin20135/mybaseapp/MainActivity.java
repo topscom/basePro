@@ -9,7 +9,7 @@ public class MainActivity extends ToolBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setToolbarBackground(R.color.colorAccent);
+
     }
 
     @Override

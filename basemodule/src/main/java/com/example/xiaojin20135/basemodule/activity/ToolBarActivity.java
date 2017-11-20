@@ -19,7 +19,7 @@ public abstract class ToolBarActivity extends BaseActivity {
         title = (TextView)findViewById(R.id.title);
         toolbar.setTitle("");
         toolbar.setPopupTheme(R.style.AppTheme_AppBarOverlay);
-
+        toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -37,10 +37,7 @@ public abstract class ToolBarActivity extends BaseActivity {
             }
         });
     }
-    //设置标题栏的背景颜色
-    protected void setToolbarBackground(int id){
-        toolbar.setBackgroundColor(getResources().getColor(id));
-    }
+    
     //设置toolbar标题
     protected void setTitleText(int id) {
         title.setText(getString(id));
