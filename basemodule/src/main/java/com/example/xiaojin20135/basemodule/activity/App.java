@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
+import android.util.Log;
 
 /**
  * Created by xiaojin20135 on 2017-11-20.
@@ -21,21 +22,16 @@ public class App extends Application {
 
     @Override
     public void onCreate() {
+        Log.d("App","onCreate");
         super.onCreate();
         MultiDex.install(this);
         app = this;
-
-
 
     }
 
     public static App getInstance(){
         return app;
     }
-
-
-
-
 
     public static void setActivity(Activity activityIn){
         activity = activityIn;

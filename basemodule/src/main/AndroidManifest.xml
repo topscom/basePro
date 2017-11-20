@@ -3,13 +3,12 @@
           package="com.example.xiaojin20135.basemodule">
 
     <application
+        android:name=".activity.App"
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:supportsRtl="true">
-        <activity android:name=".activity.BaseActivity">
-        </activity>
-        <activity android:name=".activity.ToolBarActivity">
-        </activity>
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme_my">
+
     </application>
 
 </manifest>
