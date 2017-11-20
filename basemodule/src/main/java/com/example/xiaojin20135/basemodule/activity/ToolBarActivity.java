@@ -37,7 +37,7 @@ public abstract class ToolBarActivity extends BaseActivity {
             }
         });
     }
-    
+
     //设置toolbar标题
     protected void setTitleText(int id) {
         title.setText(getString(id));
