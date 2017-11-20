@@ -1,0 +1,29 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="content_margin">16dp</dimen>
+    <dimen name="icon_normal_size">35dp</dimen>
+    <dimen name="toolbar_height">60dp</dimen>
+    <dimen name="title_width">95dp</dimen>
+    <dimen name="list_margin">10dp</dimen>
+    <dimen name="info_margin">6dp</dimen>
+    <dimen name="bottom_height">30dp</dimen>
+    <dimen name="btn_font_size">13pt</dimen>
+
+    <dimen name="common_font_size">15dp</dimen>
+    <dimen name="selected_text_size">5pt</dimen>
+    <dimen name="text_size">6pt</dimen>
+    <dimen name="text_size1">12pt</dimen>
+    <dimen name="text_size2">18dp</dimen>
+    <dimen name="text_size3">22dp</dimen>
+    <dimen name="text_size4">36dp</dimen>
+    <dimen name="left_title">100dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="item_padding_left">20dp</dimen>
+    <dimen name="item_padding_top">25dp</dimen>
+    <dimen name="item_ic_size">65dp</dimen>
+
+
+</resources>

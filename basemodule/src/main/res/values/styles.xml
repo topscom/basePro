@@ -1,0 +1,66 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme_my" parent="Theme.AppCompat.Light">
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/transformer</item>
+    </style>
+
+    <style name="transformer" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_open_enter_anim</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_open_exit_anim</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_close_exit_anim</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_close_enter_anim</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="title_left" parent="AlertDialog.AppCompat.Light">
+        <item name="android:gravity">right</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginRight">@dimen/list_margin</item>
+    </style>
+
+    <style name="value_right" parent="AlertDialog.AppCompat.Light">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+
+    </style>
+
+    <style name="my_btn_style" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <!--<item name="android:textSize">@dimen/btn_font_size</item>-->
+        <item name="android:background">@drawable/button_shape</item>
+        <item name="android:layout_marginTop">@dimen/fab_margin</item>
+        <item name="android:layout_marginLeft">@dimen/fab_margin</item>
+        <item name="android:layout_marginRight">@dimen/fab_margin</item>
+    </style>
+
+
+    <style name="item_font" parent="AlertDialog.AppCompat.Light">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginTop">@dimen/info_margin</item>
+    </style>
+
+    <style name="common_font" parent="AlertDialog.AppCompat.Light">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/common_font_size</item>
+    </style>
+
+
+    <!-- 防止欢迎页白屏或者黑屏，设置图片 -->
+    <style name="SplashTheme" parent="AppTheme_my">
+        <item name="android:windowBackground">@drawable/splash_shape</item>
+        <item name="windowNoTitle">true</item>
+        <!--<item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowDisablePreview">false</item>-->
+    </style>
+
+
+</resources>
