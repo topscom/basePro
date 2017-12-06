@@ -21,13 +21,14 @@
 
     <style name="title_left" parent="AlertDialog.AppCompat.Light">
         <item name="android:gravity">right</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:layout_marginRight">@dimen/list_margin</item>
+        <item name="android:layout_marginLeft">@dimen/list_margin</item>
     </style>
 
     <style name="value_right" parent="AlertDialog.AppCompat.Light">
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/black</item>
 
     </style>
 
