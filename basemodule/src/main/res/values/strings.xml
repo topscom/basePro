@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">basemodule</string>
+    <string name="main_page">首页</string>
 </resources>

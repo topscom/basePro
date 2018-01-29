@@ -9,11 +9,12 @@ import android.widget.TextView;
 import com.example.xiaojin20135.basemodule.R;
 
 public abstract class ToolBarActivity extends BaseActivity {
-    private Toolbar toolbar;
-    private TextView title;
+    public Toolbar toolbar;
+    public TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        Log.d(TAG,"in onCreate 111111111111111111111");
         super.onCreate(savedInstanceState);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         title = (TextView)findViewById(R.id.title);
@@ -25,10 +26,10 @@ public abstract class ToolBarActivity extends BaseActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         initToolbar();
-        setIcon();
+        setIcon(R.drawable.ic_back);
     }
     public void initToolbar(){
-
+//        Log.d(TAG,"in initToolbar 111111111111111111111" );
         toolbar.setNavigationOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -39,12 +40,34 @@ public abstract class ToolBarActivity extends BaseActivity {
     }
 
     //设置toolbar标题
-    protected void setTitleText(int id) {
-        title.setText(getString(id));
+    public void setTitleText(int id) {
+//        Log.d(TAG,"in setTitleText 111111111111111111111");
+        this.title.setText(getString(id));
+
     }
     //设置toolbar图标
-    protected void setIcon(){
-        toolbar.setNavigationIcon(R.drawable.ic_back);
+    public void setIcon(int id){
+//        Log.d(TAG,"in setIcon 111111111111111111111");
+        toolbar.setNavigationIcon(id);
+    }
+
+    /**
+     * 设置标题栏背景颜色
+     * @param i
+     */
+    public void setToolbarColor(int i){
+//        Log.d(TAG,"in setToolbarColor 111111111111111111111");
+        toolbar.setBackgroundColor(getResources().getColor(i));
+    }
+
+
+    /**
+     * 设置标题颜色
+     * @param i
+     */
+    public void setTitleColor(int i){
+//        Log.d(TAG,"in setTitleColor 111111111111111111111");
+        title.setTextColor(getResources().getColor(i));
     }
 
 }
