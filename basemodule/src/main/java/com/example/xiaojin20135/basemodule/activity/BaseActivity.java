@@ -15,14 +15,16 @@ import android.view.KeyEvent;
 import android.widget.Toast;
 
 import com.example.xiaojin20135.basemodule.R;
+import com.example.xiaojin20135.basemodule.retrofit.bean.ActionResult;
+import com.example.xiaojin20135.basemodule.retrofit.bean.ResponseBean;
+import com.example.xiaojin20135.basemodule.retrofit.view.IBaseView;
 import com.example.xiaojin20135.basemodule.util.ConstantUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.ButterKnife;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements IBaseView{
     public static List<Activity> activities = new ArrayList<>();
     public static String TAG = "";
     private static AlertDialog.Builder alertDialog;
@@ -40,7 +42,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         }else{
             throw new IllegalArgumentException("返回一个正确的ContentView!");
         }
-        ButterKnife.bind(this);
         loadData();
         initView();
         initEvents();
@@ -62,7 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void addActivity(Activity activity){
         if(activity != null && !activities.contains(activity)){
             activities.add(activity);
-            App.setActivity(activity);
+            BaseApplication.setActivity(activity);
         }
         Log.d(TAG,"activities.size = " + activities.size());
     }
@@ -137,7 +138,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
     public static void showToast(Context mContext,String text){
         if(toast == null){
-            toast = Toast.makeText(mContext,text,Toast.LENGTH_SHORT);
+            toast = Toast.makeText(mContext,text,Toast.LENGTH_LONG);
         }else{
             toast.setText(text);
         }
@@ -145,7 +146,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
     public static void showToast(Context mContext,int id){
         if(toast == null){
-            toast = Toast.makeText(mContext,id,Toast.LENGTH_SHORT);
+            toast = Toast.makeText(mContext,id,Toast.LENGTH_LONG);
         }else{
             toast.setText(id);
         }
@@ -170,18 +171,22 @@ public abstract class BaseActivity extends AppCompatActivity {
         try {
             PackageInfo packageInfo = packageManager.getPackageInfo(this.getPackageName(),0);
             return packageInfo == null ? "" : packageInfo.versionName;
-
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
             return "";
         }
     }
+    @Override
+    public void showProgress () {
+        //等待框
+        progressDialog = new ProgressDialog(this);
+        progressDialog.hide();
+        progressDialog.show();
+    }
 
-    /**
-     * 显示等待框
-     * @param message
-     */
-    public void showProgressDialog(boolean hideTitle,String message,boolean cancled){
+
+    @Override
+    public void showProgress (boolean hideTitle,String message,boolean cancled) {
         //等待框
         progressDialog = new ProgressDialog(this);
         progressDialog.hide();
@@ -193,18 +198,47 @@ public abstract class BaseActivity extends AppCompatActivity {
         progressDialog.show();
     }
 
-    /**
-     *
-     */
-    public void hideProgressDialog(){
+    @Override
+    public void dismissProgress () {
         if(progressDialog != null){
             progressDialog.hide();
             progressDialog.dismiss();
         }
-
     }
 
+    @Override
+    public void loadDataSuccess (Object tData) {
+        Log.d (TAG,"loadDataSuccess");
+    }
 
+    @Override
+    public void loadError (Throwable throwable) {
+        Log.d (TAG,"loadDataError");
+        requestError (throwable.getLocalizedMessage ());
+    }
+
+    @Override
+    public void loadComplete () {
+        Log.d (TAG,"loadDataComplete");
+    }
+
+    @Override
+    public void loadSuccess (Object callBack) {
+        Log.d (TAG,"loadSuccess");
+        ResponseBean responseBean = (ResponseBean)callBack;
+        ActionResult actionResult = responseBean.getActionResult ();
+        if(actionResult.getSuccess ()){
+            loadDataSuccess (callBack);
+        }else{
+            requestError (actionResult.getMessage ());
+        }
+    }
+
+    @Override
+    public void requestError (String message) {
+        Log.d (TAG,"requestError");
+        showToast (this,message);
+    }
 
 
 }

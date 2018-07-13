@@ -14,7 +14,6 @@ public abstract class ToolBarActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        Log.d(TAG,"in onCreate 111111111111111111111");
         super.onCreate(savedInstanceState);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         title = (TextView)findViewById(R.id.title);

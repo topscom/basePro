@@ -6,6 +6,4 @@ package com.example.xiaojin20135.basemodule.util;
 
 public class ConstantUtil {
     public static final String SHAREDNAME = "datas";
-
-
 }
