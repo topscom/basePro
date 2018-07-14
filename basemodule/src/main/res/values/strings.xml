@@ -31,4 +31,9 @@
 
     <string name="login_url_null">登录地址不能为空！</string>
 
+    <string name="permission_needed">开启运行所需权限</string>
+    <string name="camera">摄像头</string>
+    <string name="file">文件操作</string>
+    <string name="location">位置信息</string>
+
 </resources>

@@ -1,5 +1,6 @@
 package com.example.xiaojin20135.basemodule.activity.login;
 
+import android.Manifest;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,10 +15,21 @@ import android.widget.Toast;
 
 import com.example.xiaojin20135.basemodule.R;
 import com.example.xiaojin20135.basemodule.activity.BaseActivity;
+import com.example.xiaojin20135.basemodule.retrofit.bean.CboUserEntity;
+import com.example.xiaojin20135.basemodule.retrofit.bean.ResponseBean;
+import com.example.xiaojin20135.basemodule.retrofit.bean.UserBean;
 import com.example.xiaojin20135.basemodule.retrofit.presenter.PresenterImpl;
+import com.example.xiaojin20135.basemodule.util.ConstantUtil;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import me.weyye.hipermission.HiPermission;
+import me.weyye.hipermission.PermissionCallback;
+import me.weyye.hipermission.PermissionItem;
 
 /**
  * @author lixiaojin
@@ -42,6 +54,13 @@ public abstract class BaseLoginActivity extends BaseActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         presenterImpl = new PresenterImpl (this,this);
+    }
+
+    /**
+     * 初始化完成，开始业务逻辑
+     */
+    public void canStart(){
+        requestPermission();
     }
 
     @Override
@@ -112,8 +131,8 @@ public abstract class BaseLoginActivity extends BaseActivity {
 
     private void attemptLogin() {
         Map paraMap = new HashMap ();
-        paraMap.put("loginName",loginName);
-        paraMap.put("password",password);
+        paraMap.put(ConstantUtil.loginName,loginName);
+        paraMap.put(ConstantUtil.password,password);
         if(TextUtils.isEmpty (loginUrl)){
             showToast (this,R.string.login_url_null);
             return;
@@ -124,7 +143,31 @@ public abstract class BaseLoginActivity extends BaseActivity {
     @Override
     public void loadDataSuccess (Object tData) {
         super.loadDataSuccess (tData);
+        saveLoginInfo(((ResponseBean)tData).getUserBean ());
         loginSuccess();
+    }
+
+    /**
+     * 保存个人登录信息
+     * @param userBean
+     */
+    private void saveLoginInfo(UserBean userBean){
+        CboUserEntity cboUserEntity = userBean.getUser();
+        if(cboUserEntity != null){
+            SharedPreferences.Editor editor = getSharedPreferences("loginInfo",MODE_PRIVATE).edit();
+            editor.putString(ConstantUtil.loginName,cboUserEntity.getLoginname());
+            editor.putString(ConstantUtil.password,password);
+            editor.putBoolean("autoLogin",autoLogin);
+            editor.putString("code",cboUserEntity.getCode());
+            editor.putString(ConstantUtil.mobile,cboUserEntity.getMobile());
+            BigDecimal id = new BigDecimal(cboUserEntity.getId());
+            editor.putString("id",id.toPlainString());
+            editor.putString(ConstantUtil.name,cboUserEntity.getName());
+            editor.commit();
+        }
+
+
+
     }
 
     public void setLoginUrl (String loginUrl) {
@@ -135,4 +178,37 @@ public abstract class BaseLoginActivity extends BaseActivity {
      * 登陆成功跳转
      */
     public abstract void loginSuccess ();
+
+    /**
+     * 获取权限
+     */
+    public void requestPermission(){
+        List<PermissionItem> permissonItems = new ArrayList<PermissionItem> ();
+        permissonItems.add(new PermissionItem(android.Manifest.permission.CAMERA,getString (R.string.camera),R.drawable.permission_ic_camera));
+        permissonItems.add(new PermissionItem(Manifest.permission.WRITE_EXTERNAL_STORAGE,getString (R.string.file),R.drawable.permission_ic_storage));
+        permissonItems.add(new PermissionItem(android.Manifest.permission.ACCESS_FINE_LOCATION,getString (R.string.location),R.drawable.permission_ic_location));
+        HiPermission.create(this)
+            .permissions(permissonItems)
+            .title(getString (R.string.permission_needed))
+            .checkMutiPermission(new PermissionCallback () {
+                @Override
+                public void onClose() {
+                    Log.d(TAG,"用户关闭权限申请");
+                }
+                @Override
+                public void onFinish() {
+                    Log.d(TAG,"所有权限申请完成");
+                    autoLogin();
+                }
+                @Override
+                public void onDeny(String permisson, int position) {
+                    Log.d(TAG, "onDeny");
+                }
+                @Override
+                public void onGuarantee(String permisson, int position) {
+                    Log.d(TAG, "onGuarantee");
+                }
+            });
+
+    }
 }
