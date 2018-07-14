@@ -43,7 +43,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme_my">
-        <activity android:name=".activity.login.BaseLoginActivity"></activity>
+        <activity android:name=".activity.login.BaseLoginActivity" />
+        <activity android:name=".activity.bottom.BaseBottomBarActivity" />
+        <activity android:name=".activity.recycle.BaseRecyclerActivity"></activity>
     </application>
 
 </manifest>

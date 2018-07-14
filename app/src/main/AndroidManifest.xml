@@ -15,7 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MyLoginActivity"></activity>
+        <activity android:name=".MyLoginActivity" />
+        <activity android:name=".bottom.MyBottomActivity" />
+        <activity android:name=".recyclerview.MyRecyActivity"></activity>
     </application>
 
 </manifest>

@@ -26,4 +26,17 @@
         android:id="@+id/sign_in_btn"
         android:onClick="onClick"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="底部导航"
+        android:id="@+id/bottom_btn"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recyclerview列表"
+        android:id="@+id/recycler_btn"
+        android:onClick="onClick"/>
 </LinearLayout>

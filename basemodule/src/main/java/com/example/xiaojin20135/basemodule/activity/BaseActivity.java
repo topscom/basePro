@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -23,7 +24,11 @@ import com.example.xiaojin20135.basemodule.util.ConstantUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * @author lixiaojin
+ * @create 2018-07-14
+ * @Describe
+ */
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView{
     public static List<Activity> activities = new ArrayList<>();
     public static String TAG = "";
@@ -40,7 +45,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         if(getLayoutId() != 0){
             setContentView(getLayoutId());
         }else{
-            throw new IllegalArgumentException("返回一个正确的ContentView!");
+            //throw new IllegalArgumentException("返回一个正确的ContentView!");
         }
         loadData();
         initView();
@@ -240,6 +245,69 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         showToast (this,message);
     }
 
+    /**
+     * 界面跳转，不传参
+     * @param tClass
+     */
+    protected void canGo(Class<?> tClass){
+        canGo (tClass,null);
+    }
+
+    /**
+     * 界面跳转，带参数
+     * @param tClass
+     * @param bundle
+     */
+
+    protected void canGo(Class<?> tClass,Bundle bundle){
+        Intent intent = new Intent (this,tClass);
+        if(bundle != null){
+            intent.putExtras (bundle);
+        }
+        startActivity (intent);
+    }
+
+    /**
+     * @author lixiaojin
+     * @create 2018-07-14
+    * @Describe 跳转到目标页面并杀死当前页面
+     */
+    protected void canGoThenKill(Class<?> tClass){
+        canGoThenKill (tClass,null);
+    }
+
+    /**
+     * @author lixiaojin
+     * @create 2018-07-14
+     * @Describe 跳转到目标页面，并杀死当前页面，带参数
+     */
+    protected void canGoThenKill(Class<?> tClass,Bundle bundle){
+        canGo (tClass,bundle);
+        finish ();
+    }
+
+    /**
+     * @author lixiaojin
+     * @create 2018-07-14
+     * @Describe 跳转到目标位置，并返回结果
+     */
+    protected void canGoForResult(Class<?> tClass,int requestCode){
+        Intent intent = new Intent (this,tClass);
+        startActivityForResult (intent,requestCode);
+    }
+
+    /**
+     * @author lixiaojin
+     * @create 2018-07-14
+     * @Describe 带参数跳转到目标位置并返回结果，
+     */
+    protected void canGoForResult(Class<?> tClass,int requestCode,Bundle bundle){
+        Intent intent = new Intent (this,tClass);
+        if(bundle != null){
+            intent.putExtras(bundle);
+        }
+        startActivityForResult (intent,requestCode);
+    }
 
 }
 

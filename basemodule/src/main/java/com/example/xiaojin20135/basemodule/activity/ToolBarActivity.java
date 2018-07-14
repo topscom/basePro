@@ -69,4 +69,8 @@ public abstract class ToolBarActivity extends BaseActivity {
         title.setTextColor(getResources().getColor(i));
     }
 
+    public void hideBarIcon(){
+        toolbar.setNavigationIcon (null);
+    }
+
 }

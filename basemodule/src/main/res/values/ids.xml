@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 使用 base_tab_bottom 需要使用的 id -->
+    <item name="bottom_navigation_bar" type="id"/>
+    <!-- 使用 baseRecycler 需要使用的 id -->
+    <item name="base_swipe_refresh_lay" type="id"/>
+    <item name="base_rv_list" type="id"/>
+</resources>

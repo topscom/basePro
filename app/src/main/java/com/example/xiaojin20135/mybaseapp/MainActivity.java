@@ -6,6 +6,8 @@ import android.view.View;
 
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
 import com.example.xiaojin20135.basemodule.retrofit.helper.RetrofitManager;
+import com.example.xiaojin20135.mybaseapp.bottom.MyBottomActivity;
+import com.example.xiaojin20135.mybaseapp.recyclerview.MyRecyActivity;
 
 public class MainActivity extends ToolBarActivity implements View.OnClickListener{
     @Override
@@ -68,6 +70,12 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
             case R.id.sign_in_btn:
                 Intent intent = new Intent (MainActivity.this, MyLoginActivity.class);
                 startActivity (intent);
+                break;
+            case R.id.bottom_btn:
+                canGo (MyBottomActivity.class);
+                break;
+            case R.id.recycler_btn:
+                canGo (MyRecyActivity.class);
                 break;
         }
 
