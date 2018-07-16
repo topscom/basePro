@@ -4,6 +4,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -32,7 +33,12 @@ public class MyRecyActivity extends BaseRecyclerActivity<ListItemInfo> {
 
     @Override
     protected void initEvents () {
-        swipeMenuRecyclerView.addOnItemTouchListener (onItemTouchListener);
+        //设置下拉刷新
+        setRefresh ();
+        //设置列表点击事件
+        setItemCick ();
+        //设置加载更多
+        setLoadMoreEnable ();
     }
 
     @Override
@@ -43,7 +49,7 @@ public class MyRecyActivity extends BaseRecyclerActivity<ListItemInfo> {
     @Override
     protected void initItemLayout () {
         setLayoutResId(R.layout.baseitem);
-        setListType(LINEAR_LAYOUT_MANAGER, true, true, null);
+        setListType(LINEAR_LAYOUT_MANAGER, true, true);
     }
 
     @Override
@@ -52,26 +58,27 @@ public class MyRecyActivity extends BaseRecyclerActivity<ListItemInfo> {
         baseViewHolder.setText (R.id.tv_des,listItemInfo.getSubTitle ());
     }
 
-    private RecyclerView.OnItemTouchListener onItemTouchListener = new OnItemClickListener () {
-        @Override
-        public void onSimpleItemClick (BaseQuickAdapter adapter, View view, int position) {
-            showToast (MyRecyActivity.this,rvAdapter.getItem (position).getTitle ());
-        }
-    };
+    @Override
+    protected void loadFirstData () {
+        Log.d (TAG,"加载第一页数据");
+        loadDataSuccess();
+    }
 
-    private SwipeRefreshLayout.OnRefreshListener onRefreshListener = new SwipeRefreshLayout
-        .OnRefreshListener () {
-        @Override
-        public void onRefresh () {
+    @Override
+    protected void itemClick (int position) {
+        showToast (MyRecyActivity.this,rvAdapter.getItem (position).getTitle ());
+    }
 
-        }
-    };
-
+    @Override
+    protected void loadMoreData () {
+        Log.d (TAG,"加载下一页数据");
+        loadDataSuccess();
+    }
 
     private void addData () {
         List<ListItemInfo> listItemInfos = new ArrayList<> ();
-        String[] titles = new String[]{"title1","title2","title3","title4","title5"};
-        String[] titlesDes = new String[]{"titlesDes1","titlesDes2","titlesDes3","titlesDes","titlesDes5"};
+        String[] titles = new String[]{"title1","title2","title3","title4","title5","title1","title2","title3","title4","title5","title1","title2","title3","title4","title5"};
+        String[] titlesDes = new String[]{"titlesDes1","titlesDes2","titlesDes3","titlesDes","titlesDes5","titlesDes1","titlesDes2","titlesDes3","titlesDes","titlesDes5","titlesDes1","titlesDes2","titlesDes3","titlesDes","titlesDes5"};
         for (int i = 0; i < titles.length; i++) {
             listItemInfos.add(new ListItemInfo(titles[i], titlesDes[i]));
         }

@@ -8,9 +8,11 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.xiaojin20135.basemodule.R;
 import com.example.xiaojin20135.basemodule.activity.BaseActivity;
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
@@ -45,8 +47,8 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     private int layoutResId = -1;
     //是否可刷新，默认不可以
     private boolean canRefresh = true;
-    //刷新监听
-    private SwipeRefreshLayout.OnRefreshListener onRefreshListener = null;
+    private int lastVisibleItem;
+    LinearLayoutManager linearLayoutManager = null;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -59,7 +61,7 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
         initItemLayout ();
         swipeRefreshLayout = (SwipeRefreshLayout)findViewById (R.id.base_swipe_refresh_lay);
         swipeMenuRecyclerView = (SwipeMenuRecyclerView)findViewById (R.id.base_rv_list);
-        setRefreshEnable (canRefresh,onRefreshListener);
+        setRefreshEnable (canRefresh);
         chooseListTye (listType,isVertical);
         if(layoutResId == -1){
             throw new RuntimeException ("layoutResId is null!");
@@ -91,10 +93,10 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
      * 下拉刷新功能是否可用，true：允许
      *                     false：禁止
      */
-    protected void setRefreshEnable(boolean canRefresh, SwipeRefreshLayout.OnRefreshListener onRefreshListener){
+    protected void setRefreshEnable(boolean canRefresh){
         if(canRefresh){
             swipeRefreshLayout.setEnabled (true);
-            swipeRefreshLayout.setOnRefreshListener (onRefreshListener);
+
         }else{
             swipeRefreshLayout.setEnabled (false);
         }
@@ -105,21 +107,34 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
      * @createon 2018-07-14 16:27
      * @Describe 设置加载更多
      */
-    protected void setLoadMoreEnable(RecyclerView.OnScrollListener onScrollListener){
+    protected void setLoadMoreEnable(){
         //添加滚动监听
         swipeMenuRecyclerView.addOnScrollListener (onScrollListener);
     }
 
     /**
      * @author lixiaojin
+     * @createon 2018-07-16 15:21
+     * @Describe 开启下拉刷新
+     */
+    protected void setRefresh(){
+        swipeRefreshLayout.setOnRefreshListener (onRefreshListener);
+    }
+
+    protected void setItemCick(){
+        swipeMenuRecyclerView.addOnItemTouchListener (onItemTouchListener);
+    }
+
+
+    /**
+     * @author lixiaojin
      * @createon 2018-07-14 16:28
      * @Describe 设置布局类型
      */
-    protected void setListType(int type,boolean isVertical,boolean canRefresh,SwipeRefreshLayout.OnRefreshListener onRefreshListener){
+    protected void setListType(int type,boolean isVertical,boolean canRefresh){
         this.listType = type;
         this.isVertical = isVertical;
         this.canRefresh = canRefresh;
-        this.onRefreshListener = onRefreshListener;
     }
 
     /**
@@ -141,7 +156,7 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     private void chooseListTye(int listType,boolean isVertical){
         switch (listType) {
             case LINEAR_LAYOUT_MANAGER:
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+                linearLayoutManager = new LinearLayoutManager(this);
                 linearLayoutManager.setOrientation(isVertical ? LinearLayoutManager.VERTICAL : LinearLayoutManager.HORIZONTAL);
                 swipeMenuRecyclerView.setLayoutManager(linearLayoutManager);
                 break;
@@ -156,9 +171,9 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
                 swipeMenuRecyclerView.setLayoutManager(staggeredGridLayoutManager);
                 break;
             default:
-                LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-                layoutManager.setOrientation(isVertical ? LinearLayoutManager.VERTICAL : LinearLayoutManager.HORIZONTAL);
-                swipeMenuRecyclerView.setLayoutManager(layoutManager);
+                linearLayoutManager = new LinearLayoutManager(this);
+                linearLayoutManager.setOrientation(isVertical ? LinearLayoutManager.VERTICAL : LinearLayoutManager.HORIZONTAL);
+                swipeMenuRecyclerView.setLayoutManager(linearLayoutManager);
                 break;
         }
     }
@@ -181,4 +196,77 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
             MyHolder(baseViewHolder, t);
         }
     }
+
+    //下拉刷新监听
+    private SwipeRefreshLayout.OnRefreshListener onRefreshListener = new SwipeRefreshLayout.OnRefreshListener () {
+        @Override
+        public void onRefresh () {
+            loadFirstData();
+        }
+    };
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-16 15:15
+     * @Describe 加载第一页数据
+     */
+    protected abstract void loadFirstData();
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-16 15:16
+     * @Describe 加载数据成功
+     */
+    public void loadDataSuccess(){
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-16 15:27
+     * @Describe 列表点击事件
+     */
+    private RecyclerView.OnItemTouchListener onItemTouchListener = new OnItemClickListener () {
+        @Override
+        public void onSimpleItemClick (BaseQuickAdapter adapter, View view, int position) {
+//            showToast (MyRecyActivity.this,rvAdapter.getItem (position).getTitle ());
+            itemClick(position);
+        }
+    };
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-16 15:28
+     * @Describe 列表点击事件
+     */
+    protected abstract void itemClick(int position);
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-16 15:39
+     * @Describe 加载更多监听事件
+     */
+    private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener () {
+        @Override
+        public void onScrolled (RecyclerView recyclerView, int dx, int dy) {
+            super.onScrolled (recyclerView, dx, dy);
+            if(listType == LINEAR_LAYOUT_MANAGER){
+                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
+            }
+        }
+
+        @Override
+        public void onScrollStateChanged (RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged (recyclerView, newState);
+            if(listType == LINEAR_LAYOUT_MANAGER){
+                if(newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem +2 > linearLayoutManager.getItemCount()){
+                    swipeRefreshLayout.setRefreshing (true);
+                    loadMoreData ();
+                }
+            }
+
+        }
+    };
+    protected abstract void loadMoreData();
+
 }

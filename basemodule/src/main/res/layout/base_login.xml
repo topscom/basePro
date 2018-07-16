@@ -7,7 +7,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +21,6 @@
                 android:layout_marginBottom="@dimen/toolbar_height"
                 android:layout_gravity="center"
                 tools:ignore="ContentDescription"/>
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -33,19 +31,16 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/username"
                     android:maxLines="1"
-                    android:drawablePadding="@dimen/info_margin"
                     tools:ignore="RtlHardcoded"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
                 <EditText
                     android:id="@+id/password_ET"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/info_margin"
                     android:hint="@string/password"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
