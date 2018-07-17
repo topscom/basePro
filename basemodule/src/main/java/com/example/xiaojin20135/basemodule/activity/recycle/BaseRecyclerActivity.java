@@ -8,7 +8,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -50,7 +52,7 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     private boolean canRefresh = true;
     private int lastVisibleItem;
     LinearLayoutManager linearLayoutManager = null;
-    private List<Map> dataList = new ArrayList<> ();
+    private boolean enableRefreshIcon = true;//是否显示刷新圆圈
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -72,6 +74,13 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
         swipeMenuRecyclerView.setAdapter (rvAdapter);
     }
 
+    public void setEmpty(){
+        rvAdapter.setNewData (null);
+        View emptyView=getLayoutInflater().inflate(R.layout.empty_view, null);
+        emptyView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        rvAdapter.setEmptyView (emptyView);
+//        rvAdapter.s
+    }
     @Override
     protected void initEvents () {
         //设置下拉刷新
@@ -107,7 +116,6 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     protected void setRefreshEnable(boolean canRefresh){
         if(canRefresh){
             swipeRefreshLayout.setEnabled (true);
-
         }else{
             swipeRefreshLayout.setEnabled (false);
         }
@@ -229,7 +237,10 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
      * @Describe 加载数据成功
      */
     public void loadDataSuccess(){
-        swipeRefreshLayout.setRefreshing(false);
+        if(enableRefreshIcon){
+            Log.d (TAG,"显示");
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     /**
@@ -271,7 +282,9 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
             super.onScrollStateChanged (recyclerView, newState);
             if(listType == LINEAR_LAYOUT_MANAGER){
                 if(newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem +2 > linearLayoutManager.getItemCount()){
-                    swipeRefreshLayout.setRefreshing (true);
+                    if(enableRefreshIcon){
+                        swipeRefreshLayout.setRefreshing (true);
+                    }
                     loadMoreData ();
                 }
             }
@@ -280,22 +293,5 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     };
     protected abstract void loadMoreData();
 
-    /**
-     * @author lixiaojin
-     * @createon 2018-07-17 13:42
-     * @Describe 清理
-     */
-    public void clearDataList(){
-        dataList.clear ();
-    }
-
-    /**
-     * @author lixiaojin
-     * @createon 2018-07-17 13:42
-     * @Describe 查询后新增
-     */
-    public void addDataList(List<Map> list){
-        dataList.addAll (list);
-    }
 
 }

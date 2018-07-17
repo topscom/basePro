@@ -68,6 +68,7 @@ public class MyRecyActivity extends BaseRecyclerActivity<ListItemInfo> {
     @Override
     protected void itemClick (int position) {
         showToast (MyRecyActivity.this,rvAdapter.getItem (position).getTitle ());
+        setEmpty();
     }
 
     @Override
