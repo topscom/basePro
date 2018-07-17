@@ -72,6 +72,15 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
         swipeMenuRecyclerView.setAdapter (rvAdapter);
     }
 
+    @Override
+    protected void initEvents () {
+        //设置下拉刷新
+        setRefresh ();
+        //设置列表点击事件
+        setItemCick ();
+        //设置加载更多
+        setLoadMoreEnable ();
+    }
 
     /**
      * @author lixiaojin

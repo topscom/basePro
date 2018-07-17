@@ -39,12 +39,7 @@ public class MyRecyActivity extends BaseRecyclerActivity<ListItemInfo> {
 
     @Override
     protected void initEvents () {
-        //设置下拉刷新
-        setRefresh ();
-        //设置列表点击事件
-        setItemCick ();
-        //设置加载更多
-        setLoadMoreEnable ();
+        super.initEvents ();
     }
 
     @Override
