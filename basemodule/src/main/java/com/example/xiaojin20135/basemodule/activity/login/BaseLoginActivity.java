@@ -45,7 +45,7 @@ public abstract class BaseLoginActivity extends BaseActivity {
     private CheckBox remember_password_checkBox;
     //是否自动登录
     private boolean autoLogin = false;
-    PresenterImpl presenterImpl;
+
 
     //登录地址，必须设置
     private String loginUrl = "";
@@ -53,7 +53,7 @@ public abstract class BaseLoginActivity extends BaseActivity {
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        presenterImpl = new PresenterImpl (this,this);
+
     }
 
     /**
@@ -137,7 +137,7 @@ public abstract class BaseLoginActivity extends BaseActivity {
             showToast (this,R.string.login_url_null);
             return;
         }
-        presenterImpl.loadData (loginUrl,paraMap);
+        tryToGetData (loginUrl,paraMap);
     }
 
     @Override

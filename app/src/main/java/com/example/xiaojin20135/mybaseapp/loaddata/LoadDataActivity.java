@@ -1,0 +1,59 @@
+package com.example.xiaojin20135.mybaseapp.loaddata;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+
+import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
+import com.example.xiaojin20135.basemodule.retrofit.bean.ResponseBean;
+import com.example.xiaojin20135.basemodule.util.ConstantUtil;
+import com.example.xiaojin20135.mybaseapp.R;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class LoadDataActivity extends ToolBarActivity {
+
+    @Override
+    protected void onCreate (Bundle savedInstanceState) {
+        super.onCreate (savedInstanceState);
+
+    }
+
+    @Override
+    protected int getLayoutId () {
+        return R.layout.activity_load_data;
+    }
+
+    @Override
+    protected void initView () {
+
+    }
+
+    @Override
+    protected void initEvents () {
+
+    }
+
+    @Override
+    protected void loadData () {
+
+    }
+
+
+    public void onClick (View view) {
+        if(view.getId () == R.id.load_data_btn){
+            Map paraMap = new HashMap<> ();
+            paraMap.put(ConstantUtil.loginName,"0903");
+            paraMap.put(ConstantUtil.password,"13212");
+            tryToGetData ("http://www.topscomm.com:6715/TopscommRms/mobile/loginAction_login.json",paraMap);
+        }
+    }
+
+    @Override
+    public void loadDataSuccess (Object tData) {
+        super.loadDataSuccess (tData);
+        ResponseBean responseBean = (ResponseBean)tData;
+        showToast (this,responseBean.getActionResult ().getMessage ());
+    }
+}

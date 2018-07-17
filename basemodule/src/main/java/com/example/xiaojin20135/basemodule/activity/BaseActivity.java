@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
@@ -18,11 +19,14 @@ import android.widget.Toast;
 import com.example.xiaojin20135.basemodule.R;
 import com.example.xiaojin20135.basemodule.retrofit.bean.ActionResult;
 import com.example.xiaojin20135.basemodule.retrofit.bean.ResponseBean;
+import com.example.xiaojin20135.basemodule.retrofit.presenter.PresenterImpl;
 import com.example.xiaojin20135.basemodule.retrofit.view.IBaseView;
 import com.example.xiaojin20135.basemodule.util.ConstantUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lixiaojin
@@ -36,6 +40,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     private static Toast toast;
     private SharedPreferences sharedPreferences;
     public static ProgressDialog progressDialog;
+    private PresenterImpl presenterImpl;
 
 
     @Override
@@ -53,6 +58,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
         TAG = this.getLocalClassName();
         Log.d("BaseActivity",TAG);
+        presenterImpl = new PresenterImpl (this,this);
     }
 
     protected abstract int getLayoutId();
@@ -209,6 +215,15 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
             progressDialog.hide();
             progressDialog.dismiss();
         }
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-17 10:23
+     * @Describe 请求数据
+     */
+    public void tryToGetData(String url,Map paraMap) {
+        presenterImpl.loadData (url,paraMap);
     }
 
     @Override
