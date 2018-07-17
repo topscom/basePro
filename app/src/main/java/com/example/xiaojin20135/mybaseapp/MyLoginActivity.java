@@ -16,7 +16,7 @@ public class MyLoginActivity extends BaseLoginActivity {
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        setLoginUrl ("http://www.topscomm.com:6715/TopscommRms/mobile/loginAction_login.json");
+        setLoginUrl ("http://186.168.3.94:8080/rms/main/login_login.action");
         canStart();
     }
 

@@ -46,7 +46,7 @@ public class LoadDataActivity extends ToolBarActivity {
             Map paraMap = new HashMap<> ();
             paraMap.put(ConstantUtil.loginName,"0903");
             paraMap.put(ConstantUtil.password,"13212");
-            tryToGetData ("http://www.topscomm.com:6715/TopscommRms/mobile/loginAction_login.json",paraMap);
+            tryToGetData ("http://186.168.3.94:8080/rms/rms/rmsEventReport_queryEventInfo.json ",paraMap);
         }
     }
 
