@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.xiaojin20135.basemodule.R;
@@ -28,6 +29,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import butterknife.ButterKnife;
 
 /**
  * @author lixiaojin
@@ -56,7 +59,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         loadData();
         initView();
         initEvents();
-
+        ButterKnife.bind (this);
         TAG = this.getLocalClassName();
         Log.d("BaseActivity",TAG);
         presenterImpl = new PresenterImpl (this,this);

@@ -20,6 +20,7 @@ import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lixiaojin
@@ -49,6 +50,7 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     private boolean canRefresh = true;
     private int lastVisibleItem;
     LinearLayoutManager linearLayoutManager = null;
+    private List<Map> dataList = new ArrayList<> ();
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -268,5 +270,23 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
         }
     };
     protected abstract void loadMoreData();
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-17 13:42
+     * @Describe 清理
+     */
+    public void clearDataList(){
+        dataList.clear ();
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-17 13:42
+     * @Describe 查询后新增
+     */
+    public void addDataList(List<Map> list){
+        dataList.addAll (list);
+    }
 
 }

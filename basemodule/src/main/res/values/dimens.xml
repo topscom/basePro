@@ -23,7 +23,10 @@
     <dimen name="text_size2">18dp</dimen>
     <dimen name="text_size3">22dp</dimen>
     <dimen name="text_size4">36dp</dimen>
-    <dimen name="left_title">100dp</dimen>
+    <dimen name="left_title_10">100dp</dimen>
+    <dimen name="left_title_12">120dp</dimen>
+    <dimen name="left_title_14">140dp</dimen>
+    <dimen name="left_title_15">150dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="item_padding_left">20dp</dimen>
     <dimen name="item_padding_top">25dp</dimen>
