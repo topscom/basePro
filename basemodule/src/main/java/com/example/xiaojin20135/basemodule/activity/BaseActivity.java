@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.xiaojin20135.basemodule.R;
 import com.example.xiaojin20135.basemodule.retrofit.bean.ActionResult;
 import com.example.xiaojin20135.basemodule.retrofit.bean.ResponseBean;
+import com.example.xiaojin20135.basemodule.retrofit.helper.RetrofitManager;
 import com.example.xiaojin20135.basemodule.retrofit.presenter.PresenterImpl;
 import com.example.xiaojin20135.basemodule.retrofit.view.IBaseView;
 import com.example.xiaojin20135.basemodule.util.ConstantUtil;
@@ -220,10 +221,19 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     /**
      * @author lixiaojin
      * @createon 2018-07-17 10:23
-     * @Describe 请求数据
+     * @Describe 请求数据 ，带完整路径
      */
     public void tryToGetData(String url,Map paraMap) {
         presenterImpl.loadData (url,paraMap);
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-17 10:39
+     * @Describe 请求数据，带请求方法
+     */
+    public void getDataWithMethod(String url,Map paraMap) {
+        presenterImpl.loadData (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url,paraMap);
     }
 
     @Override
