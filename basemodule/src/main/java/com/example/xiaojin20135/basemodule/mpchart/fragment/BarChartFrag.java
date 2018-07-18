@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.xiaojin20135.basemodule.R;
+import com.example.xiaojin20135.basemodule.mpchart.MyValueFormatter;
 import com.example.xiaojin20135.basemodule.mpchart.bean.BarChartBaseBean;
 import com.example.xiaojin20135.basemodule.mpchart.CommonAxisValueFormatter;
 import com.github.mikephil.charting.animation.Easing;
@@ -21,6 +22,9 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 
 import java.util.ArrayList;
 
@@ -160,6 +164,8 @@ public class BarChartFrag extends Fragment {
         BarDataSet barDataSet = new BarDataSet (sizes,label);
         //顶部文字颜色
         barDataSet.setValueTextSize (valueFontSize);
+        //自定义顶部数字显示格式，主要是为了去掉小数点
+        barDataSet.setValueFormatter (new MyValueFormatter ());
         //颜色
         if(colors.size () > 0){
             barDataSet.setColors (colors);
