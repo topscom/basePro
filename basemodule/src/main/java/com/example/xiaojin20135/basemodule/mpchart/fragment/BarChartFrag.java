@@ -52,6 +52,8 @@ public class BarChartFrag extends Fragment {
     private int gridColor = Color.LTGRAY;
     //轴线的轴的颜色
     private int aXisColor = Color.LTGRAY;
+    //label
+    private String label = "";
 
 
     public BarChartFrag () {
@@ -155,7 +157,7 @@ public class BarChartFrag extends Fragment {
         //横向刻度名称
         xAxis.setValueFormatter(new CommonAxisValueFormatter (names));
         //柱状图数据
-        BarDataSet barDataSet = new BarDataSet (sizes,"日统计");
+        BarDataSet barDataSet = new BarDataSet (sizes,label);
         //顶部文字颜色
         barDataSet.setValueTextSize (valueFontSize);
         //颜色
@@ -269,5 +271,13 @@ public class BarChartFrag extends Fragment {
 
     public void setaXisColor (int aXisColor) {
         this.aXisColor = aXisColor;
+    }
+
+    public String getLabel () {
+        return label;
+    }
+
+    public void setLabel (String label) {
+        this.label = label;
     }
 }

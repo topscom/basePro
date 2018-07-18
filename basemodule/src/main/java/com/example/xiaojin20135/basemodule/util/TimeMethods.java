@@ -54,4 +54,14 @@ public enum TimeMethods {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss:SSS");
         return simpleDateFormat.format(new Date());
     }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-18 14:12
+     * @Describe
+     */
+    public String getFormatDateOnly(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return simpleDateFormat.format(new Date());
+    }
 }
