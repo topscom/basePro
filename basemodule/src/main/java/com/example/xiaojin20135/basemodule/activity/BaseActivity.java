@@ -56,10 +56,11 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         }else{
             //throw new IllegalArgumentException("返回一个正确的ContentView!");
         }
+        ButterKnife.bind (this);
         loadData();
         initView();
         initEvents();
-        ButterKnife.bind (this);
+
         TAG = this.getLocalClassName();
         Log.d("BaseActivity",TAG);
         presenterImpl = new PresenterImpl (this,this);
