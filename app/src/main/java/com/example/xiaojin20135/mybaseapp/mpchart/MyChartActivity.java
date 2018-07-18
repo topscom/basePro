@@ -44,11 +44,12 @@ public class MyChartActivity extends ToolBarActivity {
         switch (view.getId ()){
             case R.id.barchart_btn:
                 double count = 123.0;
+                float count1 = (float) 123.0;
                 BarChartFrag barChartFrag = new BarChartFrag ();
                 ArrayList<BarChartBaseBean> barChartBaseBeans = new ArrayList<> ();
                 barChartBaseBeans.add (new BarChartBaseBean ("火警数",(int)count, Color.RED));
-                barChartBaseBeans.add (new BarChartBaseBean ("报警数",200,Color.GREEN));
-                barChartBaseBeans.add (new BarChartBaseBean ("故障数",345,Color.LTGRAY));
+                barChartBaseBeans.add (new BarChartBaseBean ("报警数",(int)count1,Color.GREEN));
+                barChartBaseBeans.add (new BarChartBaseBean ("故障数",(int)345.0,Color.LTGRAY));
                 barChartBaseBeans.add (new BarChartBaseBean ("启动数",700,Color.YELLOW));
                 barChartBaseBeans.add (new BarChartBaseBean ("反馈数",400,Color.GRAY));
                 barChartBaseBeans.add (new BarChartBaseBean ("屏蔽数",500,Color.LTGRAY));

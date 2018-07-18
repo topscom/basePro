@@ -152,7 +152,7 @@ public class BarChartFrag extends Fragment {
             if(barChartBaseBean.getColor () != 0){
                 colors.add (barChartBaseBean.getColor ());
             }
-            sizes.add (new BarEntry ((i+1),barChartBaseBean.getCount ()));
+            sizes.add (new BarEntry ((int)(i+1),(int)barChartBaseBean.getCount ()));
         }
         //横向刻度名称
         xAxis.setValueFormatter(new CommonAxisValueFormatter (names));
