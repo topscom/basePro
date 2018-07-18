@@ -6,6 +6,7 @@ import android.util.Log;
 import com.example.xiaojin20135.basemodule.retrofit.api.IServiceApi;
 import com.example.xiaojin20135.basemodule.retrofit.bean.ResponseBean;
 
+import java.lang.reflect.Method;
 import java.util.Map;
 
 import rx.Subscriber;
@@ -38,6 +39,7 @@ public class BaseModelImpl extends BaseModel implements IBaseModel<ResponseBean>
     @Override
     public void loadData (String url,Map paraMap, final IBaseRequestCallBack<ResponseBean> iBaseRequestCallBack) {
         Log.d (TAG,"compositeSubscription = " + compositeSubscription);
+        final String methodName = paraMap.get ("methodName").toString ();
         compositeSubscription.add (iServiceApi.load (url,paraMap)
             .observeOn (AndroidSchedulers.mainThread ())
             .subscribeOn (Schedulers.io())
@@ -61,7 +63,9 @@ public class BaseModelImpl extends BaseModel implements IBaseModel<ResponseBean>
                 @Override
                 public void onNext (ResponseBean responseBean) {
                     //回调接口，请求成功，获取实体类对象
+                    responseBean.setMethod (methodName);
                     iBaseRequestCallBack.requestSuccess (responseBean);
+
                 }
             }));
     }

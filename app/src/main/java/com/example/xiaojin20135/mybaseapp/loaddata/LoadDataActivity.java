@@ -47,13 +47,14 @@ public class LoadDataActivity extends ToolBarActivity {
             Map paraMap = new HashMap<> ();
             paraMap.put(ConstantUtil.loginName,"0903");
             paraMap.put(ConstantUtil.password,"13212");
+            paraMap.put ("methodName","rmsEventReport_queryEventInfo");
             tryToGetData ("http://186.168.3.94:8080/rms/rms/rmsEventReport_queryEventInfo.json ",paraMap);
         }
     }
 
-    @Override
-    public void loadDataSuccess (Object tData) {
-        super.loadDataSuccess (tData);
+
+    public void rmsEventReport_queryEventInfo(ResponseBean tData){
+//        super.loadDataSuccess (tData);
         ResponseBean responseBean = (ResponseBean)tData;
         showToast (this,responseBean.getActionResult ().getMessage ());
     }

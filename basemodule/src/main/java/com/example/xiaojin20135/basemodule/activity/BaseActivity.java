@@ -25,6 +25,7 @@ import com.example.xiaojin20135.basemodule.retrofit.presenter.PresenterImpl;
 import com.example.xiaojin20135.basemodule.retrofit.view.IBaseView;
 import com.example.xiaojin20135.basemodule.util.ConstantUtil;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -262,7 +263,15 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         ResponseBean responseBean = (ResponseBean)callBack;
         ActionResult actionResult = responseBean.getActionResult ();
         if(actionResult.getSuccess ()){
-            loadDataSuccess (callBack);
+            try {
+                Class c = this.getClass();
+                Method m1 = c.getDeclaredMethod(responseBean.getMethod (),new Class[]{ResponseBean.class});
+                m1.invoke(this,new Object[]{responseBean});
+            } catch (Exception e) {
+                e.printStackTrace();
+                showToast (this,e.getLocalizedMessage ());
+            }
+//            loadDataSuccess (callBack);
         }else{
             requestError (actionResult.getMessage ());
         }

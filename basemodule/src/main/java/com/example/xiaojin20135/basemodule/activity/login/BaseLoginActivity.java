@@ -133,6 +133,7 @@ public abstract class BaseLoginActivity extends BaseActivity {
         Map paraMap = new HashMap ();
         paraMap.put(ConstantUtil.loginName,loginName);
         paraMap.put(ConstantUtil.password,password);
+        paraMap.put ("methodName","loginSuccess");
         if(TextUtils.isEmpty (loginUrl)){
             showToast (this,R.string.login_url_null);
             return;
@@ -143,15 +144,16 @@ public abstract class BaseLoginActivity extends BaseActivity {
     @Override
     public void loadDataSuccess (Object tData) {
         super.loadDataSuccess (tData);
-        saveLoginInfo(((ResponseBean)tData).getUserBean ());
-        loginSuccess();
+
     }
+
+
 
     /**
      * 保存个人登录信息
      * @param userBean
      */
-    private void saveLoginInfo(UserBean userBean){
+    public void saveLoginInfo(UserBean userBean){
         CboUserEntity cboUserEntity = userBean.getUser();
         if(cboUserEntity != null){
             SharedPreferences.Editor editor = getSharedPreferences("loginInfo",MODE_PRIVATE).edit();
@@ -173,11 +175,6 @@ public abstract class BaseLoginActivity extends BaseActivity {
     public void setLoginUrl (String loginUrl) {
         this.loginUrl = loginUrl;
     }
-
-    /**
-     * 登陆成功跳转
-     */
-    public abstract void loginSuccess ();
 
     /**
      * 获取权限

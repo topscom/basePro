@@ -16,6 +16,7 @@ public class ResponseBean {
     private int adminlevel;
     private UserBean userBean;
     private Map dataMap;
+    private String method;
     private List<Map> listDataMap;
     private List<Map> flowidList;
     private String records;//共有多少条记录
@@ -125,5 +126,13 @@ public class ResponseBean {
 
     public void setFlowidList(List<Map> flowidList) {
         this.flowidList = flowidList;
+    }
+
+    public String getMethod () {
+        return method;
+    }
+
+    public void setMethod (String method) {
+        this.method = method;
     }
 }
