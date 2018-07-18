@@ -8,6 +8,7 @@ import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
 import com.example.xiaojin20135.basemodule.retrofit.helper.RetrofitManager;
 import com.example.xiaojin20135.mybaseapp.bottom.MyBottomActivity;
 import com.example.xiaojin20135.mybaseapp.loaddata.LoadDataActivity;
+import com.example.xiaojin20135.mybaseapp.mpchart.MyChartActivity;
 import com.example.xiaojin20135.mybaseapp.recyclerview.MyRecyActivity;
 
 public class MainActivity extends ToolBarActivity implements View.OnClickListener{
@@ -81,6 +82,9 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
             case R.id.load_data_btn:
                 canGo (LoadDataActivity.class);
                 break;
+            case R.id.chart_btn:
+                canGo (MyChartActivity.class);
+
         }
 
     }

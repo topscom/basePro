@@ -18,7 +18,8 @@
         <activity android:name=".MyLoginActivity" />
         <activity android:name=".bottom.MyBottomActivity" />
         <activity android:name=".recyclerview.MyRecyActivity" />
-        <activity android:name=".loaddata.LoadDataActivity"></activity>
+        <activity android:name=".loaddata.LoadDataActivity" />
+        <activity android:name=".mpchart.MyChartActivity"></activity>
     </application>
 
 </manifest>

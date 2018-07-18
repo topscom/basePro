@@ -46,4 +46,12 @@
         android:text="Recyclerview列表"
         android:id="@+id/recycler_btn"
         android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MPChart"
+        android:id="@+id/chart_btn"
+        android:onClick="onClick"/>
+
 </LinearLayout>
