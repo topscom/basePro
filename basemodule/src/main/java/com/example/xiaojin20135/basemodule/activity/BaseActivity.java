@@ -263,14 +263,19 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         ResponseBean responseBean = (ResponseBean)callBack;
         ActionResult actionResult = responseBean.getActionResult ();
         if(actionResult.getSuccess ()){
-            try {
-                Class c = this.getClass();
-                Method m1 = c.getDeclaredMethod(responseBean.getMethod (),new Class[]{ResponseBean.class});
-                m1.invoke(this,new Object[]{responseBean});
-            } catch (Exception e) {
-                e.printStackTrace();
-                showToast (this,e.getLocalizedMessage ());
+            if(responseBean.getMethod () != null && !responseBean.getMethod ().equals ("")){
+                try {
+                    Class c = this.getClass();
+                    Method m1 = c.getDeclaredMethod(responseBean.getMethod (),new Class[]{ResponseBean.class});
+                    m1.invoke(this,new Object[]{responseBean});
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    showToast (this,e.getLocalizedMessage ());
+                }
+            }else{
+
             }
+
 //            loadDataSuccess (callBack);
         }else{
             requestError (actionResult.getMessage ());
