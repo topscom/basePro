@@ -38,6 +38,7 @@ public class BaseModelImpl extends BaseModel implements IBaseModel<ResponseBean>
 
     @Override
     public void loadData (String url,final String methodName,Map paraMap, final IBaseRequestCallBack<ResponseBean> iBaseRequestCallBack) {
+        Log.d (TAG,"paraMap = " + paraMap.toString ());
         compositeSubscription.add (iServiceApi.load (url,paraMap)
             .observeOn (AndroidSchedulers.mainThread ())
             .subscribeOn (Schedulers.io())

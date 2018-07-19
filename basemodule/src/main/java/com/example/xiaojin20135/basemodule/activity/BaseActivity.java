@@ -310,12 +310,11 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public void loadSuccess (Object tData, String methodName) {
-        Log.d (TAG,"loadDataSuccess with methodName");
-        Log.d (TAG,"loadSuccess");
+        Log.d (TAG,"loadDataSuccess with methodName :" + methodName);
         ResponseBean responseBean = (ResponseBean)tData;
         ActionResult actionResult = responseBean.getActionResult ();
         if(actionResult.getSuccess ()){
-            if(responseBean.getMethod () != null && !responseBean.getMethod ().equals ("")){
+            if(methodName != null && !methodName.equals ("")){
                 try {
                     Class c = this.getClass();
                     Method m1 = c.getDeclaredMethod(responseBean.getMethod (),new Class[]{ResponseBean.class});
@@ -325,7 +324,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
                     showToast (this,e.getLocalizedMessage ());
                 }
             }else{
-                showToast (this,"not found "+methodName+" method");
+                showAlertDialog (this,"not found "+methodName+" method");
             }
         }else{
             requestError (actionResult.getMessage ());
@@ -351,7 +350,6 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
      * @param tClass
      * @param bundle
      */
-
     protected void canGo(Class<?> tClass,Bundle bundle){
         Intent intent = new Intent (this,tClass);
         if(bundle != null){
