@@ -226,7 +226,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     /**
      * @author lixiaojin
      * @createon 2018-07-17 10:23
-     * @Describe 请求数据 ，带完整路径
+     * @Describe 请求数据 ，带完整路径，自定义回调方法
      */
     public void tryToGetData(String url,String methodName,Map paraMap) {
         presenterImpl.loadData (url + ".json",methodName,paraMap);
@@ -235,7 +235,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     /**
      * @author lixiaojin
      * @createon 2018-07-17 10:23
-     * @Describe 请求数据 ，带完整路径
+     * @Describe 请求数据 ，带完整路径，固定回调方法
      */
     public void tryToGetData(String url,Map paraMap) {
         presenterImpl.loadData (url + ".json",paraMap);
@@ -244,7 +244,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     /**
      * @author lixiaojin
      * @createon 2018-07-17 10:39
-     * @Describe 请求数据，带请求方法
+     * @Describe 请求数据，带请求方法，并自定义回调方法
      */
     public void getDataWithMethod(String url,Map paraMap) {
         presenterImpl.loadData (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url + ".json",url,paraMap);
@@ -252,11 +252,30 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     /**
      * @author lixiaojin
+     * @createon 2018-07-17 10:39
+     * @Describe 请求数据，带请求方法，固定回调方法
+     */
+    public void getDataWithCommonMethod(String url,Map paraMap) {
+        presenterImpl.loadData (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url + ".json",paraMap);
+    }
+
+
+    /**
+     * @author lixiaojin
      * @createon 2018-07-19 8:39
-     * @Describe 请求数据，带请求方法和和后缀
+     * @Describe 请求数据，带请求方法和和后缀，自定义回调方法
      */
     public void getDataWithMethod(String url,String suffix,Map paraMap){
         presenterImpl.loadData (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url + suffix,url,paraMap);
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-19 8:39
+     * @Describe 请求数据，带请求方法和和后缀，固定回调方法
+     */
+    public void getDataWithCommonMethod(String url,String suffix,Map paraMap){
+        presenterImpl.loadData (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url + suffix,paraMap);
     }
 
     @Override
