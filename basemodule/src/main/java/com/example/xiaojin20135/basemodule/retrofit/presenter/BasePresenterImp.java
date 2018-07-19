@@ -55,6 +55,11 @@ public class BasePresenterImp<V extends IBaseView,T> implements IBaseRequestCall
         iBaseView.dismissProgress ();
     }
 
+    @Override
+    public void requestSuccess (T callBack, String methodName) {
+        iBaseView.loadSuccess (callBack,methodName);
+    }
+
     /**
      * 请求成功获取成功之后的数据信息
      * @param callBack

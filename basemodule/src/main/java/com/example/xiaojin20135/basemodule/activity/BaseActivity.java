@@ -234,6 +234,15 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     /**
      * @author lixiaojin
+     * @createon 2018-07-17 10:23
+     * @Describe 请求数据 ，带完整路径
+     */
+    public void tryToGetData(String url,Map paraMap) {
+        presenterImpl.loadData (url + ".json",paraMap);
+    }
+
+    /**
+     * @author lixiaojin
      * @createon 2018-07-17 10:39
      * @Describe 请求数据，带请求方法
      */
@@ -255,6 +264,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         Log.d (TAG,"loadDataSuccess");
     }
 
+
+
     @Override
     public void loadError (Throwable throwable) {
         Log.d (TAG,"loadDataError");
@@ -272,6 +283,19 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         ResponseBean responseBean = (ResponseBean)callBack;
         ActionResult actionResult = responseBean.getActionResult ();
         if(actionResult.getSuccess ()){
+            loadDataSuccess (callBack);
+        }else{
+            requestError (actionResult.getMessage ());
+        }
+    }
+
+    @Override
+    public void loadSuccess (Object tData, String methodName) {
+        Log.d (TAG,"loadDataSuccess with methodName");
+        Log.d (TAG,"loadSuccess");
+        ResponseBean responseBean = (ResponseBean)tData;
+        ActionResult actionResult = responseBean.getActionResult ();
+        if(actionResult.getSuccess ()){
             if(responseBean.getMethod () != null && !responseBean.getMethod ().equals ("")){
                 try {
                     Class c = this.getClass();
@@ -282,10 +306,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
                     showToast (this,e.getLocalizedMessage ());
                 }
             }else{
-
+                showToast (this,"not found "+methodName+" method");
             }
-
-//            loadDataSuccess (callBack);
         }else{
             requestError (actionResult.getMessage ());
         }

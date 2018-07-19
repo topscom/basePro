@@ -22,6 +22,19 @@ public interface IBasePresenter {
     void loadData(String url,String methodName,Map paraMap);
 
     /**
+     * 加载数据
+     * @param paraMap
+     */
+    void loadData(Map paraMap);
+
+    /**
+     * 加载数据
+     * @param url
+     * @param paraMap
+     */
+    void loadData(String url,Map paraMap);
+
+    /**
      * 注销
      */
     void unSubscribe ();

@@ -73,4 +73,5 @@ public abstract class ToolBarActivity extends BaseActivity {
         toolbar.setNavigationIcon (null);
     }
 
+
 }

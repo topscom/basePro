@@ -27,9 +27,12 @@ public class MyLoginActivity extends BaseLoginActivity {
         super.canStart ();
     }
 
-    public void loginSuccess(ResponseBean tData){
-        super.saveLoginInfo((tData).getUserBean ());
+    @Override
+    public void loadDataSuccess (Object tData) {
+        super.loadDataSuccess (tData);
         Intent intent = new Intent (MyLoginActivity.this,MainActivity.class);
         startActivity (intent);
     }
+
+
 }

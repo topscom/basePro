@@ -138,15 +138,14 @@ public abstract class BaseLoginActivity extends BaseActivity {
             showToast (this,R.string.login_url_null);
             return;
         }
-        tryToGetData (loginUrl,"loginSuccess",paraMap);
+        tryToGetData (loginUrl,paraMap);
     }
 
     @Override
     public void loadDataSuccess (Object tData) {
         super.loadDataSuccess (tData);
-
+        saveLoginInfo (((ResponseBean)tData).getUserBean ());
     }
-
 
 
     /**

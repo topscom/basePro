@@ -13,14 +13,29 @@ public interface IBaseModel<T> {
      * @param paraMap
      * @param iBaseRequestCallBack
      */
-    void loadData(Map paraMap,String methodName,IBaseRequestCallBack<T> iBaseRequestCallBack);
+    void loadData(Map paraMap,String methodName,final IBaseRequestCallBack<T> iBaseRequestCallBack);
 
     /**
      * 加载数据
      * @param paraMap
      * @param iBaseRequestCallBack
      */
-    void loadData(String url,String methodName,Map paraMap,IBaseRequestCallBack<T> iBaseRequestCallBack);
+    void loadData(String url,String methodName,Map paraMap,final IBaseRequestCallBack<T> iBaseRequestCallBack);
+
+    /**
+     * 加载数据
+     * @param paraMap
+     * @param iBaseRequestCallBack
+     */
+    void loadData(Map paraMap,final IBaseRequestCallBack<T> iBaseRequestCallBack);
+
+    /**
+     * 加载数据
+     * @param paraMap
+     * @param iBaseRequestCallBack
+     */
+    void loadData(String url,Map paraMap,final IBaseRequestCallBack<T> iBaseRequestCallBack);
+
 
     /**
      * 注销

@@ -31,6 +31,11 @@ public interface IBaseView<T> {
     void loadSuccess(T tData);
 
     /**
+     * 请求数据成功
+     */
+    void loadSuccess(T tData,String methodName);
+
+    /**
      * 请求数据失败
      */
     void loadError(Throwable throwable);

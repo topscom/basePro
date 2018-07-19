@@ -28,6 +28,12 @@ public interface IBaseRequestCallBack<T> {
      * 请求成功
      * @param callBack
      */
+    void requestSuccess(T callBack,String methodName);
+
+    /**
+     * 请求成功
+     * @param callBack
+     */
     void requestSuccess(T callBack);
 
     /**
