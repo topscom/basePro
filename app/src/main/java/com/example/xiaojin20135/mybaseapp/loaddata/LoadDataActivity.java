@@ -48,7 +48,7 @@ public class LoadDataActivity extends ToolBarActivity {
             paraMap.put(ConstantUtil.loginName,"0903");
             paraMap.put(ConstantUtil.password,"13212");
             paraMap.put ("methodName","rmsEventReport_queryEventInfo");
-            tryToGetData ("http://186.168.3.94:8080/rms/rms/rmsEventReport_queryEventInfo.json ","rmsEventReport_queryEventInfo",paraMap);
+            tryToGetData ("http://186.168.3.94:8080/rms/rms/rmsEventReport_queryEventInfo","rmsEventReport_queryEventInfo",paraMap);
         }
     }
 

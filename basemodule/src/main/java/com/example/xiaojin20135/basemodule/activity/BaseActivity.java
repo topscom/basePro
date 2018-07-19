@@ -229,7 +229,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
      * @Describe 请求数据 ，带完整路径
      */
     public void tryToGetData(String url,String methodName,Map paraMap) {
-        presenterImpl.loadData (url,methodName,paraMap);
+        presenterImpl.loadData (url + ".json",methodName,paraMap);
     }
 
     /**
@@ -238,7 +238,16 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
      * @Describe 请求数据，带请求方法
      */
     public void getDataWithMethod(String url,Map paraMap) {
-        presenterImpl.loadData (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url,url,paraMap);
+        presenterImpl.loadData (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url + ".json",url,paraMap);
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-19 8:39
+     * @Describe 请求数据，带请求方法和和后缀
+     */
+    public void getDataWithMethod(String url,String suffix,Map paraMap){
+        presenterImpl.loadData (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url + suffix,url,paraMap);
     }
 
     @Override
