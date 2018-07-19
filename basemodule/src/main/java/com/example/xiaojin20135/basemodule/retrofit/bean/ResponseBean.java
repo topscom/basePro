@@ -1,6 +1,10 @@
 package com.example.xiaojin20135.basemodule.retrofit.bean;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,18 +19,18 @@ public class ResponseBean {
     private ActionResult actionResult;
     private int adminlevel;
 
-    private List<Map> cityList;
-    private List<Map> companycategoryList;
-    private List<Map> companynatureList;
-    private List<Map> countyList;
-    private List<Map> enabledList;
-    private List<Map> mapJson;
+    private String[] cityList;
+    private String[] companycategoryList;
+    private String[] companynatureList;
+    private String[] countyList;
+    private String[] enabledList;
+    private String mapJson;
     private Map paraDataMap;
     private String[] permissionButton;
-    private List<Map> provinceList;
+    private String[] provinceList;
     private Map queryParamMap;
-    private List<Map> treeJson;
-
+    private String treeJson;
+    private JSONArray treeJsonMobile;
     private UserBean userBean;
     private Map dataMap;
     private String method;
@@ -149,51 +153,51 @@ public class ResponseBean {
         this.method = method;
     }
 
-    public List<Map> getCityList () {
+    public String[] getCityList () {
         return cityList;
     }
 
-    public void setCityList (List<Map> cityList) {
+    public void setCityList (String[] cityList) {
         this.cityList = cityList;
     }
 
-    public List<Map> getCompanycategoryList () {
+    public String[] getCompanycategoryList () {
         return companycategoryList;
     }
 
-    public void setCompanycategoryList (List<Map> companycategoryList) {
+    public void setCompanycategoryList (String[] companycategoryList) {
         this.companycategoryList = companycategoryList;
     }
 
-    public List<Map> getCompanynatureList () {
+    public String[] getCompanynatureList () {
         return companynatureList;
     }
 
-    public void setCompanynatureList (List<Map> companynatureList) {
+    public void setCompanynatureList (String[] companynatureList) {
         this.companynatureList = companynatureList;
     }
 
-    public List<Map> getCountyList () {
+    public String[] getCountyList () {
         return countyList;
     }
 
-    public void setCountyList (List<Map> countyList) {
+    public void setCountyList (String[] countyList) {
         this.countyList = countyList;
     }
 
-    public List<Map> getEnabledList () {
+    public String[] getEnabledList () {
         return enabledList;
     }
 
-    public void setEnabledList (List<Map> enabledList) {
+    public void setEnabledList (String[] enabledList) {
         this.enabledList = enabledList;
     }
 
-    public List<Map> getMapJson () {
+    public String getMapJson () {
         return mapJson;
     }
 
-    public void setMapJson (List<Map> mapJson) {
+    public void setMapJson (String mapJson) {
         this.mapJson = mapJson;
     }
 
@@ -213,11 +217,11 @@ public class ResponseBean {
         this.permissionButton = permissionButton;
     }
 
-    public List<Map> getProvinceList () {
+    public String[] getProvinceList () {
         return provinceList;
     }
 
-    public void setProvinceList (List<Map> provinceList) {
+    public void setProvinceList (String[] provinceList) {
         this.provinceList = provinceList;
     }
 
@@ -229,11 +233,24 @@ public class ResponseBean {
         this.queryParamMap = queryParamMap;
     }
 
-    public List<Map> getTreeJson () {
+    public String getTreeJson () {
         return treeJson;
     }
 
-    public void setTreeJson (List<Map> treeJson) {
+    public void setTreeJson (String treeJson) {
         this.treeJson = treeJson;
+    }
+
+    public JSONArray getTreeJsonMobile () {
+        if(treeJson.equals ("")){
+            return null;
+        }else{
+            try {
+                return new JSONArray (treeJson);
+            } catch (JSONException e) {
+                e.printStackTrace ();
+                return null;
+            }
+        }
     }
 }

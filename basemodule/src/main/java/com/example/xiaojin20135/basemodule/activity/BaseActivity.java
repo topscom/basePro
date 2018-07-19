@@ -196,10 +196,9 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     @Override
     public void showProgress () {
         //等待框
-        if(progressDialog == null){
+        if(progressDialog == null || !progressDialog.isShowing ()){
             progressDialog = new ProgressDialog(this);
         }
-//        progressDialog.dismiss ();
         progressDialog.show();
     }
 
@@ -207,7 +206,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     @Override
     public void showProgress (boolean hideTitle,String message,boolean cancled) {
         //等待框
-        if(progressDialog == null){
+        if(progressDialog == null || !progressDialog.isShowing ()){
             progressDialog = new ProgressDialog(this);
         }
         progressDialog.setMessage(message);
