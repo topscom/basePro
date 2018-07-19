@@ -228,8 +228,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
      * @createon 2018-07-17 10:23
      * @Describe 请求数据 ，带完整路径
      */
-    public void tryToGetData(String url,Map paraMap) {
-        presenterImpl.loadData (url,paraMap);
+    public void tryToGetData(String url,String methodName,Map paraMap) {
+        presenterImpl.loadData (url,methodName,paraMap);
     }
 
     /**
@@ -238,7 +238,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
      * @Describe 请求数据，带请求方法
      */
     public void getDataWithMethod(String url,Map paraMap) {
-        presenterImpl.loadData (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url,paraMap);
+        presenterImpl.loadData (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url,url,paraMap);
     }
 
     @Override

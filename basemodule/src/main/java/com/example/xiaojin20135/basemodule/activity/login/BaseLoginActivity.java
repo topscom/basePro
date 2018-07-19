@@ -138,7 +138,7 @@ public abstract class BaseLoginActivity extends BaseActivity {
             showToast (this,R.string.login_url_null);
             return;
         }
-        tryToGetData (loginUrl,paraMap);
+        tryToGetData (loginUrl,"loginSuccess",paraMap);
     }
 
     @Override

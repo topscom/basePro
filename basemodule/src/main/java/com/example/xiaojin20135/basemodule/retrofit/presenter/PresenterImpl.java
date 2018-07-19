@@ -30,13 +30,13 @@ public class PresenterImpl extends BasePresenterImp<IBaseView,ResponseBean> impl
     }
 
     @Override
-    public void loadData (Map paraMap) {
+    public void loadData (Map paraMap,String methodName) {
 
     }
 
     @Override
-    public void loadData (String url, Map paraMap) {
-        baseModel.loadData (url,paraMap,this);
+    public void loadData (String url,String methodName, Map paraMap) {
+        baseModel.loadData (url,methodName,paraMap,this);
     }
 
     @Override
