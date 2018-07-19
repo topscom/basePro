@@ -14,6 +14,19 @@ public class ResponseBean {
     private String[] actionMessages;
     private ActionResult actionResult;
     private int adminlevel;
+
+    private List<Map> cityList;
+    private List<Map> companycategoryList;
+    private List<Map> companynatureList;
+    private List<Map> countyList;
+    private List<Map> enabledList;
+    private List<Map> mapJson;
+    private Map paraDataMap;
+    private String[] permissionButton;
+    private List<Map> provinceList;
+    private Map queryParamMap;
+    private List<Map> treeJson;
+
     private UserBean userBean;
     private Map dataMap;
     private String method;
@@ -134,5 +147,93 @@ public class ResponseBean {
 
     public void setMethod (String method) {
         this.method = method;
+    }
+
+    public List<Map> getCityList () {
+        return cityList;
+    }
+
+    public void setCityList (List<Map> cityList) {
+        this.cityList = cityList;
+    }
+
+    public List<Map> getCompanycategoryList () {
+        return companycategoryList;
+    }
+
+    public void setCompanycategoryList (List<Map> companycategoryList) {
+        this.companycategoryList = companycategoryList;
+    }
+
+    public List<Map> getCompanynatureList () {
+        return companynatureList;
+    }
+
+    public void setCompanynatureList (List<Map> companynatureList) {
+        this.companynatureList = companynatureList;
+    }
+
+    public List<Map> getCountyList () {
+        return countyList;
+    }
+
+    public void setCountyList (List<Map> countyList) {
+        this.countyList = countyList;
+    }
+
+    public List<Map> getEnabledList () {
+        return enabledList;
+    }
+
+    public void setEnabledList (List<Map> enabledList) {
+        this.enabledList = enabledList;
+    }
+
+    public List<Map> getMapJson () {
+        return mapJson;
+    }
+
+    public void setMapJson (List<Map> mapJson) {
+        this.mapJson = mapJson;
+    }
+
+    public Map getParaDataMap () {
+        return paraDataMap;
+    }
+
+    public void setParaDataMap (Map paraDataMap) {
+        this.paraDataMap = paraDataMap;
+    }
+
+    public String[] getPermissionButton () {
+        return permissionButton;
+    }
+
+    public void setPermissionButton (String[] permissionButton) {
+        this.permissionButton = permissionButton;
+    }
+
+    public List<Map> getProvinceList () {
+        return provinceList;
+    }
+
+    public void setProvinceList (List<Map> provinceList) {
+        this.provinceList = provinceList;
+    }
+
+    public Map getQueryParamMap () {
+        return queryParamMap;
+    }
+
+    public void setQueryParamMap (Map queryParamMap) {
+        this.queryParamMap = queryParamMap;
+    }
+
+    public List<Map> getTreeJson () {
+        return treeJson;
+    }
+
+    public void setTreeJson (List<Map> treeJson) {
+        this.treeJson = treeJson;
     }
 }
