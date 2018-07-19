@@ -19,7 +19,8 @@
         <activity android:name=".bottom.MyBottomActivity" />
         <activity android:name=".recyclerview.MyRecyActivity" />
         <activity android:name=".loaddata.LoadDataActivity" />
-        <activity android:name=".mpchart.MyChartActivity"></activity>
+        <activity android:name=".mpchart.MyChartActivity" />
+        <activity android:name=".spinner.MySpinnerActivity"></activity>
     </application>
 
 </manifest>

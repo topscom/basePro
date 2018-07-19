@@ -1,4 +1,4 @@
-package com.example.xiaojin20135.mybaseapp.adapter;
+package com.example.xiaojin20135.basemodule.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.xiaojin20135.mybaseapp.R;
+
+import com.example.xiaojin20135.basemodule.R;
 
 import java.util.List;
 import java.util.Map;
@@ -19,10 +20,10 @@ import java.util.Map;
  */
 
 public class BaseSpinnerAdapter extends BaseAdapter{
-    List<Map<String,String >> datas ;
+    List<Map> datas ;
     Context mContext;
 
-    public BaseSpinnerAdapter (Context context, List<Map<String,String >> objects) {
+    public BaseSpinnerAdapter (Context context, List<Map> objects) {
         this.datas=objects;
         this.mContext=context;
     }
@@ -34,7 +35,7 @@ public class BaseSpinnerAdapter extends BaseAdapter{
 
     @Override
     public Object getItem (int position) {
-        return null;
+        return datas.get (position);
     }
 
     @Override

@@ -54,4 +54,10 @@
         android:id="@+id/chart_btn"
         android:onClick="onClick"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Spinner"
+        android:id="@+id/spiner_btn"
+        android:onClick="onClick"/>
 </LinearLayout>

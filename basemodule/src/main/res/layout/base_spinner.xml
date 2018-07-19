@@ -4,15 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:gravity="left"
+    android:gravity="center"
     android:layout_margin="@dimen/info_margin"
     android:padding="@dimen/info_margin"
     >
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="TextView"
+        android:textAlignment="center"
         style="@style/value_right"
         />
     <TextView
