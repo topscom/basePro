@@ -13,6 +13,11 @@
     <dimen name="title_width">95dp</dimen>
     <dimen name="list_margin">10dp</dimen>
     <dimen name="info_margin">6dp</dimen>
+    <dimen name="info_margin_1">6dp</dimen>
+    <dimen name="info_margin_2">6dp</dimen>
+    <dimen name="info_margin_3">6dp</dimen>
+    <dimen name="info_margin_4">6dp</dimen>
+    <dimen name="info_margin_5">6dp</dimen>
     <dimen name="info_margin_6">6dp</dimen>
     <dimen name="info_margin_7">7dp</dimen>
     <dimen name="info_margin_8">8dp</dimen>
