@@ -47,8 +47,12 @@ public class LoadDataActivity extends ToolBarActivity {
             Map paraMap = new HashMap<> ();
             paraMap.put(ConstantUtil.loginName,"0903");
             paraMap.put(ConstantUtil.password,"13212");
-            paraMap.put ("methodName","rmsEventReport_queryEventInfo");
             tryToGetData ("http://186.168.3.94:8080/rms/rms/rmsEventReport_queryEventInfo",paraMap);
+        }else if(view.getId () == R.id.load_data_My_btn){
+            Map paraMap = new HashMap<> ();
+            paraMap.put(ConstantUtil.loginName,"0903");
+            paraMap.put(ConstantUtil.password,"13212");
+            tryToGetData("http://186.168.3.94:8080/rms/mobile/loginAction_login","loginAction_login",paraMap);
         }
     }
 
@@ -59,5 +63,8 @@ public class LoadDataActivity extends ToolBarActivity {
         showToast (this,responseBean.getActionResult ().getMessage ());
     }
 
+    public void loginAction_login(ResponseBean responseBean){
+        showToast (this,responseBean.getActionResult ().getSuccess ()+"");
+    }
 
 }

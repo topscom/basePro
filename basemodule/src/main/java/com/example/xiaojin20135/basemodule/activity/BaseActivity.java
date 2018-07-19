@@ -317,11 +317,11 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
             if(methodName != null && !methodName.equals ("")){
                 try {
                     Class c = this.getClass();
-                    Method m1 = c.getDeclaredMethod(responseBean.getMethod (),new Class[]{ResponseBean.class});
+                    Method m1 = c.getDeclaredMethod(methodName,new Class[]{ResponseBean.class});
                     m1.invoke(this,new Object[]{responseBean});
                 } catch (Exception e) {
                     e.printStackTrace();
-                    showToast (this,e.getLocalizedMessage ());
+                    showAlertDialog (this,e.getLocalizedMessage ());
                 }
             }else{
                 showAlertDialog (this,"not found "+methodName+" method");

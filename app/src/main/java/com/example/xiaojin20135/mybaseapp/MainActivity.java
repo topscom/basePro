@@ -18,7 +18,7 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
         setTitleText(R.string.main_page);
 //        setToolbarColor(R.color.white);
 //        setTitleColor(R.color.black);
-        RetrofitManager.RETROFIT_MANAGER.init ("http://www.topscomm.com:6724/TopscommRms/");
+        RetrofitManager.RETROFIT_MANAGER.init ("http://186.168.3.94:8080/rms/");
     }
 
     @Override
