@@ -60,4 +60,12 @@
         android:text="Spinner"
         android:id="@+id/spiner_btn"
         android:onClick="onClick"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="时间选择器"
+        android:id="@+id/date_pick_btn"
+        android:onClick="onClick"/>
 </LinearLayout>

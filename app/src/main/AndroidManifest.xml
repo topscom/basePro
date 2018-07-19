@@ -20,7 +20,8 @@
         <activity android:name=".recyclerview.MyRecyActivity" />
         <activity android:name=".loaddata.LoadDataActivity" />
         <activity android:name=".mpchart.MyChartActivity" />
-        <activity android:name=".spinner.MySpinnerActivity"></activity>
+        <activity android:name=".spinner.MySpinnerActivity" />
+        <activity android:name=".datepicker.DatePickerActivity"></activity>
     </application>
 
 </manifest>

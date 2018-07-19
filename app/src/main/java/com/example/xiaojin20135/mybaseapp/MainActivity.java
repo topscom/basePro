@@ -7,6 +7,7 @@ import android.view.View;
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
 import com.example.xiaojin20135.basemodule.retrofit.helper.RetrofitManager;
 import com.example.xiaojin20135.mybaseapp.bottom.MyBottomActivity;
+import com.example.xiaojin20135.mybaseapp.datepicker.DatePickerActivity;
 import com.example.xiaojin20135.mybaseapp.loaddata.LoadDataActivity;
 import com.example.xiaojin20135.mybaseapp.mpchart.MyChartActivity;
 import com.example.xiaojin20135.mybaseapp.recyclerview.MyRecyActivity;
@@ -88,6 +89,9 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 break;
             case R.id.spiner_btn:
                 canGo (MySpinnerActivity.class);
+                break;
+            case R.id.date_pick_btn:
+                canGo (DatePickerActivity.class);
                 break;
         }
 
