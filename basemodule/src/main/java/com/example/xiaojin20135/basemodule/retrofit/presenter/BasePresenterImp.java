@@ -1,6 +1,7 @@
 package com.example.xiaojin20135.basemodule.retrofit.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.xiaojin20135.basemodule.retrofit.api.IServiceApi;
 import com.example.xiaojin20135.basemodule.retrofit.model.BaseModelImpl;
@@ -17,6 +18,7 @@ import rx.subscriptions.CompositeSubscription;
  */
 
 public class BasePresenterImp<V extends IBaseView,T> implements IBaseRequestCallBack<T> {
+    private static final String TAG = "BasePresenterImp";
     private IBaseView iBaseView = null;//基础视图
 
     /**
@@ -32,6 +34,7 @@ public class BasePresenterImp<V extends IBaseView,T> implements IBaseRequestCall
      */
     @Override
     public void beforeRequest () {
+        Log.d (TAG,"beforeRequest");
         iBaseView.showProgress ();
     }
 
@@ -42,9 +45,9 @@ public class BasePresenterImp<V extends IBaseView,T> implements IBaseRequestCall
      */
     @Override
     public void requestError (Throwable throwable) {
+        Log.d (TAG,"requestError");
         iBaseView.loadError (throwable);
         iBaseView.dismissProgress ();
-
     }
 
     /**
@@ -52,11 +55,13 @@ public class BasePresenterImp<V extends IBaseView,T> implements IBaseRequestCall
      */
     @Override
     public void requestComplete () {
+        Log.d (TAG,"requestComplete");
         iBaseView.dismissProgress ();
     }
 
     @Override
     public void requestSuccess (T callBack, String methodName) {
+        Log.d (TAG,"requestSuccess");
         iBaseView.loadSuccess (callBack,methodName);
     }
 

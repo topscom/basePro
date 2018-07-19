@@ -53,6 +53,12 @@ public class LoadDataActivity extends ToolBarActivity {
             paraMap.put(ConstantUtil.loginName,"0903");
             paraMap.put(ConstantUtil.password,"13212");
             tryToGetData("http://186.168.3.94:8080/rms/mobile/loginAction_login","loginAction_login",paraMap);
+        }else if(view.getId () == R.id.load_data_both_btn){
+            Map paraMap = new HashMap<> ();
+            paraMap.put(ConstantUtil.loginName,"0903");
+            paraMap.put(ConstantUtil.password,"13212");
+            tryToGetData ("http://186.168.3.94:8080/rms/mobile/loginAction_login",paraMap);
+            tryToGetData("http://186.168.3.94:8080/rms/mobile/loginAction_login","loginAction_login",paraMap);
         }
     }
 

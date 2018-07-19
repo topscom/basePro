@@ -196,8 +196,10 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     @Override
     public void showProgress () {
         //等待框
-        progressDialog = new ProgressDialog(this);
-        progressDialog.hide();
+        if(progressDialog == null){
+            progressDialog = new ProgressDialog(this);
+        }
+        progressDialog.dismiss ();
         progressDialog.show();
     }
 
@@ -319,6 +321,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
                     Class c = this.getClass();
                     Method m1 = c.getDeclaredMethod(methodName,new Class[]{ResponseBean.class});
                     m1.invoke(this,new Object[]{responseBean});
+                    Log.d (TAG,"调用自定义方法");
                 } catch (Exception e) {
                     e.printStackTrace();
                     showAlertDialog (this,e.getLocalizedMessage ());
@@ -333,7 +336,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public void requestError (String message) {
-        Log.d (TAG,"requestError");
+        Log.d (TAG,"requestError : " + message);
         showToast (this,message);
     }
 
