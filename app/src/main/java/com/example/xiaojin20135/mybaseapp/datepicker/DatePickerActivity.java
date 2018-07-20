@@ -50,13 +50,18 @@ public class DatePickerActivity extends ToolBarActivity {
         }
     }
 
-    private void pickDate(boolean showTime){
+    private void pickDate(final boolean showTime){
         new DatePickDialog (this,showTime).builder().setTitle("选择日期")
             .setPositiveButton("确认", new DatePickListener () {
                 @Override
                 public void onClick(View v) {
                     Log.d ("LikeIosDialogActivity","dataValue = " + this.getDateValue () + " " + this.getTimeValue ());
-                    Toast.makeText (DatePickerActivity.this, this.getDateValue () + " " + this.getTimeValue () + "",Toast.LENGTH_LONG).show ();
+                    if(showTime){
+                        Toast.makeText (DatePickerActivity.this, this.getDateValue () + " " + this.getTimeValue () + "",Toast.LENGTH_LONG).show ();
+                    }else{
+                        Toast.makeText (DatePickerActivity.this, this.getDateValue (),Toast.LENGTH_LONG).show ();
+                    }
+
                 }
             }).setNegativeButton("取消", new DatePickListener() {
             @Override
