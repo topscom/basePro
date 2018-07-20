@@ -147,7 +147,6 @@ public class DatePickDialog {
     }
 
 
-
     public DatePickDialog setTitle(String title) {
         showTitle = true;
         if ("".equals(title)) {
