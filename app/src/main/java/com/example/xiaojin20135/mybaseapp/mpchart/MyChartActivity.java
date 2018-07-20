@@ -11,6 +11,7 @@ import com.example.xiaojin20135.basemodule.mpchart.fragment.PieChartFrag;
 import com.example.xiaojin20135.mybaseapp.R;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MyChartActivity extends ToolBarActivity {
 
@@ -54,19 +55,20 @@ public class MyChartActivity extends ToolBarActivity {
                 barChartBaseBeans.add (new BarChartBaseBean ("反馈数",1,Color.GRAY));
                 barChartBaseBeans.add (new BarChartBaseBean ("屏蔽数",3,Color.LTGRAY));
                 barChartFrag.setBarChartBaseBeans (barChartBaseBeans);
-                getSupportFragmentManager ().beginTransaction ().add (R.id.fragment_container,barChartFrag).commit ();
+                getSupportFragmentManager ().beginTransaction ().replace (R.id.fragment_container,barChartFrag).commit ();
                 break;
             case R.id.piechart_btn:
                 PieChartFrag pieChartFrag = new PieChartFrag();
                 ArrayList<BarChartBaseBean> barChartBaseBeans1 = new ArrayList<> ();
-                barChartBaseBeans1.add (new BarChartBaseBean ("火警数",123, Color.RED));
-                barChartBaseBeans1.add (new BarChartBaseBean ("报警数",200,Color.GREEN));
-                barChartBaseBeans1.add (new BarChartBaseBean ("故障数",345,Color.LTGRAY));
-                barChartBaseBeans1.add (new BarChartBaseBean ("启动数",700,Color.YELLOW));
-                barChartBaseBeans1.add (new BarChartBaseBean ("反馈数",400,Color.GRAY));
-                barChartBaseBeans1.add (new BarChartBaseBean ("屏蔽数",500,Color.LTGRAY));
+                barChartBaseBeans1.add (new BarChartBaseBean ("火警数",123 * ((int)Math.random ()), Color.RED));
+                barChartBaseBeans1.add (new BarChartBaseBean ("报警数",200 * ((int)Math.random ()),Color.GREEN));
+                barChartBaseBeans1.add (new BarChartBaseBean ("故障数",345 * ((int)Math.random ()),Color.LTGRAY));
+                barChartBaseBeans1.add (new BarChartBaseBean ("启动数",700 * ((int)Math.random ()),Color.YELLOW));
+                barChartBaseBeans1.add (new BarChartBaseBean ("反馈数",400 * ((int)Math.random ()),Color.GRAY));
+                barChartBaseBeans1.add (new BarChartBaseBean ("屏蔽数",500 * ((int)Math.random ()),Color.LTGRAY));
                 pieChartFrag.setBarChartBaseBeans (barChartBaseBeans1);
-                getSupportFragmentManager ().beginTransaction ().add (R.id.fragment_container,pieChartFrag).commit ();
+
+                getSupportFragmentManager ().beginTransaction ().replace (R.id.fragment_container,pieChartFrag).commit ();
                 break;
         }
     }

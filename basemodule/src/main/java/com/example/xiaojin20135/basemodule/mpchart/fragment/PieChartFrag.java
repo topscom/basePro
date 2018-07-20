@@ -32,8 +32,21 @@ public class PieChartFrag extends Fragment {
     private ArrayList<BarChartBaseBean> barChartBaseBeans = new ArrayList<> ();
     private boolean showLegend = false;
 
+    public PieChartFrag pieChartFrag = null;
+
     public PieChartFrag () {
-        // Required empty public constructor
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-20 14:05
+     * @Describe 获取Fragment实例
+     */
+    public PieChartFrag getInstance(){
+        if(pieChartFrag == null){
+            pieChartFrag = new PieChartFrag ();
+        }
+        return pieChartFrag;
     }
 
     @Override
@@ -103,7 +116,7 @@ public class PieChartFrag extends Fragment {
         }
     }
 
-    private void initData(){
+    public void initData(){
         ArrayList<Integer> colors = new ArrayList<Integer>();
         ArrayList<PieEntry> pieEntries = new ArrayList<PieEntry> ();
         for(int i=0;i<barChartBaseBeans.size ();i++){
@@ -134,7 +147,6 @@ public class PieChartFrag extends Fragment {
         mPieChart.highlightValues (null);
         mPieChart.invalidate ();
     }
-
 
     public ArrayList<BarChartBaseBean> getBarChartBaseBeans () {
         return barChartBaseBeans;

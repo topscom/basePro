@@ -20,7 +20,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="title_left" parent="AlertDialog.AppCompat.Light">
-        <item name="android:gravity">right</item>
+        <item name="android:gravity">right|center_vertical</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:layout_marginRight">@dimen/list_margin</item>
         <item name="android:layout_marginLeft">@dimen/list_margin</item>
