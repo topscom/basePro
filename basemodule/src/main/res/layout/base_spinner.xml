@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:layout_margin="@dimen/info_margin"
-    android:padding="@dimen/info_margin"
+    android:padding="@dimen/info_margin_9"
     >
     <TextView
         android:id="@+id/name"
@@ -23,4 +22,9 @@
         android:visibility="gone"
         android:text="TextView"
         />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/background"
+        android:layout_margin="@dimen/info_margin_3"/>
 </LinearLayout>
