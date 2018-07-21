@@ -130,27 +130,33 @@ public class DatePickDialog {
                 Log.d(TAG, "year = " + year + "; month = " + buling((monthOfYear++) + "",2) + "; dayOfMonth = " + buling(dayOfMonth + "",2));
                 dateValue = year + "-" + buling((monthOfYear++)+"",2) + "-" + buling(dayOfMonth+"",2);
                 Log.d(TAG,"dateValue = " + dateValue);
-                txt_title.setText(dateValue + " " + timeValue);
+                if(showTime){
+                    txt_title.setText(dateValue + " " + timeValue);
+                }else{
+                    txt_title.setText(dateValue);
+                }
+
             }
         });
-
-
 
         time_pick_view.setOnTimeChangedListener (new TimePicker.OnTimeChangedListener () {
             @Override
             public void onTimeChanged (TimePicker view, int hourOfDay, int minute) {
                 timeValue = buling (hourOfDay+"",2) + ":" + buling (minute+"",2);
-                txt_title.setText(dateValue + " " + timeValue);
+                if(showTime){
+                    txt_title.setText(dateValue + " " + timeValue);
+                }else{
+                    txt_title.setText(dateValue);
+                }
             }
         });
-
     }
 
 
     public DatePickDialog setTitle(String title) {
         showTitle = true;
         if ("".equals(title)) {
-            txt_title.setText("标题");
+            txt_title.setText("选择时间");
         } else {
             txt_title.setText(title);
         }
@@ -204,7 +210,6 @@ public class DatePickDialog {
         if (showTitle) {
             txt_title.setVisibility(View.VISIBLE);
         }
-
         if (!showPosBtn && !showNegBtn) {
             btn_pos.setText("确定");
             btn_pos.setVisibility(View.VISIBLE);
@@ -216,7 +221,6 @@ public class DatePickDialog {
                 }
             });
         }
-
         if (showPosBtn && showNegBtn) {
             btn_pos.setVisibility(View.VISIBLE);
             btn_pos.setBackgroundResource(R.drawable.alertdialog_right_selector);
