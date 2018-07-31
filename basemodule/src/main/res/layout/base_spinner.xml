@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="@dimen/info_margin_9"
+    android:background="@color/spinnerbackground"
     >
     <TextView
         android:id="@+id/name"
@@ -13,7 +14,7 @@
         android:layout_height="match_parent"
         android:text="TextView"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/spinner_text"
         style="@style/value_right"
         />
     <TextView
