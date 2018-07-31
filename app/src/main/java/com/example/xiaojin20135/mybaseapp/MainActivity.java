@@ -36,18 +36,18 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
     @Override
     protected void initView() {
 //        Log.d(TAG,"in initView");
-        load_data_btn = (Button) findViewById (R.id.load_data_btn);
+//        load_data_btn = (Button) findViewById (R.id.load_data_btn);
     }
 
     @Override
     protected void initEvents() {
 //        Log.d(TAG,"in initEvents");
-        load_data_btn.setOnClickListener (new View.OnClickListener () {
-            @Override
-            public void onClick (View v) {
-                Log.d (TAG,"dsfdsfdfs");
-            }
-        });
+//        load_data_btn.setOnClickListener (new View.OnClickListener () {
+//            @Override
+//            public void onClick (View v) {
+//                Log.d (TAG,"dsfdsfdfs");
+//            }
+//        });
     }
 
     @Override
