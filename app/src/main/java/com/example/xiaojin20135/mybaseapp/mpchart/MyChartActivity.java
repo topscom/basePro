@@ -18,7 +18,6 @@ public class MyChartActivity extends ToolBarActivity {
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-
     }
 
     @Override
@@ -60,14 +59,13 @@ public class MyChartActivity extends ToolBarActivity {
             case R.id.piechart_btn:
                 PieChartFrag pieChartFrag = new PieChartFrag();
                 ArrayList<BarChartBaseBean> barChartBaseBeans1 = new ArrayList<> ();
-                barChartBaseBeans1.add (new BarChartBaseBean ("火警数",123 * ((int)Math.random ()), Color.RED));
-                barChartBaseBeans1.add (new BarChartBaseBean ("报警数",200 * ((int)Math.random ()),Color.GREEN));
-                barChartBaseBeans1.add (new BarChartBaseBean ("故障数",345 * ((int)Math.random ()),Color.LTGRAY));
-                barChartBaseBeans1.add (new BarChartBaseBean ("启动数",700 * ((int)Math.random ()),Color.YELLOW));
-                barChartBaseBeans1.add (new BarChartBaseBean ("反馈数",400 * ((int)Math.random ()),Color.GRAY));
-                barChartBaseBeans1.add (new BarChartBaseBean ("屏蔽数",500 * ((int)Math.random ()),Color.LTGRAY));
+                barChartBaseBeans1.add (new BarChartBaseBean ("火警数",123 , Color.RED));
+                barChartBaseBeans1.add (new BarChartBaseBean ("报警数",200 ,Color.GREEN));
+                barChartBaseBeans1.add (new BarChartBaseBean ("故障数",345 ,Color.LTGRAY));
+                barChartBaseBeans1.add (new BarChartBaseBean ("启动数",700 ,Color.YELLOW));
+                barChartBaseBeans1.add (new BarChartBaseBean ("反馈数",400 ,Color.GRAY));
+                barChartBaseBeans1.add (new BarChartBaseBean ("屏蔽数",500 ,Color.LTGRAY));
                 pieChartFrag.setBarChartBaseBeans (barChartBaseBeans1);
-
                 getSupportFragmentManager ().beginTransaction ().replace (R.id.fragment_container,pieChartFrag).commit ();
                 break;
         }

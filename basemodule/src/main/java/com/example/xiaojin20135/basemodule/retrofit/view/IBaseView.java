@@ -4,6 +4,11 @@ package com.example.xiaojin20135.basemodule.retrofit.view;
  * Created by lixiaojin on 2018-07-12.
  * 功能描述：
  * 基类视图
+ * 显示一次完整的请求过程，
+ * 显示加载框
+ * 加载数据成功或失败
+ * 更新UI提示用户
+ * 关闭等待框
  */
 
 public interface IBaseView<T> {

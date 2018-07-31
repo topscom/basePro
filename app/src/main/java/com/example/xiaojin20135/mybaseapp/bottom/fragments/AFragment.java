@@ -15,11 +15,9 @@ import com.example.xiaojin20135.mybaseapp.R;
  */
 public class AFragment extends Fragment {
 
-
     public AFragment () {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container,

@@ -2,7 +2,9 @@ package com.example.xiaojin20135.mybaseapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
 import com.example.xiaojin20135.basemodule.retrofit.helper.RetrofitManager;
@@ -14,6 +16,9 @@ import com.example.xiaojin20135.mybaseapp.recyclerview.MyRecyActivity;
 import com.example.xiaojin20135.mybaseapp.spinner.MySpinnerActivity;
 
 public class MainActivity extends ToolBarActivity implements View.OnClickListener{
+
+    Button load_data_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +36,18 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
     @Override
     protected void initView() {
 //        Log.d(TAG,"in initView");
+        load_data_btn = (Button) findViewById (R.id.load_data_btn);
     }
 
     @Override
     protected void initEvents() {
 //        Log.d(TAG,"in initEvents");
+        load_data_btn.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick (View v) {
+                Log.d (TAG,"dsfdsfdfs");
+            }
+        });
     }
 
     @Override
@@ -79,7 +91,9 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 canGo (MyBottomActivity.class);
                 break;
             case R.id.recycler_btn:
-                canGo (MyRecyActivity.class);
+                Bundle bundle = new Bundle ();
+                bundle.putString ("hh","jj");
+                canGo (MyRecyActivity.class,bundle);
                 break;
             case R.id.load_data_btn:
                 canGo (LoadDataActivity.class);

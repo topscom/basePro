@@ -41,6 +41,7 @@ public abstract class BaseLoginActivity extends BaseActivity {
     private EditText password_ET;
     private Button sign_in_button;
     private String loginName,password;
+    private String loginNamePara,pswPara;
     //记住密码
     private CheckBox remember_password_checkBox;
     //是否自动登录
@@ -49,12 +50,39 @@ public abstract class BaseLoginActivity extends BaseActivity {
 
     //登录地址，必须设置
     private String loginUrl = "";
+    private Map paraMap = new HashMap ();
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-
+        init ();
     }
+
+    private void init(){
+        loginNamePara = ConstantUtil.loginName;
+        pswPara = ConstantUtil.password;
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-31 10:45
+     * @Describe 定制
+     */
+    public void init(String loginPara,String pswPara){
+        loginNamePara = loginPara;
+        pswPara = pswPara;
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-31 10:32
+     * @Describe 自定义添加登陆参数
+     */
+
+    public void addParaMap(String key,String value){
+        paraMap.put (key,value);
+    }
+
 
     /**
      * 初始化完成，开始业务逻辑
@@ -129,10 +157,10 @@ public abstract class BaseLoginActivity extends BaseActivity {
         return result;
     }
 
+
     private void attemptLogin() {
-        Map paraMap = new HashMap ();
-        paraMap.put(ConstantUtil.loginName,loginName);
-        paraMap.put(ConstantUtil.password,password);
+        paraMap.put(loginNamePara,loginName);
+        paraMap.put(pswPara,password);
         paraMap.put ("methodName","loginSuccess");
         if(TextUtils.isEmpty (loginUrl)){
             showToast (this,R.string.login_url_null);
@@ -153,21 +181,27 @@ public abstract class BaseLoginActivity extends BaseActivity {
      * @param userBean
      */
     public void saveLoginInfo(UserBean userBean){
-        CboUserEntity cboUserEntity = userBean.getUser();
-        if(cboUserEntity != null){
+        if(userBean != null){
+            CboUserEntity cboUserEntity = userBean.getUser();
+            if(cboUserEntity != null){
+                SharedPreferences.Editor editor = getSharedPreferences("loginInfo",MODE_PRIVATE).edit();
+                editor.putString(ConstantUtil.loginName,cboUserEntity.getLoginname());
+                editor.putString(ConstantUtil.password,password);
+                editor.putBoolean("autoLogin",autoLogin);
+                editor.putString("code",cboUserEntity.getCode());
+                editor.putString(ConstantUtil.mobile,cboUserEntity.getMobile());
+                BigDecimal id = new BigDecimal(cboUserEntity.getId());
+                editor.putString("id",id.toPlainString());
+                editor.putString(ConstantUtil.name,cboUserEntity.getName());
+                editor.commit();
+            }
+        }else{
             SharedPreferences.Editor editor = getSharedPreferences("loginInfo",MODE_PRIVATE).edit();
-            editor.putString(ConstantUtil.loginName,cboUserEntity.getLoginname());
+            editor.putString(ConstantUtil.loginName,loginName);
             editor.putString(ConstantUtil.password,password);
             editor.putBoolean("autoLogin",autoLogin);
-            editor.putString("code",cboUserEntity.getCode());
-            editor.putString(ConstantUtil.mobile,cboUserEntity.getMobile());
-            BigDecimal id = new BigDecimal(cboUserEntity.getId());
-            editor.putString("id",id.toPlainString());
-            editor.putString(ConstantUtil.name,cboUserEntity.getName());
             editor.commit();
         }
-
-
 
     }
 

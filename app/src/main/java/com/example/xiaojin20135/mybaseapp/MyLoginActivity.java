@@ -17,10 +17,11 @@ public class MyLoginActivity extends BaseLoginActivity {
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        setLoginUrl ("http://186.168.3.94:8080/rms/mobile/loginAction_login");
+        setLoginUrl ("http://186.168.1.119:8080/chpcyServerJibei/main/login");
+        init ("logId","password");
+        addParaMap ("mobile","mobile");
         canStart();
     }
-
 
     @Override
     public void canStart () {

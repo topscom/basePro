@@ -1,5 +1,6 @@
 package com.example.xiaojin20135.mybaseapp.recyclerview;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,7 +45,8 @@ public class MyRecyActivity extends BaseRecyclerActivity<ListItemInfo> {
 
     @Override
     protected void loadData () {
-
+        Intent intent = getIntent ();
+        Log.d (TAG,intent.getStringExtra ("hh"));
     }
 
     @Override
@@ -67,7 +69,7 @@ public class MyRecyActivity extends BaseRecyclerActivity<ListItemInfo> {
 
     @Override
     protected void itemClick (int position) {
-        showToast (MyRecyActivity.this,rvAdapter.getItem (position).getTitle ());
+       showToast ( MyRecyActivity.this,rvAdapter.getItem (position).getTitle ());
         setEmpty();
     }
 
