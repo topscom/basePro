@@ -48,8 +48,9 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     private int spanCount = 1;
     //子布局ID
     private int layoutResId = -1;
-    //是否可刷新，默认不可以
+    //是否可刷新，默认可以
     private boolean canRefresh = true;
+    private boolean canLoadMore = true;
     private int lastVisibleItem;
     LinearLayoutManager linearLayoutManager = null;
 
@@ -81,12 +82,16 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     }
     @Override
     protected void initEvents () {
-        //设置下拉刷新
-        setRefresh ();
+        if(canRefresh){
+            //设置下拉刷新
+            setRefresh ();
+        }
         //设置列表点击事件
         setItemCick ();
-        //设置加载更多
-        setLoadMoreEnable ();
+        if(canLoadMore){
+            //设置加载更多
+            setLoadMoreEnable ();
+        }
     }
 
     /**
@@ -152,6 +157,18 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
         this.listType = type;
         this.isVertical = isVertical;
         this.canRefresh = canRefresh;
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-14 16:28
+     * @Describe 设置布局类型
+     */
+    protected void setListType(int type,boolean isVertical,boolean canRefresh,boolean canLoadMore){
+        this.listType = type;
+        this.isVertical = isVertical;
+        this.canRefresh = canRefresh;
+        this.canLoadMore = canLoadMore;
     }
 
     /**
@@ -277,7 +294,7 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
             super.onScrollStateChanged (recyclerView, newState);
             if(listType == LINEAR_LAYOUT_MANAGER){
                 if(newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem +2 > linearLayoutManager.getItemCount()){
-                    swipeRefreshLayout.setRefreshing (true);
+//                    swipeRefreshLayout.setRefreshing (true);
                     loadMoreData ();
                 }
             }
