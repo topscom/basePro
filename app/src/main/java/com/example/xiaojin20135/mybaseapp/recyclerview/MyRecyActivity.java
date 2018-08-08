@@ -52,7 +52,7 @@ public class MyRecyActivity extends BaseRecyclerActivity<ListItemInfo> {
     @Override
     protected void initItemLayout () {
         setLayoutResId(R.layout.baseitem);
-        setListType(LINEAR_LAYOUT_MANAGER, true, true);
+        setListType(LINEAR_LAYOUT_MANAGER, true, false);
     }
 
     @Override

@@ -52,7 +52,6 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     private boolean canRefresh = true;
     private int lastVisibleItem;
     LinearLayoutManager linearLayoutManager = null;
-    private boolean enableRefreshIcon = true;//是否显示刷新圆圈
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -79,7 +78,6 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
         View emptyView=getLayoutInflater().inflate(R.layout.empty_view, null);
         emptyView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         rvAdapter.setEmptyView (emptyView);
-//        rvAdapter.s
     }
     @Override
     protected void initEvents () {
@@ -237,10 +235,7 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
      * @Describe 加载数据成功
      */
     public void loadDataSuccess(){
-        if(enableRefreshIcon){
-            Log.d (TAG,"显示");
-            swipeRefreshLayout.setRefreshing(false);
-        }
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     /**
@@ -282,9 +277,7 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
             super.onScrollStateChanged (recyclerView, newState);
             if(listType == LINEAR_LAYOUT_MANAGER){
                 if(newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem +2 > linearLayoutManager.getItemCount()){
-                    if(enableRefreshIcon){
-                        swipeRefreshLayout.setRefreshing (true);
-                    }
+                    swipeRefreshLayout.setRefreshing (true);
                     loadMoreData ();
                 }
             }
