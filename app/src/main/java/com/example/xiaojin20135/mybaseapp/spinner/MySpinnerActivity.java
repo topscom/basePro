@@ -51,7 +51,6 @@ public class MySpinnerActivity extends ToolBarActivity {
             @Override
             public void onItemSelected (AdapterView<?> parent, View view, int position, long id) {
                 Log.d (TAG,"parent.getAdapter ().getItem (position)" + parent.getAdapter ().getItem (position).toString ()) ;
-
             }
 
             @Override

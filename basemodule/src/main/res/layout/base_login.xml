@@ -3,16 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/title_width">
-
+            android:layout_marginTop="@dimen/bottom_height">
             <ImageView
                 android:id="@+id/login_image"
                 android:layout_width="90dp"
@@ -69,4 +70,12 @@
 
         </LinearLayout>
     </ScrollView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/info_margin_10"
+        android:id="@+id/copyright_TV"
+        android:text="Copyright© 2008-2018 topscomm.com Inc. All rights reserved."
+        android:textColor="@color/gray"
+        android:textAlignment="center"/>
 </LinearLayout>

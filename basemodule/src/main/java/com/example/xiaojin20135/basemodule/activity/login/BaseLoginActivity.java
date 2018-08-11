@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.xiaojin20135.basemodule.R;
@@ -38,6 +40,9 @@ import me.weyye.hipermission.PermissionItem;
  */
 public abstract class BaseLoginActivity extends BaseActivity {
     private AutoCompleteTextView loginName_TV;
+    private ImageView login_image;//登陆顶部图标
+    private TextView copyright_TV;//底部copyright信息
+
     private EditText password_ET;
     private Button sign_in_button;
     private String loginName,password;
@@ -61,6 +66,15 @@ public abstract class BaseLoginActivity extends BaseActivity {
     private void init(){
         loginNamePara = ConstantUtil.loginName;
         pswPara = ConstantUtil.password;
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-08-11 11:03
+     * @Describe 设置顶部图标
+     */
+    public void setLloginImage(int id){
+        login_image.setImageResource (id);
     }
 
     /**
@@ -102,6 +116,8 @@ public abstract class BaseLoginActivity extends BaseActivity {
         password_ET = (EditText) findViewById(R.id.password_ET);
         sign_in_button = (Button)findViewById(R.id.sign_in_button);
         remember_password_checkBox = (CheckBox)findViewById(R.id.remember_password_checkBox);
+        login_image = (ImageView)findViewById (R.id.login_image);
+        copyright_TV = (TextView)findViewById (R.id.copyright_TV);
     }
 
     @Override
@@ -208,6 +224,16 @@ public abstract class BaseLoginActivity extends BaseActivity {
     public void setLoginUrl (String loginUrl) {
         this.loginUrl = loginUrl;
     }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-08-11 11:11
+     * @Describe 修改底部copytight信息
+     */
+    public void setCopyRight(int id){
+        copyright_TV.setText (id);
+    }
+
 
     /**
      * 获取权限

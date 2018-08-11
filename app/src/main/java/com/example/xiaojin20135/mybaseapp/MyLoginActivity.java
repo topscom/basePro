@@ -17,7 +17,13 @@ public class MyLoginActivity extends BaseLoginActivity {
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
+        //设置显示图片
+        setLloginImage(R.mipmap.ic_launcher);
+        //设置底部copytight信息
+        setCopyRight(R.string.app_name);
+        //设置登陆地址
         setLoginUrl ("http://186.168.1.119:8080/chpcyServerJibei/main/login");
+        //初始化
         init ("logId","password");
         addParaMap ("mobile","mobile");
         canStart();
