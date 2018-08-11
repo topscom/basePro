@@ -86,6 +86,6 @@ public class MyRecyActivity extends BaseRecyclerActivity<ListItemInfo> {
         for (int i = 0; i < titles.length; i++) {
             listItemInfos.add(new ListItemInfo(titles[i], titlesDes[i]));
         }
-        rvAdapter.addData(listItemInfos);
+        showList (listItemInfos);
     }
 }

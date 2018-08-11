@@ -53,6 +53,7 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     private boolean canLoadMore = true;
     private int lastVisibleItem;
     LinearLayoutManager linearLayoutManager = null;
+    public int page = 1;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -303,5 +304,21 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     };
     protected abstract void loadMoreData();
 
-
+    /**
+     * @author lixiaojin
+     * @createon 2018-08-11 17:06
+     * @Describe  数据展示
+     */
+    protected void showList(List<T> dataList){
+        if(dataList != null && dataList.size () > 0){
+            Log.d (TAG,"dataList.get(0) = " + dataList.get (0).toString ());
+            rvAdapter.addData (dataList);
+        }else{
+            if(page == 1){
+                setEmpty ();
+            }else{
+                showToast (this,R.string.no_more);
+            }
+        }
+    }
 }
