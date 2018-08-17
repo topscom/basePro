@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
 import com.example.xiaojin20135.basemodule.retrofit.helper.RetrofitManager;
+import com.example.xiaojin20135.mybaseapp.alert.ItemAlertActivity;
 import com.example.xiaojin20135.mybaseapp.bottom.MyBottomActivity;
 import com.example.xiaojin20135.mybaseapp.datepicker.DatePickerActivity;
 import com.example.xiaojin20135.mybaseapp.loaddata.LoadDataActivity;
@@ -106,6 +107,9 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 break;
             case R.id.date_pick_btn:
                 canGo (DatePickerActivity.class);
+                break;
+            case R.id.sel_dialog_btn:
+                canGo (ItemAlertActivity.class);
                 break;
         }
 
