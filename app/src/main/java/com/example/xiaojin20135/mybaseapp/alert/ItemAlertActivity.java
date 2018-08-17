@@ -48,7 +48,7 @@ public class ItemAlertActivity extends ToolBarActivity {
 
 
     private void showSel(){
-        String[] items = new String[]{"1","2","3","4"};
+        String[] items = new String[]{"苹果","香蕉","茄子","西红柿"};
         MyItemDialog myItemDialog = new MyItemDialog (this, getString (R.string.app_name), items, 100, new MyItemDialog.OnDialogItemClickListener () {
             @Override
             public void onDialogItemClick (int requestCode, int position, String item) {
