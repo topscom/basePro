@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="@dimen/info_margin_20"
+    android:layout_margin="@dimen/info_margin_35"
     android:background="@drawable/alert_bg"
     >
     <TextView

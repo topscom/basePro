@@ -50,12 +50,12 @@ public class LoadDataActivity extends ToolBarActivity {
             Map paraMap = new HashMap<> ();
             paraMap.put(ConstantUtil.loginName,"admin");
             paraMap.put(ConstantUtil.password,"admin");
-            tryToGetData ("http://186.168.3.94:8080/rms/mobile/loginAction_login",paraMap);
+            tryToGetData ("http://219.147.26.62:6721/TopscommRts/mobile/loginMobileAction_login",paraMap);
         }else if(view.getId () == R.id.load_data_My_btn){
             Map paraMap = new HashMap<> ();
             paraMap.put(ConstantUtil.loginName,"0903");
             paraMap.put(ConstantUtil.password,"13212");
-            tryToGetData("http://186.168.3.94:8080/rms/rms/rmsNetworkCompany_commonTreeRef","rmsNetworkCompany_commonTreeRef",paraMap);
+            tryToGetData("http://219.147.26.62:6721/TopscommRts/mobile/loginMobileAction_login","loginMobileAction_login",paraMap);
         }else if(view.getId () == R.id.load_data_both_btn){
             Map paraMap = new HashMap<> ();
             paraMap.put(ConstantUtil.loginName,"0903");
@@ -72,7 +72,7 @@ public class LoadDataActivity extends ToolBarActivity {
         showToast (this,responseBean.getActionResult ().getMessage ());
     }
 
-    public void rmsNetworkCompany_commonTreeRef(ResponseBean responseBean){
+    public void loginMobileAction_login(ResponseBean responseBean){
         Log.d (TAG,responseBean.getTreeJson ());
         JSONArray jsonArray = responseBean.getTreeJsonMobile ();
 

@@ -47,7 +47,6 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     public static ProgressDialog progressDialog;
     private PresenterImpl presenterImpl;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -284,8 +283,6 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     public void loadDataSuccess (Object tData) {
         Log.d (TAG,"loadDataSuccess");
     }
-
-
 
     @Override
     public void loadError (Throwable throwable) {

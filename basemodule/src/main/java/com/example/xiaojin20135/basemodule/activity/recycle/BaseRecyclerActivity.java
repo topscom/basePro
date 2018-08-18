@@ -54,6 +54,9 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     private int lastVisibleItem;
     LinearLayoutManager linearLayoutManager = null;
     public int page = 1;
+    public String sidx = "";
+    private String sord = "desc";
+    private int rows = 10;//每页显示的记录数
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -320,5 +323,19 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
                 showToast (this,R.string.no_more);
             }
         }
+    }
+    /**
+     * @author lixiaojin
+     * @createon 2018-08-18 15:02
+     * @Describe 初始化查询参数
+     */
+    public void initParas(String sidx,String sord,int rows){
+        initParas (sidx,sord);
+        this.rows = rows;
+    }
+
+    public void initParas(String sidx,String sord){
+        this.sidx = sidx;
+        this.sord = sord;
     }
 }

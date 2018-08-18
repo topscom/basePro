@@ -15,6 +15,7 @@ import com.example.xiaojin20135.basemodule.R;
 /**
  * Created by lixiaojin on 2018-08-17 16:15.
  * 功能描述：
+ *  自定义列表Dialog
  */
 
 public class MyItemDialog extends Dialog implements AdapterView.OnItemClickListener {

@@ -75,4 +75,18 @@
         android:text="弹出选择框"
         android:id="@+id/sel_dialog_btn"
         android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="加载数据Fragment"
+        android:id="@+id/load_data_fragment_btn"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="加载列表Fragment"
+        android:id="@+id/load_list_fragment_btn"
+        android:onClick="onClick"/>
 </LinearLayout>

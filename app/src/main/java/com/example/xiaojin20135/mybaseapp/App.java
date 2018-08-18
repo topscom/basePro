@@ -12,6 +12,6 @@ public class App extends BaseApplication{
     @Override
     public void onCreate () {
         super.onCreate ();
-        RetrofitManager.RETROFIT_MANAGER.init ("http://186.168.3.94:8080/rms/");
+        RetrofitManager.RETROFIT_MANAGER.init ("http://219.147.26.62:6721/TopscommRts/");
     }
 }

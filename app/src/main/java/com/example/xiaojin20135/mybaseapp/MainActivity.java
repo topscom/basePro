@@ -83,6 +83,7 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
 
     @Override
     public void onClick (View v) {
+        Bundle bundle = new Bundle ();
         switch (v.getId ()){
             case R.id.sign_in_btn:
                 Intent intent = new Intent (MainActivity.this, MyLoginActivity.class);
@@ -92,7 +93,7 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 canGo (MyBottomActivity.class);
                 break;
             case R.id.recycler_btn:
-                Bundle bundle = new Bundle ();
+
                 bundle.putString ("hh","jj");
                 canGo (MyRecyActivity.class,bundle);
                 break;
@@ -111,6 +112,13 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
             case R.id.sel_dialog_btn:
                 canGo (ItemAlertActivity.class);
                 break;
+            case R.id.load_data_fragment_btn:
+                bundle.putInt ("index",0);
+                canGo (FragmentActivity.class,bundle);
+                break;
+            case R.id.load_list_fragment_btn:
+                bundle.putInt ("index",1);
+                canGo (FragmentActivity.class,bundle);
         }
 
     }
