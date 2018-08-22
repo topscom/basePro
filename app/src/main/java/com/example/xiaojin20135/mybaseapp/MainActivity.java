@@ -8,13 +8,16 @@ import android.widget.Button;
 
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
 import com.example.xiaojin20135.basemodule.retrofit.helper.RetrofitManager;
+import com.example.xiaojin20135.basemodule.update.UpdateChecker;
 import com.example.xiaojin20135.mybaseapp.alert.ItemAlertActivity;
 import com.example.xiaojin20135.mybaseapp.bottom.MyBottomActivity;
 import com.example.xiaojin20135.mybaseapp.datepicker.DatePickerActivity;
+import com.example.xiaojin20135.mybaseapp.download.DownloadActivity;
 import com.example.xiaojin20135.mybaseapp.loaddata.LoadDataActivity;
 import com.example.xiaojin20135.mybaseapp.mpchart.MyChartActivity;
 import com.example.xiaojin20135.mybaseapp.recyclerview.MyRecyActivity;
 import com.example.xiaojin20135.mybaseapp.spinner.MySpinnerActivity;
+import com.example.xiaojin20135.mybaseapp.update.CheckUpdateActivity;
 
 public class MainActivity extends ToolBarActivity implements View.OnClickListener{
 
@@ -119,7 +122,16 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
             case R.id.load_list_fragment_btn:
                 bundle.putInt ("index",1);
                 canGo (FragmentActivity.class,bundle);
+                break;
+            case R.id.download_file_btn:
+                canGo (DownloadActivity.class);
+                break;
+            case R.id.check_update_btn:
+                canGo (CheckUpdateActivity.class);
+                break;
         }
 
     }
+
+
 }

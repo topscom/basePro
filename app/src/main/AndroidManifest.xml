@@ -26,7 +26,9 @@
         <activity android:name=".spinner.MySpinnerActivity" />
         <activity android:name=".datepicker.DatePickerActivity" />
         <activity android:name=".alert.ItemAlertActivity" />
-        <activity android:name=".FragmentActivity"></activity>
+        <activity android:name=".FragmentActivity" />
+        <activity android:name=".download.DownloadActivity" />
+        <activity android:name=".update.CheckUpdateActivity"></activity>
     </application>
 
 </manifest>

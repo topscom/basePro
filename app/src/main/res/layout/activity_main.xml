@@ -10,83 +10,98 @@
 
     <include layout="@layout/toolbar"></include>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <Button
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="加载数据"
-        android:id="@+id/load_data_btn"
-        android:onClick="onClick"/>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="加载数据"
+                android:id="@+id/load_data_btn"
+                android:onClick="onClick"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/action_sign_in"
-        android:id="@+id/sign_in_btn"
-        android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/action_sign_in"
+                android:id="@+id/sign_in_btn"
+                android:onClick="onClick"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="底部导航"
-        android:id="@+id/bottom_btn"
-        android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="底部导航"
+                android:id="@+id/bottom_btn"
+                android:onClick="onClick"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Recyclerview列表"
-        android:id="@+id/recycler_btn"
-        android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Recyclerview列表"
+                android:id="@+id/recycler_btn"
+                android:onClick="onClick"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="MPChart"
-        android:id="@+id/chart_btn"
-        android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MPChart"
+                android:id="@+id/chart_btn"
+                android:onClick="onClick"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Spinner"
-        android:id="@+id/spiner_btn"
-        android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Spinner"
+                android:id="@+id/spiner_btn"
+                android:onClick="onClick"/>
 
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="时间选择器"
-        android:id="@+id/date_pick_btn"
-        android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="时间选择器"
+                android:id="@+id/date_pick_btn"
+                android:onClick="onClick"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="弹出选择框"
-        android:id="@+id/sel_dialog_btn"
-        android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="弹出选择框"
+                android:id="@+id/sel_dialog_btn"
+                android:onClick="onClick"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="加载数据Fragment"
-        android:id="@+id/load_data_fragment_btn"
-        android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="加载数据Fragment"
+                android:id="@+id/load_data_fragment_btn"
+                android:onClick="onClick"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="加载列表Fragment"
-        android:id="@+id/load_list_fragment_btn"
-        android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="加载列表Fragment"
+                android:id="@+id/load_list_fragment_btn"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="下载文件"
+                android:id="@+id/download_file_btn"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="检查更新"
+                android:id="@+id/check_update_btn"
+                android:onClick="onClick"/>
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
