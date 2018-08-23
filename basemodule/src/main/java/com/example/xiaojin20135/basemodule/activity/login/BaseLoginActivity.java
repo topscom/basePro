@@ -83,8 +83,8 @@ public abstract class BaseLoginActivity extends BaseActivity {
      * @Describe 定制
      */
     public void init(String loginPara,String pswPara){
-        loginNamePara = loginPara;
-        pswPara = pswPara;
+        this.loginNamePara = loginPara;
+        this.pswPara = pswPara;
     }
 
     /**

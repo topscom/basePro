@@ -22,10 +22,10 @@ public class MyLoginActivity extends BaseLoginActivity {
         //设置底部copytight信息
         setCopyRight(R.string.app_name);
         //设置登陆地址
-        setLoginUrl ("http://186.168.1.119:8080/chpcyServerJibei/main/login");
+        setLoginUrl ("http://crm.topscomm.net:8918/mobile/userAction_checkLogin");
         //初始化
-        init ("logId","password");
-        addParaMap ("mobile","mobile");
+        init ("loginName","userPsw");
+        addParaMap ("uuid","868717039386917");
         canStart();
     }
 
