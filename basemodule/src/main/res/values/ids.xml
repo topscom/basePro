@@ -5,4 +5,7 @@
     <!-- 使用 baseRecycler 需要使用的 id -->
     <item name="base_swipe_refresh_lay" type="id"/>
     <item name="base_rv_list" type="id"/>
+    <!--tablayout 需要使用的ID-->
+    <item name="base_tablayout" type="id"/>
+    <item name="base_viewpager" type="id"/>
 </resources>

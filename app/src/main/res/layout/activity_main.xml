@@ -101,6 +101,12 @@
                 android:text="检查更新"
                 android:id="@+id/check_update_btn"
                 android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TAB页"
+                android:id="@+id/show_tap_btn"
+                android:onClick="onClick"/>
         </LinearLayout>
     </ScrollView>
 

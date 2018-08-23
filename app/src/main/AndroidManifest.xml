@@ -28,7 +28,8 @@
         <activity android:name=".alert.ItemAlertActivity" />
         <activity android:name=".FragmentActivity" />
         <activity android:name=".download.DownloadActivity" />
-        <activity android:name=".update.CheckUpdateActivity"></activity>
+        <activity android:name=".update.CheckUpdateActivity" />
+        <activity android:name=".tablayout.MyTabLayoutActivity"></activity>
     </application>
 
 </manifest>

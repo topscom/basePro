@@ -53,7 +53,7 @@ public class DownloadActivity extends ToolBarActivity {
         downloadUtils.downloadFile("http://www.topscomm.com:5000/app_download/package/topsRmsNew/topsRmsNew_2018051500.apk", new MyDownloadListener () {
             @Override
             public void onStart() {
-                Log.e(TAG, "onStart: ");
+                Log.e(TAG, "onStart: 开始下载");
                 load_progress_TV.setText("开始下载");
             }
 

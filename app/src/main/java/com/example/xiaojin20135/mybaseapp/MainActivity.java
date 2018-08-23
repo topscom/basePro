@@ -17,6 +17,7 @@ import com.example.xiaojin20135.mybaseapp.loaddata.LoadDataActivity;
 import com.example.xiaojin20135.mybaseapp.mpchart.MyChartActivity;
 import com.example.xiaojin20135.mybaseapp.recyclerview.MyRecyActivity;
 import com.example.xiaojin20135.mybaseapp.spinner.MySpinnerActivity;
+import com.example.xiaojin20135.mybaseapp.tablayout.MyTabLayoutActivity;
 import com.example.xiaojin20135.mybaseapp.update.CheckUpdateActivity;
 
 public class MainActivity extends ToolBarActivity implements View.OnClickListener{
@@ -128,6 +129,9 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 break;
             case R.id.check_update_btn:
                 canGo (CheckUpdateActivity.class);
+                break;
+            case R.id.show_tap_btn:
+                canGo (MyTabLayoutActivity.class);
                 break;
         }
 
