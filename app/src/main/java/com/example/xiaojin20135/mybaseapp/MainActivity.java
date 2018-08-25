@@ -133,6 +133,10 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
             case R.id.show_tap_btn:
                 canGo (MyTabLayoutActivity.class);
                 break;
+            case R.id.menu_item_btn:
+                bundle.putInt ("index",2);
+                canGo (FragmentActivity.class,bundle);
+                break;
         }
 
     }

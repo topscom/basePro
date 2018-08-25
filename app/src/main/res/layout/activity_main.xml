@@ -107,6 +107,12 @@
                 android:text="TAB页"
                 android:id="@+id/show_tap_btn"
                 android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="菜单布局"
+                android:id="@+id/menu_item_btn"
+                android:onClick="onClick"/>
         </LinearLayout>
     </ScrollView>
 
