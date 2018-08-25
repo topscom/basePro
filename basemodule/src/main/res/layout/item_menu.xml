@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/info_margin_6"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_count_TV"
+        android:background="@drawable/shape_round_textview"
+        android:text="1"
+        android:gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/info_margin_1"/>
+
+    <ImageView
+        android:id="@+id/item_image_IV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/permission_ic_camera" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/info_margin_3"
+        android:id="@+id/item_title_TV"
+        android:layout_below="@id/item_image_IV"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:text="产品规划"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/black"/>
+
+</RelativeLayout>
