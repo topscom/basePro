@@ -46,6 +46,7 @@ public class FragmentActivity extends ToolBarActivity {
             datas = new ArrayList<> ();
             for(int i=0;i<6;i++){
                 Map map = new HashMap ();
+                map.put (MenuItemAdapter.CODE,"");
                 map.put (MenuItemAdapter.IMAGE,R.drawable.permission_ic_camera);
                 map.put (MenuItemAdapter.TITLE,R.string.camera);
                 map.put (MenuItemAdapter.COUNT,i);

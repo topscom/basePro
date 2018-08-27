@@ -27,6 +27,7 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.MyView
     public static final String IMAGE = "image";
     public static final String TITLE = "title";
     public static final String COUNT = "count";
+    public static final String CODE = "code";
     BaseActivity baseActivity;
     private MenuItemFragment menuItemFragment;
     private RecyclerView recyclerView;
