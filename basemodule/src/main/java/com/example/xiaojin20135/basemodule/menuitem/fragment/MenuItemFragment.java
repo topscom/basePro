@@ -39,12 +39,10 @@ public class MenuItemFragment extends Fragment implements IMemuItemClick{
     }
 
     public static MenuItemFragment getInstance(BaseActivity baseActivity,List<Map<String,Integer>> datas,IMemuItemClick iMemuItemClick){
-        if(menuItemFragment == null){
-            menuItemFragment = new MenuItemFragment ();
-            menuItemFragment.setBaseActivity (baseActivity);
-            menuItemFragment.setiMemuItemClick (iMemuItemClick);
-            menuItemFragment.setDatas (datas);
-        }
+        menuItemFragment = new MenuItemFragment ();
+        menuItemFragment.setBaseActivity (baseActivity);
+        menuItemFragment.setiMemuItemClick (iMemuItemClick);
+        menuItemFragment.setDatas (datas);
         return menuItemFragment;
     }
 
