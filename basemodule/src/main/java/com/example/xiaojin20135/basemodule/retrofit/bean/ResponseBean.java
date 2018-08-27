@@ -35,6 +35,7 @@ public class ResponseBean {
     private Map dataMap;
     private String method;
     private List<Map> listDataMap;
+    private List<Map> dataList;
     private List<Map> flowidList;
     private String records;//共有多少条记录
     private String total;//共有多少条页
@@ -252,5 +253,13 @@ public class ResponseBean {
                 return null;
             }
         }
+    }
+
+    public List<Map> getDataList () {
+        return dataList;
+    }
+
+    public void setDataList (List<Map> dataList) {
+        this.dataList = dataList;
     }
 }
