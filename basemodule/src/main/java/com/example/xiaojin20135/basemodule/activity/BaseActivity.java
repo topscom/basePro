@@ -309,7 +309,13 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public void loadSuccess (Object tData, String methodName) {
-        Log.d (TAG,"loadDataSuccess with methodName :" + methodName);
+        int index = methodName.lastIndexOf ("/");
+        if(index < 0){
+            index = 0;
+        }else{
+            index++;
+        }
+        methodName = methodName.substring (index);
         ResponseBean responseBean = (ResponseBean)tData;
         ActionResult actionResult = responseBean.getActionResult ();
         if(actionResult.getSuccess ()){

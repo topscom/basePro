@@ -55,7 +55,7 @@ public class LoadDataActivity extends ToolBarActivity {
             Map paraMap = new HashMap<> ();
             paraMap.put(ConstantUtil.loginName,"0903");
             paraMap.put(ConstantUtil.password,"13212");
-            tryToGetData("http://219.147.26.62:6721/TopscommRts/mobile/loginMobileAction_login","loginMobileAction_login",paraMap);
+            getDataWithMethod ("mobile/loginMobileAction_login",paraMap);
         }else if(view.getId () == R.id.load_data_both_btn){
             Map paraMap = new HashMap<> ();
             paraMap.put(ConstantUtil.loginName,"0903");
@@ -69,13 +69,10 @@ public class LoadDataActivity extends ToolBarActivity {
     public void loadDataSuccess (Object tData) {
         super.loadDataSuccess (tData);
         ResponseBean responseBean = (ResponseBean)tData;
-        showToast (this,responseBean.getActionResult ().getMessage ());
+        showToast (this,responseBean.getActionResult ().getSuccess ()+"");
     }
 
     public void loginMobileAction_login(ResponseBean responseBean){
-        Log.d (TAG,responseBean.getTreeJson ());
-        JSONArray jsonArray = responseBean.getTreeJsonMobile ();
-
         showToast (this,responseBean.getActionResult ().getSuccess ()+"");
     }
 

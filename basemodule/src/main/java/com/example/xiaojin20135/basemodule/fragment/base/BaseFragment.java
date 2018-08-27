@@ -164,6 +164,13 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
 
     @Override
     public void loadSuccess (Object tData, String methodName) {
+        int index = methodName.lastIndexOf ("/");
+        if(index < 0){
+            index = 0;
+        }else{
+            index++;
+        }
+        methodName = methodName.substring (index);
         Log.d (TAG,"loadDataSuccess with methodName :" + methodName);
         ResponseBean responseBean = (ResponseBean)tData;
         ActionResult actionResult = responseBean.getActionResult ();
