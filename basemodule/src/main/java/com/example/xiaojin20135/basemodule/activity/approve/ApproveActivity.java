@@ -15,25 +15,29 @@ import com.example.xiaojin20135.basemodule.retrofit.bean.ActionResult;
 import com.example.xiaojin20135.basemodule.retrofit.bean.ResponseBean;
 import com.example.xiaojin20135.basemodule.util.TimeMethods;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
 
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.APPROVENODEINSTANCEID;
+import static com.example.xiaojin20135.basemodule.util.ConstantUtil.MAP;
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.METHODNAME;
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.SOURCEID;
 
 public abstract class ApproveActivity extends ToolBarActivity {
     private TextView approve_opition_TV;
 
-    public String methodName = "";
+    public String approvalAction = "";
+    public Map dataMap = new HashMap ();
     public Map paraMap = new HashMap ();
     public String approvalNodeInstanceId = "";
     public String sourceId = "";
     public String approvalDate = "";
     public String approvalOpinion = "";
     public String approvalType = "";
+    public String mobileDataAction = "";
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -58,13 +62,20 @@ public abstract class ApproveActivity extends ToolBarActivity {
 
     @Override
     protected void loadData () {
-        Intent intent = getIntent ();
-        approvalNodeInstanceId = intent.getStringExtra (APPROVENODEINSTANCEID);
-        sourceId = intent.getStringExtra (SOURCEID);
-        methodName = intent.getStringExtra (METHODNAME);
+        dataMap = (Map)getIntent ().getSerializableExtra (MAP);
+        BigDecimal bigDecimal = new BigDecimal (dataMap.get ("sourceId").toString ());
+        sourceId = bigDecimal.toPlainString ();
+        bigDecimal = new BigDecimal (dataMap.get ("id").toString ());
+        approvalNodeInstanceId = bigDecimal.toPlainString ();
+        approvalAction = dataMap.get ("approvalAction").toString ();
+        if(!TextUtils.isEmpty (approvalAction)){
+            approvalAction = approvalAction.replace ("../","");
+        }
+        mobileDataAction = dataMap.get ("mobileDataAction").toString ();
         Log.d (TAG,"approvalNodeInstanceId = " + approvalNodeInstanceId);
         Log.d (TAG,"sourceId = " + sourceId);
-        Log.d (TAG,"methodName = " + methodName);
+        Log.d (TAG,"approvalAction = " + approvalAction);
+        Log.d (TAG,"mobileDataAction = " + mobileDataAction);
     }
 
     /**
@@ -126,7 +137,7 @@ public abstract class ApproveActivity extends ToolBarActivity {
         paraMap.put ("approvalDate",approvalDate);
         paraMap.put ("approvalOpinion",approvalOpinion);
         paraMap.put ("approvalType",approvalType);
-        getDataWithCommonMethod (methodName,paraMap);
+        getDataWithCommonMethod (approvalAction,paraMap);
     }
 
     @Override

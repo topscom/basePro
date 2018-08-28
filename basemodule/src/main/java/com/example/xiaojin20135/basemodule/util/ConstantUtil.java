@@ -15,4 +15,5 @@ public class ConstantUtil {
     public static final String APPROVENODEINSTANCEID = "approvalNodeInstanceId";
     public static final String SOURCEID = "sourceId";
     public static final String METHODNAME = "methodName";
+    public static final String MAP = "map";
 }
