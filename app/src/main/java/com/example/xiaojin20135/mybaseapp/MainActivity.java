@@ -22,7 +22,12 @@ import com.example.xiaojin20135.mybaseapp.spinner.MySpinnerActivity;
 import com.example.xiaojin20135.mybaseapp.tablayout.MyTabLayoutActivity;
 import com.example.xiaojin20135.mybaseapp.update.CheckUpdateActivity;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.APPROVENODEINSTANCEID;
+import static com.example.xiaojin20135.basemodule.util.ConstantUtil.MAP;
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.METHODNAME;
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.SOURCEID;
 
@@ -147,9 +152,13 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 canGo (DeviceLabelActivity.class,bundle);
                 break;
             case R.id.approve_test_btn:
-                bundle.putString (METHODNAME,"mobile/loginMobileAction_login");
-                bundle.putString (APPROVENODEINSTANCEID,"2");
-                bundle.putString (SOURCEID,"3");
+                Map map = new HashMap<> ();
+                map.put ("sourceId","1.808280000005E12");
+                map.put ("mobileForm","transferInCompanyLoad");
+                map.put ("approvalAction","../crm/transferIn_approval.action");
+                map.put ("mobileDataAction","crm/transferIn_queryMobilApprovalData.action");
+                map.put ("id","1.80828000054E12");
+                bundle.putSerializable (MAP,(Serializable)map);
                 canGo (ApproveTestActivity.class,bundle);
                 break;
 

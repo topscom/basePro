@@ -71,7 +71,15 @@ public abstract class ApproveActivity extends ToolBarActivity {
         if(!TextUtils.isEmpty (approvalAction)){
             approvalAction = approvalAction.replace ("../","");
         }
+        int tempIndex = approvalAction.lastIndexOf (".");
+        if(tempIndex > 0){
+            approvalAction = approvalAction.substring (0,tempIndex);
+        }
         mobileDataAction = dataMap.get ("mobileDataAction").toString ();
+        tempIndex = mobileDataAction.lastIndexOf (".");
+        if(tempIndex > 0){
+            mobileDataAction = mobileDataAction.substring (0,tempIndex);
+        }
         Log.d (TAG,"approvalNodeInstanceId = " + approvalNodeInstanceId);
         Log.d (TAG,"sourceId = " + sourceId);
         Log.d (TAG,"approvalAction = " + approvalAction);
