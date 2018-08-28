@@ -29,7 +29,9 @@
         <activity android:name=".FragmentActivity" />
         <activity android:name=".download.DownloadActivity" />
         <activity android:name=".update.CheckUpdateActivity" />
-        <activity android:name=".tablayout.MyTabLayoutActivity"></activity>
+        <activity android:name=".tablayout.MyTabLayoutActivity" />
+        <activity android:name=".devicelabel.DeviceLabelActivity" />
+        <activity android:name=".approve.ApproveTestActivity"></activity>
     </application>
 
 </manifest>

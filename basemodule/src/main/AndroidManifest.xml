@@ -43,8 +43,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <!-- 用于读取手机当前的状态 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- SD卡读取权限，用户写入离线定位数据 -->
@@ -69,7 +67,8 @@
         <activity android:name=".activity.login.BaseLoginActivity" />
         <activity android:name=".activity.bottom.BaseBottomBarActivity" />
         <activity android:name=".activity.recycle.BaseRecyclerActivity" />
-        <activity android:name=".activity.tablay.BaseTapActivity"></activity>
+        <activity android:name=".activity.tablay.BaseTapActivity" />
+        <activity android:name=".activity.approve.ApproveActivity"></activity>
     </application>
 
 </manifest>

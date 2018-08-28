@@ -35,7 +35,9 @@
     <string name="camera">摄像头</string>
     <string name="file">文件操作</string>
     <string name="location">位置信息</string>
-
+    <string name="approve_opition_please">请输入审批意见</string>
+    <string name="approve">同意</string>
+    <string name="un_approve">不同意</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

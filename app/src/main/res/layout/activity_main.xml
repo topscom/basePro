@@ -113,6 +113,19 @@
                 android:text="菜单布局"
                 android:id="@+id/menu_item_btn"
                 android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="设备标识"
+                android:id="@+id/device_label_btn"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="审批页面"
+                android:id="@+id/approve_test_btn"
+                android:onClick="onClick"/>
         </LinearLayout>
     </ScrollView>
 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray"
+    tools:context="com.example.xiaojin20135.basemodule.activity.approve.ApproveActivity">
+    <include layout="@layout/toolbar"></include>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"/>
+    </ScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/info_margin_10"
+        android:hint="@string/approve_opition_please"
+        android:background="@color/white"
+        android:id="@+id/approve_opition_TV"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/info_margin_20"
+        android:paddingBottom="@dimen/info_margin_5"
+        android:paddingTop="@dimen/info_margin_5"
+        android:gravity="right">
+        <Button
+            android:id="@+id/un_approve_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/un_approve"
+            android:layout_marginRight="@dimen/info_margin_30"
+            android:onClick="onClick"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/approve"
+            android:id="@+id/approve_btn"
+            android:onClick="onClick"/>
+    </LinearLayout>
+</LinearLayout>

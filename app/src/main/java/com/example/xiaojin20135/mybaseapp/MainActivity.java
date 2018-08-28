@@ -10,8 +10,10 @@ import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
 import com.example.xiaojin20135.basemodule.retrofit.helper.RetrofitManager;
 import com.example.xiaojin20135.basemodule.update.UpdateChecker;
 import com.example.xiaojin20135.mybaseapp.alert.ItemAlertActivity;
+import com.example.xiaojin20135.mybaseapp.approve.ApproveTestActivity;
 import com.example.xiaojin20135.mybaseapp.bottom.MyBottomActivity;
 import com.example.xiaojin20135.mybaseapp.datepicker.DatePickerActivity;
+import com.example.xiaojin20135.mybaseapp.devicelabel.DeviceLabelActivity;
 import com.example.xiaojin20135.mybaseapp.download.DownloadActivity;
 import com.example.xiaojin20135.mybaseapp.loaddata.LoadDataActivity;
 import com.example.xiaojin20135.mybaseapp.mpchart.MyChartActivity;
@@ -19,6 +21,10 @@ import com.example.xiaojin20135.mybaseapp.recyclerview.MyRecyActivity;
 import com.example.xiaojin20135.mybaseapp.spinner.MySpinnerActivity;
 import com.example.xiaojin20135.mybaseapp.tablayout.MyTabLayoutActivity;
 import com.example.xiaojin20135.mybaseapp.update.CheckUpdateActivity;
+
+import static com.example.xiaojin20135.basemodule.util.ConstantUtil.APPROVENODEINSTANCEID;
+import static com.example.xiaojin20135.basemodule.util.ConstantUtil.METHODNAME;
+import static com.example.xiaojin20135.basemodule.util.ConstantUtil.SOURCEID;
 
 public class MainActivity extends ToolBarActivity implements View.OnClickListener{
 
@@ -137,9 +143,16 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 bundle.putInt ("index",2);
                 canGo (FragmentActivity.class,bundle);
                 break;
+            case R.id.device_label_btn:
+                canGo (DeviceLabelActivity.class,bundle);
+                break;
+            case R.id.approve_test_btn:
+                bundle.putString (METHODNAME,"mobile/loginMobileAction_login");
+                bundle.putString (APPROVENODEINSTANCEID,"2");
+                bundle.putString (SOURCEID,"3");
+                canGo (ApproveTestActivity.class,bundle);
+                break;
+
         }
-
     }
-
-
 }

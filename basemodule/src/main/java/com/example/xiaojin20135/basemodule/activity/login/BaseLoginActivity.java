@@ -33,6 +33,8 @@ import me.weyye.hipermission.HiPermission;
 import me.weyye.hipermission.PermissionCallback;
 import me.weyye.hipermission.PermissionItem;
 
+import static com.example.xiaojin20135.basemodule.util.ConstantUtil.loginInfo;
+
 /**
  * @author lixiaojin
  * @create 2018-07-13
@@ -200,14 +202,14 @@ public abstract class BaseLoginActivity extends BaseActivity {
         if(userBean != null){
             CboUserEntity cboUserEntity = userBean.getUser();
             if(cboUserEntity != null){
-                SharedPreferences.Editor editor = getSharedPreferences("loginInfo",MODE_PRIVATE).edit();
+                SharedPreferences.Editor editor = getSharedPreferences(loginInfo,MODE_PRIVATE).edit();
                 editor.putString(ConstantUtil.loginName,cboUserEntity.getLoginname());
                 editor.putString(ConstantUtil.password,password);
                 editor.putBoolean("autoLogin",autoLogin);
                 editor.putString("code",cboUserEntity.getCode());
                 editor.putString(ConstantUtil.mobile,cboUserEntity.getMobile());
                 BigDecimal id = new BigDecimal(cboUserEntity.getId());
-                editor.putString("id",id.toPlainString());
+                editor.putString("userId",id.toPlainString());
                 editor.putString(ConstantUtil.name,cboUserEntity.getName());
                 editor.commit();
             }

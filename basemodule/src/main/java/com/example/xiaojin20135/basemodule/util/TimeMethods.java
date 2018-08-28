@@ -41,7 +41,7 @@ public enum TimeMethods {
      * 获取当前时间字符串，格式化 年月日时分秒
      * @return
      */
-    public String getFormatTimeExcel(){
+    public String getFormatDateTime(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return simpleDateFormat.format(new Date());
     }
