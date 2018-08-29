@@ -38,6 +38,7 @@ public abstract class ApproveActivity extends ToolBarActivity {
     public String approvalOpinion = "";
     public String approvalType = "";
     public String mobileDataAction = "";
+    public String mobileForm = "";
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -80,10 +81,12 @@ public abstract class ApproveActivity extends ToolBarActivity {
         if(tempIndex > 0){
             mobileDataAction = mobileDataAction.substring (0,tempIndex);
         }
+        mobileForm = dataMap.get ("mobileForm").toString ();
         Log.d (TAG,"approvalNodeInstanceId = " + approvalNodeInstanceId);
         Log.d (TAG,"sourceId = " + sourceId);
         Log.d (TAG,"approvalAction = " + approvalAction);
         Log.d (TAG,"mobileDataAction = " + mobileDataAction);
+        Log.d (TAG,"mobileForm = " + mobileForm);
     }
 
     /**
