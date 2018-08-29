@@ -5,7 +5,6 @@ package com.example.xiaojin20135.basemodule.fragment.recycle;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,19 +20,21 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.xiaojin20135.basemodule.R;
 import com.example.xiaojin20135.basemodule.activity.BaseActivity;
-import com.example.xiaojin20135.basemodule.activity.recycle.BaseRecyclerActivity;
 import com.example.xiaojin20135.basemodule.fragment.base.BaseFragment;
-import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.xiaojin20135.basemodule.fragment.recycle.BaseRecycleFragment.GRID_LAYOUT_MANAGER;
+import static com.example.xiaojin20135.basemodule.fragment.recycle.BaseRecycleFragment.LINEAR_LAYOUT_MANAGER;
+import static com.example.xiaojin20135.basemodule.fragment.recycle.BaseRecycleFragment.STAGGERED_GRID_LAYOUT_MANAGER;
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public abstract class BaseRecycleFragment<T> extends BaseFragment {
-    protected SwipeRefreshLayout swipeRefreshLayout;
-    protected SwipeMenuRecyclerView swipeMenuRecyclerView;
+public abstract class TinyRecycleFragment<T> extends BaseFragment {
+
+    protected RecyclerView base_rv_list;
     protected RvAdapter rvAdapter;
     //list布局
     protected static final int LINEAR_LAYOUT_MANAGER = 0;
@@ -49,9 +50,6 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
     private int spanCount = 1;
     //子布局ID
     private int layoutResId = -1;
-    //是否可刷新，默认可以
-    private boolean canRefresh = true;
-    private boolean canLoadMore = true;
     private int lastVisibleItem;
     LinearLayoutManager linearLayoutManager = null;
     public int page = 1;
@@ -62,8 +60,9 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
     private BaseActivity baseActivity;
 
 
-    public BaseRecycleFragment () {
 
+    public TinyRecycleFragment () {
+        // Required empty public constructor
     }
 
     public void setBaseActivity (BaseActivity baseActivity) {
@@ -81,36 +80,28 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
     @Override
     protected void initView (View view) {
         initItemLayout ();
-        swipeRefreshLayout = (SwipeRefreshLayout)view.findViewById (R.id.base_swipe_refresh_lay);
-        swipeMenuRecyclerView = (SwipeMenuRecyclerView)view.findViewById (R.id.base_rv_list);
-        setRefreshEnable (canRefresh);
+        base_rv_list = (RecyclerView)view.findViewById (R.id.base_rv_list);
         chooseListTye (listType,isVertical);
         if(layoutResId == -1){
             throw new RuntimeException ("layoutResId is null!");
         }
         rvAdapter = new RvAdapter (layoutResId,new ArrayList<T> ());
-        swipeMenuRecyclerView.setAdapter (rvAdapter);
+        base_rv_list.setAdapter (rvAdapter);
     }
 
     @Override
     protected void initEvents (View view) {
-        if(canRefresh){
-            //设置下拉刷新
-            setRefresh ();
-        }
         //设置列表点击事件
         setItemCick ();
-        if(canLoadMore){
-            //设置加载更多
-            setLoadMoreEnable ();
-        }
     }
+
     public void setEmpty(){
         rvAdapter.setNewData (null);
         View emptyView=baseActivity.getLayoutInflater().inflate(R.layout.empty_view, null);
         emptyView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         rvAdapter.setEmptyView (emptyView);
     }
+
     /**
      * @author lixiaojin
      * @createon 2018-07-14 16:35
@@ -125,55 +116,8 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
      * @Describe 初始化子布局
      */
     protected abstract void initItemLayout();
-
-    /**
-     * @author lixiaojin
-     * @createon 2018-07-14 16:25
-     * @Describe 设置下拉刷新
-     * 下拉刷新功能是否可用，true：允许
-     *                     false：禁止
-     */
-    protected void setRefreshEnable(boolean canRefresh){
-        if(canRefresh){
-            swipeRefreshLayout.setEnabled (true);
-        }else{
-            swipeRefreshLayout.setEnabled (false);
-        }
-    }
-
-    /**
-     * @author lixiaojin
-     * @createon 2018-07-14 16:27
-     * @Describe 设置加载更多
-     */
-    protected void setLoadMoreEnable(){
-        //添加滚动监听
-        swipeMenuRecyclerView.addOnScrollListener (onScrollListener);
-    }
-
-    /**
-     * @author lixiaojin
-     * @createon 2018-07-16 15:21
-     * @Describe 开启下拉刷新
-     */
-    protected void setRefresh(){
-        swipeRefreshLayout.setOnRefreshListener (onRefreshListener);
-    }
-
     protected void setItemCick(){
-        swipeMenuRecyclerView.addOnItemTouchListener (onItemTouchListener);
-    }
-
-
-    /**
-     * @author lixiaojin
-     * @createon 2018-07-14 16:28
-     * @Describe 设置布局类型
-     */
-    protected void setListType(int type,boolean isVertical,boolean canRefresh){
-        this.listType = type;
-        this.isVertical = isVertical;
-        this.canRefresh = canRefresh;
+        base_rv_list.addOnItemTouchListener (onItemTouchListener);
     }
 
     /**
@@ -181,11 +125,9 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
      * @createon 2018-07-14 16:28
      * @Describe 设置布局类型
      */
-    protected void setListType(int type,boolean isVertical,boolean canRefresh,boolean canLoadMore){
+    protected void setListType(int type,boolean isVertical){
         this.listType = type;
         this.isVertical = isVertical;
-        this.canRefresh = canRefresh;
-        this.canLoadMore = canLoadMore;
     }
 
     /**
@@ -207,24 +149,24 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
     private void chooseListTye(int listType,boolean isVertical){
         switch (listType) {
             case LINEAR_LAYOUT_MANAGER:
-                linearLayoutManager = new LinearLayoutManager(getContext ());
+                linearLayoutManager = new LinearLayoutManager (getContext ());
                 linearLayoutManager.setOrientation(isVertical ? LinearLayoutManager.VERTICAL : LinearLayoutManager.HORIZONTAL);
-                swipeMenuRecyclerView.setLayoutManager(linearLayoutManager);
+                base_rv_list.setLayoutManager(linearLayoutManager);
                 break;
             case GRID_LAYOUT_MANAGER:
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext (), spanCount);
                 gridLayoutManager.setOrientation(isVertical ? GridLayoutManager.VERTICAL : GridLayoutManager.HORIZONTAL);
-                swipeMenuRecyclerView.setLayoutManager(gridLayoutManager);
+                base_rv_list.setLayoutManager(gridLayoutManager);
                 break;
             case STAGGERED_GRID_LAYOUT_MANAGER:
                 StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager
                     (spanCount, isVertical ? StaggeredGridLayoutManager.VERTICAL : StaggeredGridLayoutManager.HORIZONTAL);
-                swipeMenuRecyclerView.setLayoutManager(staggeredGridLayoutManager);
+                base_rv_list.setLayoutManager(staggeredGridLayoutManager);
                 break;
             default:
                 linearLayoutManager = new LinearLayoutManager(getContext ());
                 linearLayoutManager.setOrientation(isVertical ? LinearLayoutManager.VERTICAL : LinearLayoutManager.HORIZONTAL);
-                swipeMenuRecyclerView.setLayoutManager(linearLayoutManager);
+                base_rv_list.setLayoutManager(linearLayoutManager);
                 break;
         }
     }
@@ -248,14 +190,6 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
         }
     }
 
-    //下拉刷新监听
-    private SwipeRefreshLayout.OnRefreshListener onRefreshListener = new SwipeRefreshLayout.OnRefreshListener () {
-        @Override
-        public void onRefresh () {
-            loadFirstData();
-        }
-    };
-
     /**
      * @author lixiaojin
      * @createon 2018-07-16 15:15
@@ -269,7 +203,7 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
      * @Describe 加载数据成功
      */
     public void loadDataSuccess(){
-        swipeRefreshLayout.setRefreshing(false);
+
     }
 
     /**
@@ -284,7 +218,6 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
             itemClick(position);
         }
     };
-
     /**
      * @author lixiaojin
      * @createon 2018-07-16 15:28

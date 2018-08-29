@@ -8,6 +8,8 @@ import android.util.Log;
 import com.example.xiaojin20135.basemodule.activity.approve.ApproveActivity;
 import com.example.xiaojin20135.mybaseapp.R;
 import com.example.xiaojin20135.mybaseapp.loaddata.fragment.CommonFragment;
+import com.example.xiaojin20135.mybaseapp.recyclerview.fragment.MyRecyclerFragment;
+import com.example.xiaojin20135.mybaseapp.recyclerview.fragment.MyTinyRecFragment;
 
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.APPROVENODEINSTANCEID;
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.METHODNAME;
@@ -22,8 +24,8 @@ public class ApproveTestActivity extends ApproveActivity {
 
     @Override
     public void initFragment () {
-        CommonFragment commonFragment = new CommonFragment ();
-        showDetailInfo (commonFragment);
+        MyTinyRecFragment myTinyRecFragment = MyTinyRecFragment.getInstance (this);
+        showDetailInfo (myTinyRecFragment);
     }
 
 }

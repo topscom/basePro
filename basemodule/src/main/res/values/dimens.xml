@@ -44,7 +44,6 @@
     <dimen name="info_margin_35">35dp</dimen>
     <dimen name="bottom_height">30dp</dimen>
     <dimen name="btn_font_size">13pt</dimen>
-
     <dimen name="common_font_size">15dp</dimen>
     <dimen name="selected_text_size">5pt</dimen>
     <dimen name="text_size_1">1pt</dimen>

@@ -12,7 +12,7 @@
         android:id="@+id/text_view"
         android:textColor="@color/black"
         android:text="@string/no_data"
-        android:textSize="@dimen/text_size2"
+        android:textSize="@dimen/text_size_12"
         android:gravity="center"/>
     <ImageView
         android:layout_width="25dp"
