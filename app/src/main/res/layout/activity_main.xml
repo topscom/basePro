@@ -20,6 +20,12 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="设备标识"
+                android:id="@+id/device_label_btn"
+                android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="加载数据"
                 android:id="@+id/load_data_btn"
                 android:onClick="onClick"/>
@@ -113,12 +119,7 @@
                 android:text="菜单布局"
                 android:id="@+id/menu_item_btn"
                 android:onClick="onClick"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="设备标识"
-                android:id="@+id/device_label_btn"
-                android:onClick="onClick"/>
+
 
             <Button
                 android:layout_width="match_parent"

@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
+import com.example.xiaojin20135.basemodule.menuitem.adapter.MenuItemAdapter;
+import com.example.xiaojin20135.basemodule.menuitem.fragment.MenuItemFragment;
+import com.example.xiaojin20135.basemodule.menuitem.listener.IMemuItemClick;
 import com.example.xiaojin20135.basemodule.retrofit.helper.RetrofitManager;
 import com.example.xiaojin20135.basemodule.update.UpdateChecker;
 import com.example.xiaojin20135.mybaseapp.alert.ItemAlertActivity;
@@ -24,6 +28,7 @@ import com.example.xiaojin20135.mybaseapp.update.CheckUpdateActivity;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.APPROVENODEINSTANCEID;
@@ -32,16 +37,14 @@ import static com.example.xiaojin20135.basemodule.util.ConstantUtil.METHODNAME;
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.SOURCEID;
 
 public class MainActivity extends ToolBarActivity implements View.OnClickListener{
-
-    Button load_data_btn;
+    List<Map<String,Integer>> datas;
+    MenuItemFragment menuItemFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitleText(R.string.main_page);
-//        setToolbarColor(R.color.white);
-//        setTitleColor(R.color.black);
-
+//        initMenu();
     }
 
     @Override
@@ -51,19 +54,12 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
 
     @Override
     protected void initView() {
-//        Log.d(TAG,"in initView");
-//        load_data_btn = (Button) findViewById (R.id.load_data_btn);
+
     }
 
     @Override
     protected void initEvents() {
-//        Log.d(TAG,"in initEvents");
-//        load_data_btn.setOnClickListener (new View.OnClickListener () {
-//            @Override
-//            public void onClick (View v) {
-//                Log.d (TAG,"dsfdsfdfs");
-//            }
-//        });
+
     }
 
     @Override
@@ -164,4 +160,25 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
 
         }
     }
+
+    private void initMenu(){
+
+
+
+        menuItemFragment = MenuItemFragment.getInstance (this, datas, myIMenuItemClick);
+        menuItemFragment.setSpanCount (5); //每列图标个数
+        getSupportFragmentManager ().beginTransaction ().replace (R.id.fragment_container,menuItemFragment).commit ();
+
+    }
+
+    IMemuItemClick myIMenuItemClick = new IMemuItemClick(){
+        @Override
+        public void itemClick (int index) {
+            Toast.makeText (getApplicationContext (),"您点击了 : " + index,Toast.LENGTH_SHORT).show ();
+            int count = datas.get (index).get (MenuItemAdapter.COUNT) - 1;
+            datas.get (index).put (MenuItemAdapter.COUNT,count);
+            Log.d (TAG,"datas = " + datas);
+            menuItemFragment.updataInfo ();
+        }
+    };
 }

@@ -65,4 +65,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     /**MPAndroidChart 图表**/
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    /**android6.0以上权限问题**/
+    compile 'me.weyye.hipermission:library:1.0.7'
 }

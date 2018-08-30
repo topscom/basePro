@@ -35,6 +35,7 @@
     <string name="camera">摄像头</string>
     <string name="file">文件操作</string>
     <string name="location">位置信息</string>
+    <string name="phone_state">手机串码</string>
     <string name="approve_opition_please">请输入审批意见</string>
     <string name="approve">同意</string>
     <string name="un_approve">不同意</string>

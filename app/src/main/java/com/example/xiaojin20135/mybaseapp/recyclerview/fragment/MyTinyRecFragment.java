@@ -78,7 +78,7 @@ public class MyTinyRecFragment extends TinyRecycleFragment<ListItemInfo> {
         List<ListItemInfo> listItemInfos = new ArrayList<> ();
         String[] titles = new String[]{"title1","title2","title3","title4","title5","title1","title2","title3","title4","title5","title1","title2","title3","title4","title5"};
         String[] titlesDes = new String[]{"titlesDes1","titlesDes2","titlesDes3","titlesDes","titlesDes5","titlesDes1","titlesDes2","titlesDes3","titlesDes","titlesDes5","titlesDes1","titlesDes2","titlesDes3","titlesDes","titlesDes5"};
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
             listItemInfos.add(new ListItemInfo(titles[i], titlesDes[i]));
         }
         showList (listItemInfos);

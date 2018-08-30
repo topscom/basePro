@@ -299,7 +299,7 @@ public class UpdateChecker {
             Log.d(TAG,"filePath = " + filePath);
             Uri uri;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {//如果是7.0android系统
-                uri = FileProvider.getUriForFile(mContext, mContext.getApplicationContext ().getPackageName ()+".provider", new File (filePath));
+                uri = FileProvider.getUriForFile(mContext, mContext.getApplicationContext ().getPackageName ()+".providertopscomm", new File (filePath));
             }else{
                 uri = Uri.fromFile(new File (filePath));
             }

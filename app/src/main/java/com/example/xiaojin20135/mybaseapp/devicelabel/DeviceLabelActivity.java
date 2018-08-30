@@ -50,10 +50,10 @@ public class DeviceLabelActivity extends ToolBarActivity {
     public void onClick (View view) {
         switch (view.getId ()) {
             case R.id.device_mac_btn:
-                device_result_TV.setText (getMac());
+                device_result_TV.setText (getMac ());
                 break;
             case R.id.device_imei_btn:
-                device_result_TV.setText (getUniqueID());
+                device_result_TV.setText (getUniqueID ());
                 break;
         }
     }
@@ -61,9 +61,13 @@ public class DeviceLabelActivity extends ToolBarActivity {
     private String getMac () {
         WifiManager wm = (WifiManager) getApplicationContext ().getSystemService (Context.WIFI_SERVICE);
         String MAC = wm.getConnectionInfo ().getMacAddress ();
-        Log.d (TAG,"MAC地址：" + MAC);
+        Log.d (TAG, "MAC地址：" + MAC);
         return MAC;
     }
+
+
+
+
 
     public String getUniqueID () {
         String myAndroidDeviceId = "";

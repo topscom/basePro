@@ -10,39 +10,36 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/info_margin_20"
-            android:id="@+id/text_view_1"
-            android:text="@string/approve"/>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="20dip"
             android:scrollbars="vertical"
-            android:id="@+id/sc"
-            android:layout_weight="1"
-            >
+            android:id="@+id/sc">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/info_margin_20"
+                    android:text="approveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapprove"/>
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/base_rv_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
-
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/info_margin_20"
+                    android:text="approveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapproveapprove"/>
+                <Button
+                    android:text="确定"
+                    android:background="@android:color/darker_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
             </LinearLayout>
         </ScrollView>
-        <Button
-            android:layout_weight="0"
-            android:text="确定"
-            android:background="@android:color/darker_gray"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
     </LinearLayout>
 </FrameLayout>
