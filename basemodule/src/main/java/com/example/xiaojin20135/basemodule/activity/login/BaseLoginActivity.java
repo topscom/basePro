@@ -71,7 +71,7 @@ public abstract class BaseLoginActivity extends BaseActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         init ();
-        deviceId = getIMEI(this);
+//        deviceId = getIMEI(this);
 //        Log.d (TAG,"getPesudoUniqueID = " + getPesudoUniqueID());
         deviceId = getUniquePsuedoID();
         Log.d (TAG,"deviceId = " + deviceId);

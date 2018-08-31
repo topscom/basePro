@@ -42,7 +42,7 @@ public class DownloadUtils {
     private File mFile;
     private Thread mThread;
     // 下载到本地的文件目录
-    private String mFileFolder = Environment.getExternalStorageDirectory() + "/DownloadFile";
+    private String mFileFolder = Environment.getExternalStorageDirectory() + "/Documents";
     // 下载到本地的文件路径
     private String mFilePath;
 
@@ -133,6 +133,7 @@ public class DownloadUtils {
                     public void run() {
                         downloadListener.onProgress((int) (100 * finalCurrentLength / totalLength));
                         if ((int) (100 * finalCurrentLength / totalLength) == 100) {
+
                             downloadListener.onFinish(mFilePath);
                             //下载完成，扫描文件
                             scanFile(mFilePath);
