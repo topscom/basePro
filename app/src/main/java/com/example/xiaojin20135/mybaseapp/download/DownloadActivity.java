@@ -57,7 +57,6 @@ public class DownloadActivity extends ToolBarActivity {
             case R.id.start_apk_btn:
                 download("http://www.topscomm.com:5000/app_download/package/topsPro/topsProAndroid2018072100.apk");
                 break;
-
             case R.id.openfile_btn:
                 OpenFiles.openFile (DownloadActivity.this,filePath);
                 break;

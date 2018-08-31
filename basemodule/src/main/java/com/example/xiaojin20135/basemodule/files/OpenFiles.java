@@ -30,10 +30,7 @@ public class OpenFiles {
             return;
         }
         try{
-            Intent intent = new Intent();
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            //设置intent的Action属性
-            intent.setAction(Intent.ACTION_VIEW);
+
             //获取文件file的MIME类型
             String type = getMIMEType(filePath);
             //设置intent的data和Type属性。
@@ -43,12 +40,15 @@ public class OpenFiles {
             }else{
                 uri = Uri.fromFile(new File (filePath));
             }
+            Intent intent = new Intent();
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            //设置intent的Action属性
+            intent.setAction(Intent.ACTION_VIEW);
             intent.setDataAndType(/*uri*/uri, type);
             intent.addCategory(Intent.CATEGORY_DEFAULT);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            //跳转
+	        intent = Intent.createChooser(intent, context.getString (R.string.pick_soft_open_file));
             context.startActivity(intent);
-	        Intent.createChooser(intent, "请选择对应的软件打开该附件！");
         }catch (ActivityNotFoundException e) {
             // TODO: handle exception
             Toast.makeText(context,  R.string.no_soft_find, Toast.LENGTH_SHORT).show();
