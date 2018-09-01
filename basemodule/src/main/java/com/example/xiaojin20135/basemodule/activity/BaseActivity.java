@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.ButterKnife;
+import okhttp3.MultipartBody;
 
 /**
  * @author lixiaojin
@@ -253,6 +254,15 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     /**
      * @author lixiaojin
+     * @createon 2018-09-01 9:35
+     * @Describe 上传文件
+     */
+    public void uploadFileWithMethod(String url,Map paraMap, MultipartBody.Part[] filePart){
+        presenterImpl.uploadFile (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url + ".json",url,paraMap,filePart);
+    }
+
+    /**
+     * @author lixiaojin
      * @createon 2018-07-17 10:39
      * @Describe 请求数据，带请求方法，固定回调方法
      */
@@ -278,6 +288,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     public void getDataWithCommonMethod(String url,String suffix,Map paraMap){
         presenterImpl.loadData (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url + suffix,paraMap);
     }
+
+
 
     @Override
     public void loadDataSuccess (Object tData) {
@@ -316,6 +328,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
             index++;
         }
         methodName = methodName.substring (index);
+        Log.d (TAG,"methodName = " + methodName);
         ResponseBean responseBean = (ResponseBean)tData;
         ActionResult actionResult = responseBean.getActionResult ();
         if(actionResult.getSuccess ()){

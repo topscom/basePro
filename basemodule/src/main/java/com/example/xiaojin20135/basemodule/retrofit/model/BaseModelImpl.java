@@ -4,11 +4,16 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.xiaojin20135.basemodule.retrofit.api.IServiceApi;
+import com.example.xiaojin20135.basemodule.retrofit.bean.ActionResult;
 import com.example.xiaojin20135.basemodule.retrofit.bean.ResponseBean;
 
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import okhttp3.MultipartBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -29,11 +34,6 @@ public class BaseModelImpl extends BaseModel implements IBaseModel<ResponseBean>
         this.context = context;
         iServiceApi = retrofitManager.getService ();
         compositeSubscription = new CompositeSubscription ();
-    }
-
-    @Override
-    public void loadData (Map paraMap, String methodName,final IBaseRequestCallBack<ResponseBean> iBaseRequestCallBack) {
-
     }
 
     @Override
@@ -69,11 +69,6 @@ public class BaseModelImpl extends BaseModel implements IBaseModel<ResponseBean>
     }
 
     @Override
-    public void loadData (Map paraMap, IBaseRequestCallBack<ResponseBean> iBaseRequestCallBack) {
-
-    }
-
-    @Override
     public void loadData (String url, Map paraMap, final IBaseRequestCallBack<ResponseBean> iBaseRequestCallBack) {
         Log.d (TAG,"paraMap = " + paraMap.toString ());
         compositeSubscription.add (iServiceApi.load (url,paraMap)
@@ -102,6 +97,29 @@ public class BaseModelImpl extends BaseModel implements IBaseModel<ResponseBean>
                     iBaseRequestCallBack.requestSuccess (responseBean);
                 }
             }));
+    }
+
+    @Override
+    public void upload (String url,final String methodName, Map paraMap, MultipartBody.Part[] filePart, final IBaseRequestCallBack<ResponseBean> iBaseRequestCallBack) {
+        Log.d (TAG,"paraMap = " + paraMap.toString ());
+        Log.d (TAG,"filePart = " + filePart.toString ());
+        Call<ResponseBean> call= iServiceApi.upload (url,paraMap,filePart);
+        call.enqueue (new Callback<ResponseBean> () {
+            @Override
+            public void onResponse (Call<ResponseBean> call, Response<ResponseBean> response) {
+                ResponseBean responseBean = new ResponseBean ();
+                ActionResult actionResult = new ActionResult ();
+                actionResult.setSuccess (response.isSuccessful ());
+                actionResult.setMessage (response.message ());
+                responseBean.setActionResult (actionResult);
+                iBaseRequestCallBack.requestSuccess (responseBean,methodName);
+            }
+
+            @Override
+            public void onFailure (Call<ResponseBean> call, Throwable t) {
+                iBaseRequestCallBack.requestError (t);
+            }
+        });
     }
 
     @Override

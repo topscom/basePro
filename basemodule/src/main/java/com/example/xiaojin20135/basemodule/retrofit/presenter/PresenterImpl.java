@@ -9,6 +9,8 @@ import com.example.xiaojin20135.basemodule.retrofit.view.IBaseView;
 
 import java.util.Map;
 
+import okhttp3.MultipartBody;
+
 /**
  * Created by lixiaojin on 2018-07-13.
  * 功能描述：
@@ -29,19 +31,18 @@ public class PresenterImpl extends BasePresenterImp<IBaseView,ResponseBean> impl
         this.baseModel = new BaseModelImpl (context);
     }
 
-    @Override
-    public void loadData (Map paraMap,String methodName) {
 
-    }
 
     @Override
     public void loadData (String url,String methodName, Map paraMap) {
         baseModel.loadData (url,methodName,paraMap,this);
     }
-    @Override
-    public void loadData (Map paraMap) {
 
+    @Override
+    public void uploadFile (String url, String methodMethod, Map paraMap, MultipartBody.Part[] filePart) {
+        baseModel.upload (url,methodMethod,paraMap,filePart,this);
     }
+
 
     @Override
     public void loadData (String url, Map paraMap) {

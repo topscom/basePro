@@ -2,19 +2,14 @@ package com.example.xiaojin20135.basemodule.retrofit.model;
 
 import java.util.Map;
 
+import okhttp3.MultipartBody;
+
 /**
  * Created by lixiaojin on 2018-07-12.
  * 功能描述：
  */
 
 public interface IBaseModel<T> {
-    /**
-     * 加载数据
-     * @param paraMap
-     * @param iBaseRequestCallBack
-     */
-    void loadData(Map paraMap,String methodName,final IBaseRequestCallBack<T> iBaseRequestCallBack);
-
     /**
      * 加载数据
      * @param paraMap
@@ -27,14 +22,14 @@ public interface IBaseModel<T> {
      * @param paraMap
      * @param iBaseRequestCallBack
      */
-    void loadData(Map paraMap,final IBaseRequestCallBack<T> iBaseRequestCallBack);
+    void loadData(String url,Map paraMap,final IBaseRequestCallBack<T> iBaseRequestCallBack);
 
     /**
-     * 加载数据
-     * @param paraMap
-     * @param iBaseRequestCallBack
+     * @author lixiaojin
+     * @createon 2018-09-01 8:52
+     * @Describe 文件上传
      */
-    void loadData(String url,Map paraMap,final IBaseRequestCallBack<T> iBaseRequestCallBack);
+    void upload(String url,String methodName,Map paraMap, MultipartBody.Part[] filePart,final IBaseRequestCallBack<T> iBaseRequestCallBack);
 
 
     /**

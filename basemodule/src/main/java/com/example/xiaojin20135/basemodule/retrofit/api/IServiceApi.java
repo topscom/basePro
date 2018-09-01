@@ -4,11 +4,17 @@ import com.example.xiaojin20135.basemodule.retrofit.bean.ResponseBean;
 
 import java.util.Map;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 import retrofit2.http.Url;
 import rx.Observable;
 
@@ -28,4 +34,13 @@ public interface IServiceApi {
     @FormUrlEncoded
     @POST
     Observable<ResponseBean> load(@Url String url,@FieldMap Map<String,String> options);
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-09-01 8:42
+     * @Describe 文件上传
+     */
+    @Multipart
+    @POST
+    Call<ResponseBody> upload(@Url String url,@PartMap Map<String, RequestBody> args, @Part MultipartBody.Part[] file);
 }

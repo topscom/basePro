@@ -12,7 +12,16 @@ import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
 import com.example.xiaojin20135.basemodule.download.listener.MyDownloadListener;
 import com.example.xiaojin20135.basemodule.download.util.DownloadUtils;
 import com.example.xiaojin20135.basemodule.files.OpenFiles;
+import com.example.xiaojin20135.basemodule.retrofit.bean.ResponseBean;
 import com.example.xiaojin20135.mybaseapp.R;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class DownloadActivity extends ToolBarActivity {
     private TextView load_progress_TV;
@@ -60,7 +69,22 @@ public class DownloadActivity extends ToolBarActivity {
             case R.id.openfile_btn:
                 OpenFiles.openFile (DownloadActivity.this,filePath);
                 break;
+            case R.id.upload_btn:
+                Map<String, RequestBody> paraMap = new HashMap<> ();
+                paraMap.put("sourceId", RequestBody.create(MediaType.parse("text/plain"),"18090100000003"));
+                paraMap.put("sourceType", RequestBody.create(MediaType.parse("text/plain"), "RtsDebugCode"));
+                paraMap.put("attachmentTypeId", RequestBody.create(MediaType.parse("text/plain"), "17031000000001"));
+                File file = new File ("/storage/emulated/0/topscomm/041143.png");
+                paraMap.put("displayName", RequestBody.create(MediaType.parse("text/plain"), file.getName()));
+                MultipartBody.Part[] filePart = new MultipartBody.Part[1];
+                filePart[0] = MultipartBody.Part.createFormData("attachFile",file.getName(),RequestBody.create(MediaType.parse("image/png"),file));
+                uploadFileWithMethod ("mobile/cboAttachmentMobileAction_upload",paraMap,filePart);
+                break;
         }
+    }
+
+    public void cboAttachmentMobileAction_upload(ResponseBean responseBean){
+        Log.d (TAG,"responseBean  = " + responseBean.getActionResult ().toString ());
     }
 
     private void download(String url){
