@@ -20,6 +20,13 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="图片选择"
+                android:id="@+id/pick_iamge_btn"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="设备标识"
                 android:id="@+id/device_label_btn"
                 android:onClick="onClick"/>

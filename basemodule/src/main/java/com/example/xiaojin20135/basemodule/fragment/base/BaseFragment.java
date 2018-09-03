@@ -26,6 +26,8 @@ import com.example.xiaojin20135.basemodule.retrofit.view.IBaseView;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import okhttp3.MultipartBody;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -106,6 +108,14 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
         presenterImpl.loadData (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url + ".json",url,paraMap);
     }
 
+    /**
+     * @author lixiaojin
+     * @createon 2018-09-01 9:35
+     * @Describe 上传文件
+     */
+    public void uploadFileWithMethod(String url,Map paraMap, MultipartBody.Part[] filePart){
+        presenterImpl.uploadFile (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url + ".json",url,paraMap,filePart);
+    }
     /**
      * @author lixiaojin
      * @createon 2018-07-17 10:39

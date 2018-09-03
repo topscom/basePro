@@ -95,13 +95,11 @@ public class DownloadActivity extends ToolBarActivity {
                 Log.e(TAG, "onStart: 开始下载");
                 load_progress_TV.setText("开始下载");
             }
-
             @Override
             public void onProgress(final int currentLength) {
                 Log.e(TAG, "onLoading: " + currentLength);
                 load_progress_TV.setText("下载进度：" + currentLength);
             }
-
             @Override
             public void onFinish(String localPath) {
                 Log.e(TAG, "onFinish: " + localPath);

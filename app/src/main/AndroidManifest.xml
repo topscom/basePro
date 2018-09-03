@@ -31,7 +31,8 @@
         <activity android:name=".update.CheckUpdateActivity" />
         <activity android:name=".tablayout.MyTabLayoutActivity" />
         <activity android:name=".devicelabel.DeviceLabelActivity" />
-        <activity android:name=".approve.ApproveTestActivity"></activity>
+        <activity android:name=".approve.ApproveTestActivity" />
+        <activity android:name=".image.PickImageActivity"></activity>
     </application>
 
 </manifest>

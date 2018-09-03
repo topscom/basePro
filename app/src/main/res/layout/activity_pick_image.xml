@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.xiaojin20135.mybaseapp.image.PickImageActivity">
+
+    <include layout="@layout/toolbar"></include>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/system_gallery_btn"
+        android:onClick="onClick"
+        android:text="系统相册"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/system_camera_btn"
+        android:onClick="onClick"
+        android:text="系统相机"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/weixin_gallery_btn"
+        android:onClick="onClick"
+        android:text="仿微信相册"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/weixin_camera_btn"
+        android:onClick="onClick"
+        android:text="仿微信相机"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/zhihu_gallery_btn"
+        android:onClick="onClick"
+        android:text="仿知乎相册"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/zhihu_camera_btn"
+        android:onClick="onClick"
+        android:text="仿知乎相机"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</LinearLayout>

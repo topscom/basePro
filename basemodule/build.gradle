@@ -3,11 +3,11 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.xiaojin20135@live.com'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
@@ -28,13 +28,13 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:multidex:1.0.1'
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:design:25.2.0'
-    compile 'com.android.support:support-v4:25.2.0'
-    compile 'com.android.support:support-vector-drawable:25.2.0'
-    compile 'com.android.support:recyclerview-v7:25.2.0'
+    compile 'com.android.support:appcompat-v7:27.1.1'
+    compile 'com.android.support:design:27.1.1'
+    compile 'com.android.support:support-v4:27.1.1'
+    compile 'com.android.support:support-vector-drawable:27.1.1'
+    compile 'com.android.support:recyclerview-v7:27.1.1'
     /**卡片视图**/
-    compile 'com.android.support:cardview-v7:25.2.0'
+    compile 'com.android.support:cardview-v7:27.1.1'
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
@@ -67,4 +67,18 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     /**android6.0以上权限问题**/
     compile 'me.weyye.hipermission:library:1.0.7'
+    /**图片选择器**/
+    /**最基础的架构，仅提供了系统默认的图片选择器和拍照功能**/
+    compile 'com.github.qingmei2:rximagepicker:2.2.0-alpha'
+
+    /**提供了自定义UI图片选择器的基本组件，自定义UI的需求需要添加该依赖**/
+    compile 'com.github.qingmei2:rximagepicker_support:2.2.0-alpha'
+
+    /**如果需要额外的UI支持，请选择依赖对应的UI拓展库**/
+    compile 'com.github.qingmei2:rximagepicker_support_zhihu:2.2.0-alpha'     // 知乎图片选择器
+    compile 'com.github.qingmei2:rximagepicker_support_wechat:2.2.0-alpha'    // 微信图片选择器
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    /**图片预览控件**/
+    compile 'com.bm.photoview:library:1.4.1'
 }

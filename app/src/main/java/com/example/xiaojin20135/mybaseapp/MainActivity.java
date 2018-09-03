@@ -4,21 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
 import com.example.xiaojin20135.basemodule.menuitem.adapter.MenuItemAdapter;
 import com.example.xiaojin20135.basemodule.menuitem.fragment.MenuItemFragment;
 import com.example.xiaojin20135.basemodule.menuitem.listener.IMemuItemClick;
-import com.example.xiaojin20135.basemodule.retrofit.helper.RetrofitManager;
-import com.example.xiaojin20135.basemodule.update.UpdateChecker;
 import com.example.xiaojin20135.mybaseapp.alert.ItemAlertActivity;
 import com.example.xiaojin20135.mybaseapp.approve.ApproveTestActivity;
 import com.example.xiaojin20135.mybaseapp.bottom.MyBottomActivity;
 import com.example.xiaojin20135.mybaseapp.datepicker.DatePickerActivity;
 import com.example.xiaojin20135.mybaseapp.devicelabel.DeviceLabelActivity;
 import com.example.xiaojin20135.mybaseapp.download.DownloadActivity;
+import com.example.xiaojin20135.mybaseapp.image.PickImageActivity;
 import com.example.xiaojin20135.mybaseapp.loaddata.LoadDataActivity;
 import com.example.xiaojin20135.mybaseapp.mpchart.MyChartActivity;
 import com.example.xiaojin20135.mybaseapp.recyclerview.MyRecyActivity;
@@ -31,10 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.example.xiaojin20135.basemodule.util.ConstantUtil.APPROVENODEINSTANCEID;
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.MAP;
-import static com.example.xiaojin20135.basemodule.util.ConstantUtil.METHODNAME;
-import static com.example.xiaojin20135.basemodule.util.ConstantUtil.SOURCEID;
 
 public class MainActivity extends ToolBarActivity implements View.OnClickListener{
     List<Map<String,Integer>> datas;
@@ -157,14 +152,14 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 bundle.putSerializable (MAP,(Serializable)map);
                 canGo (ApproveTestActivity.class,bundle);
                 break;
+            case R.id.pick_iamge_btn:
+                canGo (PickImageActivity.class);
+                break;
 
         }
     }
 
     private void initMenu(){
-
-
-
         menuItemFragment = MenuItemFragment.getInstance (this, datas, myIMenuItemClick);
         menuItemFragment.setSpanCount (5); //每列图标个数
         getSupportFragmentManager ().beginTransaction ().replace (R.id.fragment_container,menuItemFragment).commit ();
