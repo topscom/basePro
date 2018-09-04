@@ -1,5 +1,6 @@
 package com.example.xiaojin20135.mybaseapp.image;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.OrientationHelper;
@@ -16,7 +17,9 @@ import com.example.xiaojin20135.basemodule.image.inter.ZhihuImagePicker;
 import com.example.xiaojin20135.basemodule.image.listener.RecyclerItemClickListener;
 import com.example.xiaojin20135.basemodule.image.view.ImageBrowseActivity;
 import com.example.xiaojin20135.basemodule.util.FileHelp;
+import com.example.xiaojin20135.basemodule.util.MethodsUtils;
 import com.example.xiaojin20135.mybaseapp.R;
+import com.gengqiquan.result.RxActivityResult;
 import com.qingmei2.rximagepicker.core.RxImagePicker;
 import com.qingmei2.rximagepicker.entity.Result;
 import com.qingmei2.rximagepicker.ui.SystemImagePicker;
@@ -30,16 +33,15 @@ import java.util.ArrayList;
 import io.reactivex.functions.Consumer;
 
 public class PickImageActivity extends ToolBarActivity {
-    ZhihuImagePicker zhihuImagePicker;
     WechatImagePicker wechatImagePicker;
     SystemImagePicker systemImagePicker;
+    ZhihuImagePicker zhihuImagePicker;
     RecyclerView recyclerView;
     private MyPhotoAdapter myPhotoAdapter;
     private ArrayList<String> selectedPhotos = new ArrayList<>();
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        zhihuImagePicker = RxImagePicker.INSTANCE.create(ZhihuImagePicker.class);
         wechatImagePicker = RxImagePicker.INSTANCE.create (WechatImagePicker.class);
         systemImagePicker = RxImagePicker.INSTANCE.create();
     }
@@ -51,6 +53,7 @@ public class PickImageActivity extends ToolBarActivity {
 
     @Override
     protected void initView () {
+        zhihuImagePicker = RxImagePicker.INSTANCE.create(ZhihuImagePicker.class);
         recyclerView = findViewById(R.id.recycler_view);
         myPhotoAdapter = new MyPhotoAdapter(this, selectedPhotos);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager (4, OrientationHelper.VERTICAL));
@@ -67,7 +70,26 @@ public class PickImageActivity extends ToolBarActivity {
                 } else { //预览
                     Bundle bundle = new Bundle ();
                     bundle.putStringArrayList (ImageConstant.imageList, selectedPhotos);
-                    canGo (ImageBrowseActivity.class,bundle);
+                    RxActivityResult.with(PickImageActivity.this).putAll (bundle)
+                        .startActivityWithResult(new Intent (PickImageActivity.this, ImageBrowseActivity.class))
+                        .subscribe (new Consumer<com.gengqiquan.result.Result> () {
+                            @Override
+                            public void accept (com.gengqiquan.result.Result result) throws Exception {
+                                selectedPhotos = result.data.getStringArrayListExtra ("imageList");
+                                if(selectedPhotos == null){
+                                    selectedPhotos = new ArrayList<> ();
+                                }
+
+                                myPhotoAdapter.addAll (selectedPhotos);
+
+                            }
+                        }, new Consumer<Throwable> () {
+                            @Override
+                            public void accept (Throwable throwable) throws Exception {
+                                throwable.printStackTrace ();
+                            }
+                        });
+
                 }
             }
         }));
@@ -100,7 +122,6 @@ public class PickImageActivity extends ToolBarActivity {
                 break;
         }
     }
-
 
     private void systemGalleryOpen(){
         systemImagePicker.openGallery(this)               //打开系统相册选取图片
@@ -156,27 +177,26 @@ public class PickImageActivity extends ToolBarActivity {
             });
     }
 
-
     private void zhihuGalleryOpen(){
         zhihuImagePicker.openGallery(this,
             new WechatConfigrationBuilder (MimeType.INSTANCE.ofImage(), false)
                 .maxSelectable(9)
                 .countable(true)
                 .spanCount(3)
-                .build())             //打开微信相册选取图片
+                .build())             //打开知乎相册选取图片
             .subscribe(new Consumer<Result>() {
                 @Override
                 public void accept(Result result) throws Exception {
                     // 做您想做的，比如将选取的图片展示在ImageView中
-                    Log.d (TAG,"result.getUri() = " + result.getUri().toString ());
-                    selectedPhotos.add (FileHelp.FILE_HELP.getFilePath (PickImageActivity.this,result.getUri ()));
-                    myPhotoAdapter.notifyDataSetChanged();
+                    selectedPhotos = MethodsUtils.METHODS_UTILS.addNewItem (selectedPhotos,FileHelp.FILE_HELP.getFilePath(PickImageActivity.this,result.getUri ()));
+                    Log.d (TAG,"selectedPhotos = " + selectedPhotos.toString ());
+                    myPhotoAdapter.addAll (selectedPhotos);
                 }
             });
     }
 
     private void zhihuCameraOpen(){
-        zhihuImagePicker.openCamera(this)  //打开微信相册选取图片
+        zhihuImagePicker.openCamera(this)  //打开相机
             .subscribe(new Consumer<Result>() {
                 @Override
                 public void accept(Result result) throws Exception {
@@ -187,6 +207,5 @@ public class PickImageActivity extends ToolBarActivity {
                 }
             });
     }
-
 
 }

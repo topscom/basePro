@@ -81,4 +81,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     /**图片预览控件**/
     compile 'com.bm.photoview:library:1.4.1'
+    /**RxJava库**/
+    compile 'com.gengqiquan:Rx2ActivityResult:0.0.4'
 }

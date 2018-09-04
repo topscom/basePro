@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 public class ImageBrowseActivity extends ToolBarActivity {
     private ArrayList<String> imageList = new ArrayList<> ();
     private ViewPager imageBrowseViewPager;
+    private ImageBrowseAdapter imageBrowseAdapter;
     private int currentIndex = 0;
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -40,7 +42,8 @@ public class ImageBrowseActivity extends ToolBarActivity {
     @Override
     protected void initView () {
         imageBrowseViewPager = (ViewPager)findViewById (R.id.imageBrowseViewPager);
-        imageBrowseViewPager.setAdapter (new ImageBrowseAdapter (this));
+        imageBrowseAdapter = new ImageBrowseAdapter (this);
+        imageBrowseViewPager.setAdapter (imageBrowseAdapter);
         imageBrowseViewPager.addOnPageChangeListener (new ViewPager.OnPageChangeListener () {
             @Override
             public void onPageScrolled (int position, float positionOffset, int positionOffsetPixels) {
@@ -84,7 +87,14 @@ public class ImageBrowseActivity extends ToolBarActivity {
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
         if(item.getItemId () == R.id.delete_item){
-            imageList.remove (currentIndex);
+            if(imageList != null && imageList.size () > currentIndex){
+                imageList.remove (currentIndex);
+//                imageBrowseAdapter.
+                imageBrowseAdapter.notifyDataSetChanged ();
+            }
+            if(imageList == null || imageList.size () == 0){
+                back();
+            }
         }
         return super.onOptionsItemSelected (item);
     }
@@ -103,6 +113,11 @@ public class ImageBrowseActivity extends ToolBarActivity {
         @Override
         public boolean isViewFromObject (@NonNull View view, @NonNull Object object) {
             return view == object;
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
         }
 
         public View instantiateItem(ViewGroup container,int position){
@@ -131,9 +146,34 @@ public class ImageBrowseActivity extends ToolBarActivity {
 
         @Override
         public void destroyItem (@NonNull ViewGroup container, int position, @NonNull Object object) {
-//            super.destroyItem (container, position, object);
             container.removeView ((View) object);
         }
+
+    }
+
+    @Override
+    public void initToolbar() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                back();
+            }
+        });
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(KeyEvent.KEYCODE_BACK == keyCode){
+            back();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void back(){
+        Intent intent = new Intent ();
+        intent.putStringArrayListExtra ("imageList",imageList);
+        setResult (RESULT_OK,intent);
+        this.finish ();
 
     }
 }

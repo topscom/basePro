@@ -68,6 +68,16 @@ public class MyPhotoAdapter extends RecyclerView.Adapter<MyPhotoAdapter.PhotoVie
         }
     }
 
+    /**
+     * @author lixiaojin
+     * @createon 2018-09-04 14:42
+     * @Describe 替换全部
+     */
+    public void addAll(ArrayList<String> arrayList){
+        photoPaths = arrayList;
+        this.notifyDataSetChanged ();
+    }
+
 
     @Override
     public int getItemCount () {
