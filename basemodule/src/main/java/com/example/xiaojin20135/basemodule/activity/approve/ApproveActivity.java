@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.xiaojin20135.basemodule.R;
@@ -27,7 +28,7 @@ import static com.example.xiaojin20135.basemodule.util.ConstantUtil.METHODNAME;
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.SOURCEID;
 
 public abstract class ApproveActivity extends ToolBarActivity {
-    private TextView approve_opition_TV;
+    private TextView approve_opition_ET;
 
     public String approvalAction = "";
     public Map dataMap = new HashMap ();
@@ -53,7 +54,7 @@ public abstract class ApproveActivity extends ToolBarActivity {
 
     @Override
     protected void initView () {
-        approve_opition_TV = (TextView)findViewById (R.id.approve_opition_TV);
+        approve_opition_ET = (EditText)findViewById (R.id.approve_opition_ET);
     }
 
     @Override
@@ -120,7 +121,7 @@ public abstract class ApproveActivity extends ToolBarActivity {
      */
     private void approve(){
         approvalType = "1";
-        approvalOpinion = approve_opition_TV.getText ().toString ();
+        approvalOpinion = approve_opition_ET.getText ().toString ();
         if(TextUtils.isEmpty (approvalOpinion)){
             approvalOpinion = getString (R.string.approve);
         }
@@ -134,7 +135,7 @@ public abstract class ApproveActivity extends ToolBarActivity {
      */
     private void unApprove(){
         approvalType = "2";
-        approvalOpinion = approve_opition_TV.getText ().toString ();
+        approvalOpinion = approve_opition_ET.getText ().toString ();
         if(TextUtils.isEmpty (approvalOpinion)){
             approvalOpinion = getString (R.string.un_approve);
         }

@@ -315,6 +315,9 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     protected void showList(List<T> dataList){
         if(dataList != null && dataList.size () > 0){
             Log.d (TAG,"dataList.get(0) = " + dataList.get (0).toString ());
+            if(page == 1){
+                rvAdapter.setNewData (new ArrayList<T> ());
+            }
             rvAdapter.addData (dataList);
         }else{
             if(page == 1){

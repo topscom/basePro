@@ -79,9 +79,7 @@ public class PickImageActivity extends ToolBarActivity {
                                 if(selectedPhotos == null){
                                     selectedPhotos = new ArrayList<> ();
                                 }
-
                                 myPhotoAdapter.addAll (selectedPhotos);
-
                             }
                         }, new Consumer<Throwable> () {
                             @Override
@@ -89,7 +87,6 @@ public class PickImageActivity extends ToolBarActivity {
                                 throwable.printStackTrace ();
                             }
                         });
-
                 }
             }
         }));
@@ -189,7 +186,6 @@ public class PickImageActivity extends ToolBarActivity {
                 public void accept(Result result) throws Exception {
                     // 做您想做的，比如将选取的图片展示在ImageView中
                     selectedPhotos = MethodsUtils.METHODS_UTILS.addNewItem (selectedPhotos,FileHelp.FILE_HELP.getFilePath(PickImageActivity.this,result.getUri ()));
-                    Log.d (TAG,"selectedPhotos = " + selectedPhotos.toString ());
                     myPhotoAdapter.addAll (selectedPhotos);
                 }
             });
@@ -202,8 +198,8 @@ public class PickImageActivity extends ToolBarActivity {
                 public void accept(Result result) throws Exception {
                     // 做您想做的，比如将选取的图片展示在ImageView中
                     Log.d (TAG,"result.getUri() = " + result.getUri().toString ());
-                    selectedPhotos.add (FileHelp.FILE_HELP.getFilePath (PickImageActivity.this,result.getUri ()));
-                    myPhotoAdapter.notifyDataSetChanged();
+                    selectedPhotos = MethodsUtils.METHODS_UTILS.addNewItem (selectedPhotos,FileHelp.FILE_HELP.getFilePath(PickImageActivity.this,result.getUri ()));
+                    myPhotoAdapter.addAll (selectedPhotos);
                 }
             });
     }

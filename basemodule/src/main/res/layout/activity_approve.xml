@@ -14,14 +14,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/white"/>
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/info_margin_10"
         android:hint="@string/approve_opition_please"
         android:background="@color/white"
         android:layout_marginTop="@dimen/info_margin_5"
-        android:id="@+id/approve_opition_TV"/>
+        android:id="@+id/approve_opition_ET"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
