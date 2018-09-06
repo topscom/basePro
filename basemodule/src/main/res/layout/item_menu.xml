@@ -32,7 +32,6 @@
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
         android:text="产品规划"
-        android:textSize="@dimen/text_size_9"
         android:textColor="@color/black"/>
 
 </RelativeLayout>

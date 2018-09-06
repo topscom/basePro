@@ -72,7 +72,7 @@ public abstract class BaseLoginActivity extends BaseActivity {
         super.onCreate (savedInstanceState);
         init ();
 //        deviceId = getIMEI(this);
-//        Log.d (TAG,"getPesudoUniqueID = " + getPesudoUniqueID());
+//        Log.d (TAG,"deviceId = " + deviceId);
         deviceId = getUniquePsuedoID();
         Log.d (TAG,"deviceId = " + deviceId);
     }
@@ -365,7 +365,6 @@ public abstract class BaseLoginActivity extends BaseActivity {
         // returns 'null', then simply the ID returned will be solely based
         // off their Android device information. This is where the collisions
         // can happen.
-        // Thanks http://www.pocketmagic.net/?p=1662!
         // Try not to use DISPLAY, HOST or ID - these items could change.
         // If there are collisions, there will be overlapping data
         String m_szDevIDShort = "35" +
@@ -393,7 +392,6 @@ public abstract class BaseLoginActivity extends BaseActivity {
             // String needs to be initialized
             serial = "serial"; // some value
         }
-        // Thanks @Joe!
         // http://stackoverflow.com/a/2853253/950427
         // Finally, combine the values we have found by using the UUID class to create a unique identifier
 //        return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
