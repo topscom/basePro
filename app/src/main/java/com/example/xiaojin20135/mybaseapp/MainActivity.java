@@ -23,6 +23,7 @@ import com.example.xiaojin20135.mybaseapp.recyclerview.MyRecyActivity;
 import com.example.xiaojin20135.mybaseapp.spinner.MySpinnerActivity;
 import com.example.xiaojin20135.mybaseapp.tablayout.MyTabLayoutActivity;
 import com.example.xiaojin20135.mybaseapp.update.CheckUpdateActivity;
+import com.example.xiaojin20135.mybaseapp.view.IpAndPortActivity;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -154,6 +155,9 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 break;
             case R.id.pick_iamge_btn:
                 canGo (PickImageActivity.class);
+                break;
+            case R.id.ip_port_btn:
+                canGo (IpAndPortActivity.class);
                 break;
 
         }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray"
+    tools:context="com.example.xiaojin20135.mybaseapp.view.IpAndPortActivity">
+    <include layout="@layout/toolbar"></include>
+
+    <com.example.xiaojin20135.basemodule.view.edittext.ip.IPView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/ip_ET"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/read_btn"
+        android:onClick="onClick"
+        android:text="读取"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/set_btn"
+        android:onClick="onClick"
+        android:text="设置"/>
+
+</LinearLayout>
+
+

@@ -133,7 +133,6 @@ public class DownloadUtils {
                     public void run() {
                         downloadListener.onProgress((int) (100 * finalCurrentLength / totalLength));
                         if ((int) (100 * finalCurrentLength / totalLength) == 100) {
-
                             downloadListener.onFinish(mFilePath);
                             //下载完成，扫描文件
                             scanFile(mFilePath);

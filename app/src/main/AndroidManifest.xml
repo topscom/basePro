@@ -32,7 +32,8 @@
         <activity android:name=".tablayout.MyTabLayoutActivity" />
         <activity android:name=".devicelabel.DeviceLabelActivity" />
         <activity android:name=".approve.ApproveTestActivity" />
-        <activity android:name=".image.PickImageActivity"></activity>
+        <activity android:name=".image.PickImageActivity" />
+        <activity android:name=".view.IpAndPortActivity"></activity>
     </application>
 
 </manifest>
