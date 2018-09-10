@@ -119,7 +119,7 @@ public abstract class ApproveActivity extends ToolBarActivity {
      * @createon 2018-08-28 14:04
      * @Describe 同意
      */
-    private void approve(){
+    public void approve(){
         approvalType = "1";
         approvalOpinion = approve_opition_ET.getText ().toString ();
         if(TextUtils.isEmpty (approvalOpinion)){
@@ -133,7 +133,7 @@ public abstract class ApproveActivity extends ToolBarActivity {
      * @createon 2018-08-28 14:04
      * @Describe 不同意
      */
-    private void unApprove(){
+    public void unApprove(){
         approvalType = "2";
         approvalOpinion = approve_opition_ET.getText ().toString ();
         if(TextUtils.isEmpty (approvalOpinion)){

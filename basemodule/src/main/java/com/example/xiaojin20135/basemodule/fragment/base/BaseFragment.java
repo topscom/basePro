@@ -26,6 +26,7 @@ import com.example.xiaojin20135.basemodule.retrofit.view.IBaseView;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import butterknife.ButterKnife;
 import okhttp3.MultipartBody;
 
 /**
@@ -41,12 +42,16 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         presenterImpl = new PresenterImpl (this,getContext ());
         TextView textView = new TextView (getActivity ());
         textView.setText (R.string.hello_blank_fragment);
         return textView;
     }
+
+    protected void bindView(View view){
+        ButterKnife.bind (this,view);
+    }
+
     protected abstract void initView(View view);
 
     protected abstract void initEvents(View view);
