@@ -142,7 +142,7 @@ public abstract class ApproveActivity extends ToolBarActivity {
         tryDo();
     }
 
-    private void tryDo(){
+    public void tryDo(){
         approvalDate = TimeMethods.TIME_METHODS.getFormatDateTime ();
         paraMap.put (APPROVENODEINSTANCEID,approvalNodeInstanceId);
         paraMap.put (SOURCEID,sourceId);
