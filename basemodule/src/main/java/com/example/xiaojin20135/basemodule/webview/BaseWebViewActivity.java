@@ -1,7 +1,6 @@
-package com.example.xiaojin20135.mybaseapp.webview;
+package com.example.xiaojin20135.basemodule.webview;
 
 import android.graphics.Bitmap;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -12,15 +11,13 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import com.example.xiaojin20135.basemodule.R;
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
-import com.example.xiaojin20135.mybaseapp.R;
 import butterknife.BindView;
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.URLWEB;
 
 public class BaseWebViewActivity extends ToolBarActivity {
-    @BindView (R.id.content_WV)
     WebView content_WV;
-    @BindView (R.id.load_progress_PB)
     ProgressBar load_progress_PB;
     private WebSettings webSettings;
     private String url = "";
@@ -36,6 +33,8 @@ public class BaseWebViewActivity extends ToolBarActivity {
 
     @Override
     protected void initView () {
+        content_WV = (WebView)findViewById (R.id.content_WV);
+        load_progress_PB = (ProgressBar)findViewById (R.id.load_progress_PB);
         webSettings = content_WV.getSettings ();
         commonSetting ();
         content_WV.loadUrl (url);

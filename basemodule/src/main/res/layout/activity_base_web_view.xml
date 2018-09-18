@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.xiaojin20135.mybaseapp.webview.BaseWebViewActivity">
+    tools:context="com.example.xiaojin20135.basemodule.webview.BaseWebViewActivity">
     <include layout="@layout/toolbar"></include>
 
     <ProgressBar
@@ -21,5 +21,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/content_WV"></WebView>
-
 </LinearLayout>

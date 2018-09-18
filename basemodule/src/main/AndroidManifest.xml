@@ -65,7 +65,8 @@
         <activity android:name=".activity.recycle.BaseRecyclerActivity" />
         <activity android:name=".activity.tablay.BaseTapActivity" />
         <activity android:name=".activity.approve.ApproveActivity" />
-        <activity android:name=".image.view.ImageBrowseActivity"></activity>
+        <activity android:name=".image.view.ImageBrowseActivity" />
+        <activity android:name=".webview.BaseWebViewActivity"></activity>
     </application>
 
 </manifest>
