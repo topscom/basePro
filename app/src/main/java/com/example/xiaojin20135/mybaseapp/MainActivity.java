@@ -24,6 +24,7 @@ import com.example.xiaojin20135.mybaseapp.spinner.MySpinnerActivity;
 import com.example.xiaojin20135.mybaseapp.tablayout.MyTabLayoutActivity;
 import com.example.xiaojin20135.mybaseapp.update.CheckUpdateActivity;
 import com.example.xiaojin20135.mybaseapp.view.IpAndPortActivity;
+import com.example.xiaojin20135.mybaseapp.webview.BaseWebViewActivity;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -31,6 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.example.xiaojin20135.basemodule.util.ConstantUtil.MAP;
+import static com.example.xiaojin20135.basemodule.util.ConstantUtil.URLWEB;
 
 public class MainActivity extends ToolBarActivity implements View.OnClickListener{
     List<Map<String,Integer>> datas;
@@ -159,7 +161,10 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
             case R.id.ip_port_btn:
                 canGo (IpAndPortActivity.class);
                 break;
-
+            case R.id.webView_btn:
+                bundle.putString (URLWEB,"https://www.baidu.com/");
+                canGo (BaseWebViewActivity.class,bundle);
+                break;
         }
     }
 
@@ -180,4 +185,40 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
             menuItemFragment.updataInfo ();
         }
     };
+
+    @Override
+    protected void onStart () {
+        super.onStart ();
+        Log.d (TAG," onStart ");
+    }
+
+    @Override
+    protected void onStop () {
+        super.onStop ();
+        Log.d (TAG," onStop ");
+    }
+
+    @Override
+    protected void onDestroy () {
+        super.onDestroy ();
+        Log.d (TAG," onDestroy ");
+    }
+
+    @Override
+    protected void onPause () {
+        super.onPause ();
+        Log.d (TAG," onPause ");
+    }
+
+    @Override
+    protected void onResume () {
+        super.onResume ();
+        Log.d (TAG," onResume ");
+    }
+
+    @Override
+    public void finish () {
+        super.finish ();
+        Log.d (TAG," finish ");
+    }
 }

@@ -63,6 +63,17 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
         ((BaseActivity)getActivity ()).showProgress ();
     }
 
+
+    @Override
+    public void setProgressText (String text) {
+        ((BaseActivity)getActivity ()).setProgressText (text);
+    }
+
+    @Override
+    public void setProgressValue (int value) {
+        ((BaseActivity)getActivity ()).setProgressValue (value);
+    }
+
     @Override
     public void showProgress (boolean hideTitle, String message, boolean cancled) {
         ((BaseActivity)getActivity ()).showProgress (hideTitle,message,cancled);

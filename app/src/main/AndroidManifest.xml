@@ -33,7 +33,8 @@
         <activity android:name=".devicelabel.DeviceLabelActivity" />
         <activity android:name=".approve.ApproveTestActivity" />
         <activity android:name=".image.PickImageActivity" />
-        <activity android:name=".view.IpAndPortActivity"></activity>
+        <activity android:name=".view.IpAndPortActivity" />
+        <activity android:name=".webview.BaseWebViewActivity"></activity>
     </application>
 
 </manifest>

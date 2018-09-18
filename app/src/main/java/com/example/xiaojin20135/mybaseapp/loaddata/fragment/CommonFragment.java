@@ -55,6 +55,7 @@ public class CommonFragment extends BaseFragment {
         });
     }
 
+
     @Override
     public void loadDataSuccess (Object tData) {
         super.loadDataSuccess (tData);

@@ -16,4 +16,5 @@ public class ConstantUtil {
     public static final String SOURCEID = "sourceId";
     public static final String METHODNAME = "methodName";
     public static final String MAP = "map";
+    public static final String URLWEB = "url";
 }

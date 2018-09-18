@@ -42,8 +42,13 @@ public abstract class ToolBarActivity extends BaseActivity {
     public void setTitleText(int id) {
 //        Log.d(TAG,"in setTitleText 111111111111111111111");
         this.title.setText(getString(id));
-
     }
+
+    //设置toolbar标题
+    public void setTitleText(String title){
+        this.title.setText (title);
+    }
+
     //设置toolbar图标
     public void setIcon(int id){
 //        Log.d(TAG,"in setIcon 111111111111111111111");

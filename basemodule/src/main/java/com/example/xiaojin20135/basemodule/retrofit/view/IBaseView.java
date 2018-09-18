@@ -18,6 +18,20 @@ public interface IBaseView<T> {
     void showProgress();
 
     /**
+     * @author lixiaojin
+     * @createon 2018-09-18 14:12
+     * @Describe 设置显示的文字
+     */
+    void setProgressText(String text);
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-09-18 14:16
+     * @Describe 设置显示进度
+     */
+    void setProgressValue(int value);
+
+    /**
      * 请求前加载等待框
      * @param hideTitle
      * @param message

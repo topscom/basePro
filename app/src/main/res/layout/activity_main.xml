@@ -21,6 +21,13 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="WebView "
+                android:id="@+id/webView_btn"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="IP端口 "
                 android:id="@+id/ip_port_btn"
                 android:onClick="onClick"/>

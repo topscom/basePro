@@ -202,6 +202,21 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         progressDialog.show();
     }
 
+    @Override
+    public void setProgressText (String text) {
+        if(progressDialog != null && progressDialog.isShowing ()){
+            Log.d (TAG,"text = " + text);
+            progressDialog.setMessage (text);
+        }
+    }
+
+    @Override
+    public void setProgressValue (int value) {
+        if(progressDialog != null && progressDialog.isShowing ()){
+            progressDialog.setProgress (value);
+        }
+    }
+
 
     @Override
     public void showProgress (boolean hideTitle,String message,boolean cancled) {
@@ -224,6 +239,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
             progressDialog.dismiss();
         }
     }
+
+
 
     /**
      * @author lixiaojin
