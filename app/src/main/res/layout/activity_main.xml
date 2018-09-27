@@ -21,6 +21,20 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="xgpush "
+                android:id="@+id/xgpush_btn"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="wheelview "
+                android:id="@+id/wheelview_btn"
+                android:onClick="onClick"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="WebView "
                 android:id="@+id/webView_btn"
                 android:onClick="onClick"/>

@@ -44,16 +44,16 @@ public class FragmentActivity extends ToolBarActivity {
             getSupportFragmentManager ().beginTransaction ().replace (R.id.fragment_container,myRecyclerFragment).commit ();
         }else if(index == 2){
             datas = new ArrayList<> ();
-            for(int i=0;i<6;i++){
+            for(int i=0;i<4;i++){
                 Map map = new HashMap ();
                 map.put (MenuItemAdapter.CODE,"");
                 map.put (MenuItemAdapter.IMAGE,R.drawable.permission_ic_camera);
                 map.put (MenuItemAdapter.TITLE,R.string.camera);
-                map.put (MenuItemAdapter.COUNT,i);
+                map.put (MenuItemAdapter.COUNT,0);
                 datas.add (map);
             }
             menuItemFragment = MenuItemFragment.getInstance (this, datas, myIMenuItemClick);
-            menuItemFragment.setSpanCount (5); //每列图标个数
+            menuItemFragment.setSpanCount (2); //每列图标个数
             getSupportFragmentManager ().beginTransaction ().replace (R.id.fragment_container,menuItemFragment).commit ();
         }
     }

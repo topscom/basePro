@@ -2,6 +2,7 @@ package com.example.xiaojin20135.mybaseapp;
 
 import com.example.xiaojin20135.basemodule.activity.BaseApplication;
 import com.example.xiaojin20135.basemodule.retrofit.helper.RetrofitManager;
+import com.example.xiaojin20135.mybaseapp.xgPush.XgPush;
 
 /**
  * Created by lixiaojin on 2018-08-11 16:41.
@@ -13,5 +14,6 @@ public class App extends BaseApplication{
     public void onCreate () {
         super.onCreate ();
         RetrofitManager.RETROFIT_MANAGER.init ("http://219.147.26.62:6721/TopscommRts/");
+        XgPush.XG_PUSH.init (this);
     }
 }

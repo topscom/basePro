@@ -11,6 +11,7 @@ import com.example.xiaojin20135.basemodule.menuitem.adapter.MenuItemAdapter;
 import com.example.xiaojin20135.basemodule.menuitem.fragment.MenuItemFragment;
 import com.example.xiaojin20135.basemodule.menuitem.listener.IMemuItemClick;
 import com.example.xiaojin20135.basemodule.webview.BaseWebViewActivity;
+import com.example.xiaojin20135.basemodule.wheelview.CityPickerActivity;
 import com.example.xiaojin20135.mybaseapp.alert.ItemAlertActivity;
 import com.example.xiaojin20135.mybaseapp.approve.ApproveTestActivity;
 import com.example.xiaojin20135.mybaseapp.bottom.MyBottomActivity;
@@ -25,6 +26,7 @@ import com.example.xiaojin20135.mybaseapp.spinner.MySpinnerActivity;
 import com.example.xiaojin20135.mybaseapp.tablayout.MyTabLayoutActivity;
 import com.example.xiaojin20135.mybaseapp.update.CheckUpdateActivity;
 import com.example.xiaojin20135.mybaseapp.view.IpAndPortActivity;
+import com.example.xiaojin20135.mybaseapp.xgPush.XgPushActivity;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -165,6 +167,12 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 bundle.putString (URLWEB,"https://www.baidu.com/");
                 canGo (BaseWebViewActivity.class,bundle);
                 break;
+            case R.id.wheelview_btn:
+                canGo (CityPickerActivity.class);
+                break;
+            case R.id.xgpush_btn:
+                canGo (XgPushActivity.class);
+                break;
         }
     }
 
@@ -172,7 +180,6 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
         menuItemFragment = MenuItemFragment.getInstance (this, datas, myIMenuItemClick);
         menuItemFragment.setSpanCount (5); //每列图标个数
         getSupportFragmentManager ().beginTransaction ().replace (R.id.fragment_container,menuItemFragment).commit ();
-
     }
 
     IMemuItemClick myIMenuItemClick = new IMemuItemClick(){

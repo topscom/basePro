@@ -34,7 +34,19 @@
         <activity android:name=".approve.ApproveTestActivity" />
         <activity android:name=".image.PickImageActivity" />
         <activity android:name=".view.IpAndPortActivity" />
-        <activity android:name=".webview.BaseWebViewActivity"></activity>
+        <activity android:name=".webview.BaseWebViewActivity" />
+        <activity android:name=".xgPush.Type1Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="com.topscomm.push"
+                    android:path="/notify_detail_basepro"
+                    android:scheme="xgscheme" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".xgPush.Type2Activity" />
+        <activity android:name=".xgPush.XgPushActivity"></activity>
     </application>
 
 </manifest>
