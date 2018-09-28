@@ -30,6 +30,7 @@ import com.example.xiaojin20135.mybaseapp.view.IpAndPortActivity;
 import com.example.xiaojin20135.mybaseapp.xgPush.XgPushActivity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -175,16 +176,16 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 canGo (XgPushActivity.class);
                 break;
             case R.id.guide_page_btn:
-                int[] imagesArr = new int[5];
-                imagesArr[0] = R.mipmap.guide1;
-                imagesArr[1] = R.mipmap.guide2;
-                imagesArr[2] = R.mipmap.guide3;
-                imagesArr[3] = R.mipmap.guide4;
-                imagesArr[4] = R.mipmap.guide5;
-                bundle.putIntArray ("imagesArr",imagesArr);
-                Log.d (TAG,"MyLoginActivity.class.getName () = " + MyLoginActivity.class.getName ());
-                Log.d (TAG,"MyLoginActivity.class.getName () = " + MyLoginActivity.class.getSimpleName ());
-                bundle.putString ("activityName",MyLoginActivity.class.getName ());
+                ArrayList imagesList = new ArrayList ();
+                imagesList.add (R.mipmap.guide1);
+                imagesList.add (R.mipmap.guide2);
+                imagesList.add (R.mipmap.guide3);
+                imagesList.add (R.mipmap.guide4);
+                imagesList.add (R.mipmap.guide5);
+                bundle.putIntegerArrayList ("imagesList",imagesList);
+//                Log.d (TAG,"MyLoginActivity.class.getName () = " + MyLoginActivity.class.getName ());
+//                Log.d (TAG,"MyLoginActivity.class.getName () = " + MyLoginActivity.class.getSimpleName ());
+//                bundle.putString ("activityName",MyLoginActivity.class.getName ());
                 canGo (GuidePageActivity.class,bundle);
                 break;
         }

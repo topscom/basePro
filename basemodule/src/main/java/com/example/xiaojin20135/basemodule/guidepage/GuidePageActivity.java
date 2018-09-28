@@ -25,7 +25,7 @@ import butterknife.BindView;
 
 public class GuidePageActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
     private ViewPager guide_page_VP;
-    private int[] imageIdArray;//图片资源数组
+    private ArrayList<Integer> imageIdList= new ArrayList ();//图片资源数组
     private List<View> viewList = new ArrayList<> ();//图片资源的集合
     private ViewGroup viewGroup;//放置原点
     //实例化原点View
@@ -80,7 +80,7 @@ public class GuidePageActivity extends BaseActivity implements ViewPager.OnPageC
 
     @Override
     protected void loadData () {
-        imageIdArray = getIntent ().getIntArrayExtra ("imagesArr");
+        imageIdList = getIntent ().getIntegerArrayListExtra ("imagesList");
         activityName = getIntent ().getStringExtra ("activityName");
     }
 
@@ -88,12 +88,12 @@ public class GuidePageActivity extends BaseActivity implements ViewPager.OnPageC
         //获取一个Layout参数，设置为全屏
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams (LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
         //循环创建View并加入到集合中
-        int len = imageIdArray.length;
+        int len = imageIdList.size ();
         for(int i=0;i<len;i++){
             //new ImageView并设置全屏和图片资源
             ImageView imageView = new ImageView (this);
             imageView.setLayoutParams (params);
-            imageView.setBackgroundResource (imageIdArray[i]);
+            imageView.setBackgroundResource (imageIdList.get (i));
             //将ImageView添加到集合中
             viewList.add (imageView);
         }
@@ -109,16 +109,16 @@ public class GuidePageActivity extends BaseActivity implements ViewPager.OnPageC
         int size = viewList.size ();
         for(int i=0;i<size;i++){
             point_IV = new ImageView (this);
-            layoutParams = new LinearLayout.LayoutParams (35,35);
+            layoutParams = new LinearLayout.LayoutParams (30,30);
             //第一个页面需要设置为选中状态，这里采用两张不同的图片
             if(i == 0){
                 point_IV.setBackgroundResource (R.drawable.ic_select);
             }else{
-                layoutParams.leftMargin = 20;
+                layoutParams.leftMargin = 5;
                 point_IV.setBackgroundResource (R.drawable.ic_unselect);
             }
             point_IV.setLayoutParams (layoutParams);
-            point_IV.setPadding (35,0,35,0);
+            point_IV.setPadding (30,0,30,0);
             pointArray[i] = point_IV;
             //将数组中的ImageView添加到ViewGroup
             viewGroup.addView (pointArray[i]);
@@ -133,7 +133,7 @@ public class GuidePageActivity extends BaseActivity implements ViewPager.OnPageC
 
     @Override
     public void onPageSelected (int position) {
-        int length = imageIdArray.length;
+        int length = imageIdList.size ();
         Log.d (TAG,"onPageSelected length = "  + length);
         for(int i=0;i<length;i++){
             pointArray[position].setBackgroundResource (R.drawable.ic_select);
@@ -142,7 +142,7 @@ public class GuidePageActivity extends BaseActivity implements ViewPager.OnPageC
             }
         }
         //判断是否是最后一页，若是，则显示按钮
-        if(position == imageIdArray.length - 1){
+        if(position == length - 1){
             guide_start_TV.setVisibility (View.VISIBLE);
         }else{
             guide_start_TV.setVisibility (View.GONE);
