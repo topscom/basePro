@@ -47,4 +47,6 @@
     <string name="unsupport_file">该类文件不支持</string>
     <string name="pick_soft_open_file">请选择对应的软件打开附件！</string>
     <string name="no_soft_find">sorry附件不能打开，请下载相关软件！</string>
+    <string name="jump">跳过</string>
+    <string name="in_now">立即体验</string>
 </resources>

@@ -62,8 +62,6 @@ public class MyPhotoAdapter extends RecyclerView.Adapter<MyPhotoAdapter.PhotoVie
             Glide.with(mContext)
                 .load(filePath)
                 .thumbnail(0.1f)
-//                    .placeholder(R.drawable.permission_ic_micro_phone)
-//                    .error(me.iwf.photopicker.R.drawable.__picker_ic_broken_image_black_48dp)
                 .into(holder.ivPhoto);
         }
     }

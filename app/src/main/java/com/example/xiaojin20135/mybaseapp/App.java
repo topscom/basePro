@@ -14,6 +14,6 @@ public class App extends BaseApplication{
     public void onCreate () {
         super.onCreate ();
         RetrofitManager.RETROFIT_MANAGER.init ("http://219.147.26.62:6721/TopscommRts/");
-        XgPush.XG_PUSH.init (this);
+//        XgPush.XG_PUSH.init (this);
     }
 }

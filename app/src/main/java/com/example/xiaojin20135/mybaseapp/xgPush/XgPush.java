@@ -23,6 +23,9 @@ public enum XgPush {
         //启用小米推送
         XGPushConfig.setMiPushAppId(context, "2882303761517869875");
         XGPushConfig.setMiPushAppKey(context, "5711786965875");
+        //设置魅族APPID和APPKEY
+        XGPushConfig.setMzPushAppId(context, "115891");
+        XGPushConfig.setMzPushAppKey(context, "499bbc7272e549708f0c0bae5d15eb0f");
         //启动并注册
         XGPushManager.registerPush(context, new XGIOperateCallback () {
             @Override

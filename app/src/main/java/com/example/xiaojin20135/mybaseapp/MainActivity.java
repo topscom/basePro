@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
+import com.example.xiaojin20135.basemodule.guidepage.GuidePageActivity;
 import com.example.xiaojin20135.basemodule.menuitem.adapter.MenuItemAdapter;
 import com.example.xiaojin20135.basemodule.menuitem.fragment.MenuItemFragment;
 import com.example.xiaojin20135.basemodule.menuitem.listener.IMemuItemClick;
@@ -172,6 +173,19 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 break;
             case R.id.xgpush_btn:
                 canGo (XgPushActivity.class);
+                break;
+            case R.id.guide_page_btn:
+                int[] imagesArr = new int[5];
+                imagesArr[0] = R.mipmap.guide1;
+                imagesArr[1] = R.mipmap.guide2;
+                imagesArr[2] = R.mipmap.guide3;
+                imagesArr[3] = R.mipmap.guide4;
+                imagesArr[4] = R.mipmap.guide5;
+                bundle.putIntArray ("imagesArr",imagesArr);
+                Log.d (TAG,"MyLoginActivity.class.getName () = " + MyLoginActivity.class.getName ());
+                Log.d (TAG,"MyLoginActivity.class.getName () = " + MyLoginActivity.class.getSimpleName ());
+                bundle.putString ("activityName",MyLoginActivity.class.getName ());
+                canGo (GuidePageActivity.class,bundle);
                 break;
         }
     }

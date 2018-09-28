@@ -20,6 +20,7 @@ import com.bm.library.PhotoView;
 import com.bumptech.glide.Glide;
 import com.example.xiaojin20135.basemodule.R;
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
+import com.example.xiaojin20135.basemodule.image.adapter.ImageBrowseAdapter;
 
 import java.util.ArrayList;
 
@@ -42,7 +43,7 @@ public class ImageBrowseActivity extends ToolBarActivity {
     @Override
     protected void initView () {
         imageBrowseViewPager = (ViewPager)findViewById (R.id.imageBrowseViewPager);
-        imageBrowseAdapter = new ImageBrowseAdapter (this);
+        imageBrowseAdapter = new ImageBrowseAdapter (this,imageList);
         imageBrowseViewPager.setAdapter (imageBrowseAdapter);
         imageBrowseViewPager.addOnPageChangeListener (new ViewPager.OnPageChangeListener () {
             @Override
@@ -50,12 +51,10 @@ public class ImageBrowseActivity extends ToolBarActivity {
                 currentIndex = position;
                 Log.d (TAG,"currentIndex = " + currentIndex);
             }
-
             @Override
             public void onPageSelected (int position) {
 
             }
-
             @Override
             public void onPageScrollStateChanged (int state) {
 
@@ -99,57 +98,7 @@ public class ImageBrowseActivity extends ToolBarActivity {
         return super.onOptionsItemSelected (item);
     }
 
-    private class ImageBrowseAdapter extends PagerAdapter {
-        Context context;
-        public ImageBrowseAdapter(Context context){
-            this.context = context;
-        }
 
-        @Override
-        public int getCount () {
-            return imageList.size();
-        }
-
-        @Override
-        public boolean isViewFromObject (@NonNull View view, @NonNull Object object) {
-            return view == object;
-        }
-
-        @Override
-        public int getItemPosition(Object object) {
-            return POSITION_NONE;
-        }
-
-        public View instantiateItem(ViewGroup container,int position){
-            final PhotoView image = new PhotoView (context);
-            // 开启图片缩放功能
-            image.enable();
-            // 设置缩放类型
-            image.setScaleType (ImageView.ScaleType.CENTER_INSIDE);
-            // 设置最大缩放倍数
-            image.setMaxScale (2.5f);
-            // 加载图片
-            Glide.with(context)
-                .load(imageList.get (position))
-                .into(image);
-            // 单击图片，返回
-            image.setOnClickListener (new View.OnClickListener () {
-                @Override
-                public void onClick (View v) {
-                    image.disenable();
-                    finish();
-                }
-            });
-            container.addView(image);
-            return image;
-        }
-
-        @Override
-        public void destroyItem (@NonNull ViewGroup container, int position, @NonNull Object object) {
-            container.removeView ((View) object);
-        }
-
-    }
 
     @Override
     public void initToolbar() {

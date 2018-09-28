@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.xiaojin20135.basemodule.guidepage.GuidePageActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/guide_page_VP"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/jump_TV"
+        android:text="@string/jump"
+        android:layout_marginTop="@dimen/info_margin_20"
+        android:layout_marginRight="@dimen/info_margin_20"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_19"
+        android:textStyle="bold"
+        android:background="@drawable/white_border"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/guide_point_LL"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/info_margin_15"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guide_start_TV"
+        android:layout_above="@id/guide_point_LL"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/left_title_6"
+        android:background="@drawable/white_border"
+        android:textSize="@dimen/text_size_19"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="@string/in_now"
+        android:visibility="gone"/>
+
+</RelativeLayout>
