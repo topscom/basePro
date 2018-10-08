@@ -60,8 +60,7 @@ public class DatePickDialog {
 
     public DatePickDialog builder() {
         // 获取Dialog布局
-        View view = LayoutInflater.from(context).inflate(
-            R.layout.date_view_alertdialog, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.date_view_alertdialog, null);
 
         // 获取自定义Dialog布局中的控件
         lLayout_bg = (LinearLayout) view.findViewById(R.id.lLayout_bg);

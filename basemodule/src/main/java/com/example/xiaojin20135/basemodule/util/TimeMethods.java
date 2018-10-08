@@ -1,6 +1,7 @@
 package com.example.xiaojin20135.basemodule.util;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -63,5 +64,35 @@ public enum TimeMethods {
     public String getFormatDateOnly(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return simpleDateFormat.format(new Date());
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-09-29 9:15
+     * @Describe 返回年
+     */
+    public int getYear() {
+        Calendar c = Calendar.getInstance();
+        return c.get(Calendar.YEAR);
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-09-29 9:15
+     * @Describe 返回月
+     */
+    public int getMonth() {
+        Calendar c = Calendar.getInstance();
+        return c.get(Calendar.MONTH) + 1;
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-09-29 9:15
+     * @Describe 返回日
+     */
+    public int getDay() {
+        Calendar c = Calendar.getInstance();
+        return c.get(Calendar.DATE);
     }
 }

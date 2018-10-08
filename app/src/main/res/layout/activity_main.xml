@@ -21,6 +21,13 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/security_btn"
+                android:onClick="onClick"
+                android:text="本地数据加密"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="引导页面 "
                 android:id="@+id/guide_page_btn"
                 android:onClick="onClick"/>

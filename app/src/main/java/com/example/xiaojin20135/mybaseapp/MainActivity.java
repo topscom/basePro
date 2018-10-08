@@ -12,17 +12,18 @@ import com.example.xiaojin20135.basemodule.menuitem.adapter.MenuItemAdapter;
 import com.example.xiaojin20135.basemodule.menuitem.fragment.MenuItemFragment;
 import com.example.xiaojin20135.basemodule.menuitem.listener.IMemuItemClick;
 import com.example.xiaojin20135.basemodule.webview.BaseWebViewActivity;
-import com.example.xiaojin20135.basemodule.wheelview.CityPickerActivity;
 import com.example.xiaojin20135.mybaseapp.alert.ItemAlertActivity;
 import com.example.xiaojin20135.mybaseapp.approve.ApproveTestActivity;
 import com.example.xiaojin20135.mybaseapp.bottom.MyBottomActivity;
 import com.example.xiaojin20135.mybaseapp.datepicker.DatePickerActivity;
+import com.example.xiaojin20135.mybaseapp.datepicker.wheel.WeelPickerActivity;
 import com.example.xiaojin20135.mybaseapp.devicelabel.DeviceLabelActivity;
 import com.example.xiaojin20135.mybaseapp.download.DownloadActivity;
 import com.example.xiaojin20135.mybaseapp.image.PickImageActivity;
 import com.example.xiaojin20135.mybaseapp.loaddata.LoadDataActivity;
 import com.example.xiaojin20135.mybaseapp.mpchart.MyChartActivity;
 import com.example.xiaojin20135.mybaseapp.recyclerview.MyRecyActivity;
+import com.example.xiaojin20135.mybaseapp.security.SecurityActivity;
 import com.example.xiaojin20135.mybaseapp.spinner.MySpinnerActivity;
 import com.example.xiaojin20135.mybaseapp.tablayout.MyTabLayoutActivity;
 import com.example.xiaojin20135.mybaseapp.update.CheckUpdateActivity;
@@ -170,7 +171,7 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 canGo (BaseWebViewActivity.class,bundle);
                 break;
             case R.id.wheelview_btn:
-                canGo (CityPickerActivity.class);
+                canGo (WeelPickerActivity.class);
                 break;
             case R.id.xgpush_btn:
                 canGo (XgPushActivity.class);
@@ -183,10 +184,11 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 imagesList.add (R.mipmap.guide4);
                 imagesList.add (R.mipmap.guide5);
                 bundle.putIntegerArrayList ("imagesList",imagesList);
-//                Log.d (TAG,"MyLoginActivity.class.getName () = " + MyLoginActivity.class.getName ());
-//                Log.d (TAG,"MyLoginActivity.class.getName () = " + MyLoginActivity.class.getSimpleName ());
 //                bundle.putString ("activityName",MyLoginActivity.class.getName ());
                 canGo (GuidePageActivity.class,bundle);
+                break;
+            case R.id.security_btn:
+                canGo (SecurityActivity.class);
                 break;
         }
     }

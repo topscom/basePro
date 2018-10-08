@@ -38,7 +38,9 @@
         <activity android:name=".xgPush.Type1Activity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="com.topscomm.push"
                     android:path="/notify_detail_basepro"
@@ -46,7 +48,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".xgPush.Type2Activity" />
-        <activity android:name=".xgPush.XgPushActivity"></activity>
+        <activity android:name=".xgPush.XgPushActivity" />
+        <activity android:name=".datepicker.wheel.WeelPickerActivity" />
+        <activity android:name=".security.SecurityActivity"></activity>
     </application>
 
 </manifest>
