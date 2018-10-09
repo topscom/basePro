@@ -22,10 +22,10 @@ public class MyLoginActivity extends BaseLoginActivity {
         //设置底部copytight信息
         setCopyRight(R.string.app_name);
         //设置登陆地址
-        setLoginUrl (" http://219.147.26.62:6721/TopscommRts/mobile/loginMobileAction_login.json");
+        setLoginUrl ("https://186.168.6.201/ChpcyServer/chpcy/userAction_loginCheck");
         //初始化
-        init ("loginName","userPsw");
-        addParaMap ("uuid","868717039386917");
+        init ("loginName","pwd");
+        addParaMap ("mobile","mobile");
         canStart();
     }
 
