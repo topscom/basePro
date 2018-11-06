@@ -64,11 +64,11 @@ public class MenuItemFragment extends Fragment implements IMemuItemClick{
         return view;
     }
 
-    private void initView(View view){
+    public void initView(View view){
         menu_item_RV = (RecyclerView)view.findViewById (R.id.menu_item_RV);
     }
 
-    private void initMenu(){
+    public void initMenu(){
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager (spanCount,StaggeredGridLayoutManager.VERTICAL);
 //        staggeredGridLayoutManager.setGapStrategy (StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         menu_item_RV.setLayoutManager (staggeredGridLayoutManager);
