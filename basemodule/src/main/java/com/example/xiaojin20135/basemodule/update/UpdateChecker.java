@@ -60,7 +60,7 @@ public class UpdateChecker {
     private String checkMessage = "当前已是最新版本";
     private Handler handler;
     private boolean sysDown = true;//启动系统下载器
-
+    String destinationFilePath = "";
 
     public void setCheckUrl(String url) {
         mCheckUrl = url;
@@ -249,51 +249,98 @@ public class UpdateChecker {
 
 
     private void downLoadApk(){
-        DownloadUtils downloadUtils = new DownloadUtils ("http://www.baidu.com/");
-        Log.d (TAG,"mAppVersion.getApkUrl () = " +mAppVersion.getApkUrl ());
-        downloadUtils.downloadFile(mAppVersion.getApkUrl (), new MyDownloadListener () {
-            @Override
-            public void onStart() {
-                Log.e(TAG, "onStart: ");
-                mProgressDialog.show ();
-                mProgressDialog.setMessage ("开始下载");
-            }
-            @Override
-            public void onProgress(final int currentLength) {
-                Log.e(TAG, "onLoading: " + currentLength);
-                mProgressDialog.setProgress (currentLength);
-            }
-            @Override
-            public void onFinish(String localPath) {
-                Log.e(TAG, "onFinish: " + localPath);
-                mProgressDialog.dismiss ();
-                installApk(localPath);
-            }
-            @Override
-            public void onFailure(final String errorInfo) {
-                Log.e(TAG, "onFailure: " + errorInfo);
-                AlertDialog.Builder alert = new AlertDialog.Builder (mContext);
-                alert.setMessage ("下载失败：" + errorInfo);
-                alert.setNegativeButton ("确定", new DialogInterface.OnClickListener () {
-                    @Override
-                    public void onClick (DialogInterface dialog, int which) {
-                        ;
-                    }
-                });
-                alert.show ();
-            }
-        });
+        String apkUrl = mAppVersion.getApkUrl();
+        String dir = mContext.getExternalFilesDir( "apk").getAbsolutePath();
+        File folder = Environment.getExternalStoragePublicDirectory(dir);
+        if(folder.exists() && folder.isDirectory()) {
+            //do nothing
+        }else {
+            folder.mkdirs();
+        }
+        String filename = apkUrl.substring(apkUrl.lastIndexOf("/"),apkUrl.length());
+        destinationFilePath =  dir + "/" + filename;
+        apkFile = new File(destinationFilePath);
+        mProgressDialog.show();
+//        Intent intent = new Intent(mContext, DownloadService.class);
+//        intent.putExtra("url", apkUrl);
+//        intent.putExtra("dest", destinationFilePath);
+//        intent.putExtra("receiver", new DownloadReceiver(new Handler()));
+//        mContext.startService(intent);
+        // 启动新线程下载软件
+        new downloadApkThread().start();
     }
+    /**
+     * 下载文件线程
+     */
+    private class downloadApkThread extends Thread{
+        @Override
+        public void run(){
+            try{
+                // 判断SD卡是否存在，并且是否具有读写权限
+                if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
+                    // 获得存储卡的路径
+                    String sdpath = Environment.getExternalStorageDirectory() + "/";
+                    mSavePath = sdpath + "download";
+                    URL url = new URL(mAppVersion.getApkUrl());
+                    // 创建连接
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.connect();
+                    // 获取文件大小
+                    int length = conn.getContentLength();
+                    // 创建输入流
+                    InputStream is = conn.getInputStream();
 
+                    File file = new File(mSavePath);
+                    // 判断文件目录是否存在
+                    if (!file.exists())
+                    {
+                        file.mkdir();
+                    }
+                    File apkFile = new File(mSavePath, AppVersion.APK_FILENAME);
+                    FileOutputStream fos = new FileOutputStream(apkFile);
+                    int count = 0;
+                    // 缓存
+                    byte buf[] = new byte[1024];
+                    // 写入到文件中
+                    while(1>0)
+                    {
+                        int numread = is.read(buf);
+                        count += numread;
+                        // 计算进度条位置
+                        progress = (int) (((float) count / length) * 100);
+                        // 更新进度
+                        mProgressDialog.setProgress(progress);
+                        if (numread <= 0)
+                        {
+                            // 下载完成
+                            mProgressDialog.dismiss();
+                            installApk(destinationFilePath);
+                            break;
+                        }
+                        // 写入文件
+                        fos.write(buf, 0, numread);
+                    }// 点击取消就停止下载.
+                    fos.close();
+                    is.close();
+                }
+            } catch (MalformedURLException e){
+                e.printStackTrace();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+            // 取消下载对话框显示
+//            mProgressDialog.dismiss();
+        }
+    };
     /**
      * 安装APK文件
      */
     private void installApk(String filePath){
-        File apkfile = new File(filePath);
+        File apkfile = new File(mSavePath, AppVersion.APK_FILENAME);
         if (!apkfile.exists()){
             return;
         }
-        Log.d(TAG,"filePath = " + filePath);
+        Log.d(TAG,"mSavePath = " + mSavePath);
         try{
             Intent i = new Intent(Intent.ACTION_VIEW);
             Log.d(TAG,"filePath = " + filePath);

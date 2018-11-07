@@ -26,7 +26,7 @@ import okhttp3.RequestBody;
 public class DownloadActivity extends ToolBarActivity {
     private TextView load_progress_TV;
 
-    private String filePath = "/storage/emulated/0/Documents/test.docx";
+    private String filePath = "/storage/emulated/0/Documents/lianyuan_20181106.apk";
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
@@ -55,16 +55,16 @@ public class DownloadActivity extends ToolBarActivity {
     public void onClick (View view) {
         switch (view.getId ()){
             case R.id.start_doc_btn:
-                download("http://www.topscomm.com:5000/app_download/app/zsk/test.docx");
+                download("http://lineloss.topscomm.net:5101/app_download/package/zsk/test.docx");
                 break;
             case R.id.start_pdf_btn:
-                download("http://www.topscomm.com:5000/app_download/app/zsk/sample.pdf");
+                download("http://lineloss.topscomm.net:5101/app_download/app/zsk/sample.pdf");
                 break;
             case R.id.start_image_btn:
                 download("https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3160149763,2396430636&fm=173&app=25&f=JPEG?w=640&h=405&s=6F82BC0B68A36E8045FD7CC60300C0B2");
                 break;
             case R.id.start_apk_btn:
-                download("http://www.topscomm.com:5000/app_download/package/topsPro/topsProAndroid2018072100.apk");
+                download("http://lineloss.topscomm.net:5101/app_download/package/nmscharge/lianyuan_20181106.apk");
                 break;
             case R.id.openfile_btn:
                 OpenFiles.openFile (DownloadActivity.this,filePath);

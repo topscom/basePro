@@ -30,9 +30,10 @@ public class OpenFiles {
             return;
         }
         try{
-
             //获取文件file的MIME类型
             String type = getMIMEType(filePath);
+            Log.d (TAG,"type = " + type);
+            Log.d (TAG,"filePath = " + filePath);
             //设置intent的data和Type属性。
             Uri uri;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {//如果是7.0android系统
@@ -41,13 +42,13 @@ public class OpenFiles {
                 uri = Uri.fromFile(new File (filePath));
             }
             Intent intent = new Intent();
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //设置intent的Action属性
             intent.setAction(Intent.ACTION_VIEW);
             intent.setDataAndType(/*uri*/uri, type);
             intent.addCategory(Intent.CATEGORY_DEFAULT);
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-	        intent = Intent.createChooser(intent, context.getString (R.string.pick_soft_open_file));
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+//	        intent = Intent.createChooser(intent, context.getString (R.string.pick_soft_open_file));
             context.startActivity(intent);
         }catch (ActivityNotFoundException e) {
             // TODO: handle exception

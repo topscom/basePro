@@ -82,7 +82,7 @@ public class CheckUpdateActivity extends ToolBarActivity {
     private void checkUpdate(){
         UpdateChecker.apkFileName = "newVersion.apk"; //新版本保存文件名
         UpdateChecker updateChecker = new UpdateChecker (CheckUpdateActivity.this,handler);
-        String checkUrl = "http://www.topscomm.com:5000/app_download/package/topsRmsNew/update.json" + "?t="+System.currentTimeMillis();
+        String checkUrl = "http://lineloss.topscomm.net:5101/app_download/package/nmscharge/main_update_lianyuan.json" + "?t="+System.currentTimeMillis();
         updateChecker.setCheckUrl(checkUrl); //设置版本号查询地址
         updateChecker.setShowAlert(true); //设置是否显示警示框
         updateChecker.setCheckMessage("已是最新");
