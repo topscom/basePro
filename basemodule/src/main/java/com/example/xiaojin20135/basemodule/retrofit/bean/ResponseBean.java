@@ -27,7 +27,6 @@ public class ResponseBean {
     private List<Map> stateList;
     private String mapJson;
     private Map paraDataMap;
-    private String[] permissionButton;
     private String[] provinceList;
     private Map queryParamMap;
     private String treeJson;
