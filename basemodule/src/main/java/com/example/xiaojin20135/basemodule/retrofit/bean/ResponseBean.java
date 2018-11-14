@@ -23,7 +23,8 @@ public class ResponseBean {
     private String[] companycategoryList;
     private String[] companynatureList;
     private String[] countyList;
-    private String[] enabledList;
+    private List<Map> enabledList;
+    private List<Map> stateList;
     private String mapJson;
     private Map paraDataMap;
     private String[] permissionButton;
@@ -186,12 +187,20 @@ public class ResponseBean {
         this.countyList = countyList;
     }
 
-    public String[] getEnabledList () {
+    public List<Map> getEnabledList () {
         return enabledList;
     }
 
-    public void setEnabledList (String[] enabledList) {
+    public void setEnabledList (List<Map> enabledList) {
         this.enabledList = enabledList;
+    }
+
+    public List<Map> getStateList () {
+        return stateList;
+    }
+
+    public void setStateList (List<Map> stateList) {
+        this.stateList = stateList;
     }
 
     public String getMapJson () {
