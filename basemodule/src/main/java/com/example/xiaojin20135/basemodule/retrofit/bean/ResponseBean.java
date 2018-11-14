@@ -218,13 +218,6 @@ public class ResponseBean {
         this.paraDataMap = paraDataMap;
     }
 
-    public String[] getPermissionButton () {
-        return permissionButton;
-    }
-
-    public void setPermissionButton (String[] permissionButton) {
-        this.permissionButton = permissionButton;
-    }
 
     public String[] getProvinceList () {
         return provinceList;
