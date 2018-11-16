@@ -44,6 +44,6 @@ public interface IServiceApi {
      */
     @Multipart
     @POST
-    @Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8") //添加
+    //@Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8") //添加
     Call<ResponseBody> upload(@Url String url,@PartMap Map<String, RequestBody> args, @Part MultipartBody.Part[] file);
 }
