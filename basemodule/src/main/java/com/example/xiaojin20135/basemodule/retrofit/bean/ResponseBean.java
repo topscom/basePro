@@ -37,6 +37,11 @@ public class ResponseBean {
     private List<Map> listDataMap;
     private List<Map> dataList;
     private List<Map> flowidList;
+    private List<Map> expresstypeList;
+
+
+
+
     private String records;//共有多少条记录
     private String total;//共有多少条页
     private String page; //当前页号
@@ -262,5 +267,13 @@ public class ResponseBean {
 
     public void setDataList (List<Map> dataList) {
         this.dataList = dataList;
+    }
+
+    public List<Map> getExpresstypeList () {
+        return expresstypeList;
+    }
+
+    public void setExpresstypeList (List<Map> expresstypeList) {
+        this.expresstypeList = expresstypeList;
     }
 }

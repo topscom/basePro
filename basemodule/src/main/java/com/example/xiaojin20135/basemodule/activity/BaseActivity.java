@@ -278,6 +278,17 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         presenterImpl.uploadFile (RetrofitManager.RETROFIT_MANAGER.BASE_URL + url + ".json",url,paraMap,filePart);
     }
 
+
+    /**
+     * 文件上传，带完整地址
+     * @param url
+     * @param paraMap
+     * @param filePart
+     */
+    public void uploadFileWithTotalUrl(String url,Map paraMap, MultipartBody.Part[] filePart){
+        presenterImpl.uploadFile (url + ".json",url,paraMap,filePart);
+    }
+
     /**
      * @author lixiaojin
      * @createon 2018-07-17 10:39
