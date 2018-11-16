@@ -37,7 +37,7 @@ public class ResponseBean {
     private List<Map> listDataMap;
     private List<Map> dataList;
     private List<Map> flowidList;
-    private List<Map> expresstypeList;
+    private List<Map> mailtypeList;
 
 
 
@@ -269,11 +269,11 @@ public class ResponseBean {
         this.dataList = dataList;
     }
 
-    public List<Map> getExpresstypeList () {
-        return expresstypeList;
+    public List<Map> getMailtypeList () {
+        return mailtypeList;
     }
 
-    public void setExpresstypeList (List<Map> expresstypeList) {
-        this.expresstypeList = expresstypeList;
+    public void setMailtypeList (List<Map> mailtypeList) {
+        this.mailtypeList = mailtypeList;
     }
 }
