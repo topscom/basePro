@@ -6,8 +6,8 @@ import android.widget.TextView;
 
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
 import com.example.xiaojin20135.mybaseapp.R;
-import com.tencent.android.tpush.XGPushClickedResult;
-import com.tencent.android.tpush.XGPushManager;
+/*import com.tencent.android.tpush.XGPushClickedResult;
+import com.tencent.android.tpush.XGPushManager;*/
 
 import butterknife.BindView;
 
@@ -18,7 +18,7 @@ public class Type2Activity extends ToolBarActivity {
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        //this必须为点击消息要跳转到页面的上下文。
+      /*  //this必须为点击消息要跳转到页面的上下文。
         XGPushClickedResult clickedResult = XGPushManager.onActivityStarted(this);
         //获取消息附近参数
         String ster = clickedResult.getCustomContent();
@@ -27,7 +27,7 @@ public class Type2Activity extends ToolBarActivity {
         //获取消息内容
         String s = clickedResult.getContent();
         TextView params_TV = (TextView)findViewById (R.id.params_TV);
-        params_TV.setText ("ster = " + ster + "\r\n" + "set = " + set + "\r\n" + "s = " + s);
+        params_TV.setText ("ster = " + ster + "\r\n" + "set = " + set + "\r\n" + "s = " + s);*/
     }
 
     @Override

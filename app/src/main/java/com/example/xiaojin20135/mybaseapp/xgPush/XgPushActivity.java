@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
 import com.example.xiaojin20135.mybaseapp.R;
-import com.tencent.android.tpush.XGPushConfig;
+/*import com.tencent.android.tpush.XGPushConfig;*/
 
 import butterknife.BindView;
 
@@ -16,7 +16,7 @@ public class XgPushActivity extends ToolBarActivity {
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        token_TV.setText (XGPushConfig.getToken (this));
+        //token_TV.setText (XGPushConfig.getToken (this));
     }
 
     @Override
