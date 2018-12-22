@@ -17,7 +17,12 @@ public interface IBasePresenter {
      * @param paraMap
      */
     void loadData(String url,String methodName,Map paraMap);
-
+    /**
+     * 加载数据
+     * @param url
+     * @param paraMap
+     */
+    void loadData(String url,String methodName,String errorMethodName,Map paraMap);
     /**
      * @author lixiaojin
      * @createon 2018-09-01 9:33

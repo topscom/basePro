@@ -109,6 +109,15 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
     /**
      * @author lixiaojin
      * @createon 2018-07-17 10:23
+     * @Describe 请求数据 ，带完整路径，自定义回调方法
+     */
+    public void tryToGetData(String url,String methodName,String errorMethodName,Map paraMap) {
+        presenterImpl.loadData (url + ".json",methodName,errorMethodName,paraMap);
+    }
+
+    /**
+     * @author lixiaojin
+     * @createon 2018-07-17 10:23
      * @Describe 请求数据 ，带完整路径，固定回调方法
      */
     public void tryToGetData(String url,Map paraMap) {
@@ -181,6 +190,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
     public void loadError (Throwable throwable) {
         Log.d (TAG,"loadDataError");
         requestError (throwable.getLocalizedMessage ());
+        //((BaseActivity)getActivity ()).showToast (getActivity (),throwable.getLocalizedMessage ());
     }
 
     @Override
@@ -196,7 +206,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
         if(actionResult.getSuccess ()){
             loadDataSuccess (callBack);
         }else{
-            requestError (actionResult.getMessage ());
+            requestError (responseBean);
         }
     }
 
@@ -227,16 +237,70 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
                 ((BaseActivity)getActivity ()).showAlertDialog (getActivity (),"not found "+methodName+" method");
             }
         }else{
-            requestError (actionResult.getMessage ());
+            requestError (responseBean);
         }
     }
+    @Override
+    public void loadSuccess (Object tData, String methodName,String errorMethodName) {
 
+        ResponseBean responseBean = (ResponseBean)tData;
+        ActionResult actionResult = responseBean.getActionResult ();
+        if(actionResult.getSuccess ()){
+            int index = methodName.lastIndexOf ("/");
+            if(index < 0){
+                index = 0;
+            }else{
+                index++;
+            }
+            methodName = methodName.substring (index);
+            Log.d (TAG,"loadDataSuccess with methodName :" + methodName);
+            if(methodName != null && !methodName.equals ("")){
+                try {
+                    Class c = this.getClass();
+                    Method m1 = c.getDeclaredMethod(methodName,new Class[]{ResponseBean.class});
+                    m1.invoke(this,new Object[]{responseBean});
+                    Log.d (TAG,"调用自定义方法");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ((BaseActivity)getActivity ()).showAlertDialog (getActivity (),e.getLocalizedMessage ());
+                }
+            }else{
+                ((BaseActivity)getActivity ()).showAlertDialog (getActivity (),"not found "+methodName+" method");
+            }
+        }else{
+            int index = errorMethodName.lastIndexOf ("/");
+            if(index < 0){
+                index = 0;
+            }else{
+                index++;
+            }
+            errorMethodName = errorMethodName.substring (index);
+            Log.d (TAG,"loadDatafail with methodName :" + errorMethodName);
+            if(errorMethodName != null && !errorMethodName.equals ("")){
+                try {
+                    Class c = this.getClass();
+                    Method m1 = c.getDeclaredMethod(errorMethodName,new Class[]{ResponseBean.class});
+                    m1.invoke(this,new Object[]{responseBean});
+                    Log.d (TAG,"调用自定义方法");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ((BaseActivity)getActivity ()).showAlertDialog (getActivity (),e.getLocalizedMessage ());
+                }
+            }else{
+                ((BaseActivity)getActivity ()).showAlertDialog (getActivity (),"not found "+errorMethodName+" method");
+            }
+        }
+    }
+    @Override
+    public void requestError (ResponseBean responseBean) {
+        Log.d (TAG,"requestError : " + responseBean.getActionResult ().getMessage ());
+        requestError (responseBean.getActionResult ().getMessage ());
+    }
     @Override
     public void requestError (String message) {
         Log.d (TAG,"requestError : " + message);
         ((BaseActivity)getActivity ()).showToast (getActivity (),message);
     }
-
     /**
      * 界面跳转，不传参
      * @param tClass

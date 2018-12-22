@@ -38,6 +38,7 @@ public class ResponseBean {
     private List<Map> dataList;
     private List<Map> flowidList;
     private List<Map> mailtypeList;
+    private boolean timeout;
 
 
 
@@ -55,6 +56,14 @@ public class ResponseBean {
     public void setActionErrors(String[] actionErrors) {
         if(actionErrors != null)
             this.actionErrors = actionErrors;
+    }
+
+    public boolean isTimeout () {
+        return timeout;
+    }
+
+    public void setTimeout (boolean timeout) {
+        this.timeout = timeout;
     }
 
     public String[] getActionMessages() {

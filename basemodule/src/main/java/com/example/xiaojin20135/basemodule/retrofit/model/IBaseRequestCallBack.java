@@ -30,6 +30,7 @@ public interface IBaseRequestCallBack<T> {
      */
     void requestSuccess(T callBack,String methodName);
 
+     void requestSuccess (T callBack, String methodName,String errorMethodName);
     /**
      * 请求成功
      * @param callBack

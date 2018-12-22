@@ -64,7 +64,11 @@ public class BasePresenterImp<V extends IBaseView,T> implements IBaseRequestCall
         Log.d (TAG,"requestSuccess");
         iBaseView.loadSuccess (callBack,methodName);
     }
-
+    @Override
+    public void requestSuccess (T callBack, String methodName,String errorMethodName) {
+        Log.d (TAG,"requestSuccess");
+        iBaseView.loadSuccess (callBack,methodName, errorMethodName);
+    }
     /**
      * 请求成功获取成功之后的数据信息
      * @param callBack

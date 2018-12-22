@@ -1,5 +1,7 @@
 package com.example.xiaojin20135.basemodule.retrofit.view;
 
+import com.example.xiaojin20135.basemodule.retrofit.bean.ResponseBean;
+
 /**
  * Created by lixiaojin on 2018-07-12.
  * 功能描述：
@@ -53,7 +55,7 @@ public interface IBaseView<T> {
      * 请求数据成功
      */
     void loadSuccess(T tData,String methodName);
-
+     void loadSuccess (Object tData, String methodName,String errorMethodName);
     /**
      * 请求数据失败
      */
@@ -72,7 +74,10 @@ public interface IBaseView<T> {
 
     /**
      * 请求成功，但是返回错误信息
-     * @param message
+     * @param responseBean
      */
+    void requestError(ResponseBean responseBean);
+
     void requestError(String message);
+
 }
