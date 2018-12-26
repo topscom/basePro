@@ -60,40 +60,57 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
 
     @Override
     public void showProgress () {
-        ((BaseActivity)getActivity ()).showProgress ();
+        if(getActivity ()!=null){
+            ((BaseActivity)getActivity ()).showProgress ();
+        }
+
     }
 
 
     @Override
     public void setProgressText (String text) {
-        ((BaseActivity)getActivity ()).setProgressText (text);
+        if(getActivity ()!=null) {
+            ((BaseActivity) getActivity ()).setProgressText (text);
+        }
     }
 
     @Override
     public void setProgressValue (int value) {
-        ((BaseActivity)getActivity ()).setProgressValue (value);
+        if(getActivity ()!=null) {
+            ((BaseActivity) getActivity ()).setProgressValue (value);
+        }
     }
 
     @Override
     public void showProgress (boolean hideTitle, String message, boolean cancled) {
-        ((BaseActivity)getActivity ()).showProgress (hideTitle,message,cancled);
+        if(getActivity ()!=null) {
+            ((BaseActivity) getActivity ()).showProgress (hideTitle, message, cancled);
+        }
     }
 
     @Override
     public void dismissProgress () {
-        ((BaseActivity)getActivity ()).dismissProgress ();
+        if(getActivity ()!=null) {
+            ((BaseActivity) getActivity ()).dismissProgress ();
+        }
     }
 
     public void showAlertDialog(Context context, String text, String title){
-        ((BaseActivity)getActivity ()).showAlertDialog (context,text,title);
+        if(getActivity ()!=null) {
+            ((BaseActivity) getActivity ()).showAlertDialog (context, text, title);
+        }
     }
 
     public void showAlertDialog(Context context, String text){
-        ((BaseActivity)getActivity ()).showAlertDialog (context,text);
+        if(getActivity ()!=null) {
+            ((BaseActivity) getActivity ()).showAlertDialog (context, text);
+        }
     }
 
     public void showAlertDialog(Context context,int id){
-        ((BaseActivity)getActivity ()).showAlertDialog (context,id);
+        if(getActivity ()!=null) {
+            ((BaseActivity) getActivity ()).showAlertDialog (context, id);
+        }
     }
 
 
@@ -299,7 +316,9 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
     @Override
     public void requestError (String message) {
         Log.d (TAG,"requestError : " + message);
-        ((BaseActivity)getActivity ()).showToast (getActivity (),message);
+        if(getActivity ()!=null) {
+            ((BaseActivity) getActivity ()).showToast (getActivity (), message);
+        }
     }
     /**
      * 界面跳转，不传参
