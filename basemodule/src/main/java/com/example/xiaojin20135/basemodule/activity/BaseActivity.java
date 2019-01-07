@@ -154,20 +154,22 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         alertDialog.show();
     }
     public static void showToast(Context mContext,String text){
-        if(toast == null){
+        /*if(toast == null){
             toast = Toast.makeText(mContext,text,Toast.LENGTH_LONG);
         }else{
             toast.setText(text);
         }
-        toast.show();
+        toast.show();*/
+        Toast.makeText(mContext,text,Toast.LENGTH_LONG).show ();
     }
     public static void showToast(Context mContext,int id){
-        if(toast == null){
+        /*if(toast == null){
             toast = Toast.makeText(mContext,id,Toast.LENGTH_LONG);
         }else{
             toast.setText(id);
         }
-        toast.show();
+        toast.show();*/
+        Toast.makeText(mContext,id,Toast.LENGTH_LONG).show ();
     }
 
     /**
@@ -439,8 +441,15 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public void requestError (ResponseBean responseBean) {
-        Log.d (TAG,"requestError : " + responseBean.getActionResult ().getMessage ());
         requestError (responseBean.getActionResult ().getMessage ());
+        if(responseBean.isTimeout ()){
+            reStartApp();
+        }
+    }
+    public void reStartApp(){
+            Intent intent = getBaseContext().getPackageManager() .getLaunchIntentForPackage(getBaseContext().getPackageName());
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
     }
     @Override
     public void requestError (String  message) {
