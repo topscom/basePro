@@ -310,8 +310,16 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
     }
     @Override
     public void requestError (ResponseBean responseBean) {
-        Log.d (TAG,"requestError : " + responseBean.getActionResult ().getMessage ());
         requestError (responseBean.getActionResult ().getMessage ());
+        if(responseBean.isTimeout ()){
+            reStartApp();
+        }
+    }
+    public void reStartApp(){
+        Intent intent =getActivity ().getPackageManager()
+            .getLaunchIntentForPackage(getActivity().getPackageName());
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
     @Override
     public void requestError (String message) {
