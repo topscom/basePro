@@ -45,6 +45,7 @@ public class ImageBrowseActivity extends ToolBarActivity {
         imageBrowseViewPager = (ViewPager)findViewById (R.id.imageBrowseViewPager);
         imageBrowseAdapter = new ImageBrowseAdapter (this,imageList);
         imageBrowseViewPager.setAdapter (imageBrowseAdapter);
+        imageBrowseViewPager.setCurrentItem (currentIndex);
         imageBrowseViewPager.addOnPageChangeListener (new ViewPager.OnPageChangeListener () {
             @Override
             public void onPageScrolled (int position, float positionOffset, int positionOffsetPixels) {

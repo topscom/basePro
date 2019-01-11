@@ -123,7 +123,7 @@ public abstract class ApproveActivity extends ToolBarActivity {
         approvalType = "1";
         approvalOpinion = approve_opition_ET.getText ().toString ();
         if(TextUtils.isEmpty (approvalOpinion)){
-            approvalOpinion = getString (R.string.approve);
+            approvalOpinion = "";
         }
         tryDo();
     }
@@ -137,7 +137,7 @@ public abstract class ApproveActivity extends ToolBarActivity {
         approvalType = "2";
         approvalOpinion = approve_opition_ET.getText ().toString ();
         if(TextUtils.isEmpty (approvalOpinion)){
-            approvalOpinion = getString (R.string.un_approve);
+            approvalOpinion = "";
         }
         tryDo();
     }

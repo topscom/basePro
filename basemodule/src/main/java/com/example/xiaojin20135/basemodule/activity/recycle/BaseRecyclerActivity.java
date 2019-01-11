@@ -49,8 +49,8 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     //子布局ID
     private int layoutResId = -1;
     //是否可刷新，默认可以
-    private boolean canRefresh = true;
-    private boolean canLoadMore = true;
+    public boolean canRefresh = true;
+    public boolean canLoadMore = true;
     private int lastVisibleItem;
     LinearLayoutManager linearLayoutManager = null;
     public int page = 1;
@@ -289,6 +289,7 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
         public void onScrolled (RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled (recyclerView, dx, dy);
             if(listType == LINEAR_LAYOUT_MANAGER){
+                canLoadMore=dy>0;
                 lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
             }
         }
@@ -297,9 +298,12 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
         public void onScrollStateChanged (RecyclerView recyclerView, int newState) {
             super.onScrollStateChanged (recyclerView, newState);
             if(listType == LINEAR_LAYOUT_MANAGER){
-                if(newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem +2 > linearLayoutManager.getItemCount()){
+                if(newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem +1>= linearLayoutManager.getItemCount()){
 //                    swipeRefreshLayout.setRefreshing (true);
-                    loadMoreData ();
+                    if(canLoadMore){
+                        loadMoreData ();
+                    }
+
                 }
             }
 
@@ -319,10 +323,15 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
                 rvAdapter.setNewData (new ArrayList<T> ());
             }
             rvAdapter.addData (dataList);
+            if(dataList.size ()<rows&&page != 1){
+                canLoadMore=false;
+                showToast (this,R.string.no_more);
+            }
         }else{
             if(page == 1){
                 setEmpty ();
             }else{
+                canLoadMore=false;
                 showToast (this,R.string.no_more);
             }
         }
