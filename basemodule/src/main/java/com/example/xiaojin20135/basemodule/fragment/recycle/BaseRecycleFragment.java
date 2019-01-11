@@ -42,17 +42,17 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
     //瀑布流布局
     protected static final int STAGGERED_GRID_LAYOUT_MANAGER = 2;
     //默认为0 单行布局
-    private int listType = 0;
+    protected int listType = 0;
     //排列方式默认垂直
-    private boolean isVertical = true;
+    protected boolean isVertical = true;
     //gird布局与瀑布流布局默认单行数量
-    private int spanCount = 1;
+    protected int spanCount = 1;
     //子布局ID
-    private int layoutResId = -1;
+    protected int layoutResId = -1;
     //是否可刷新，默认可以
-    private boolean canRefresh = true;
-    private boolean canLoadMore = true;
-    private int lastVisibleItem;
+    protected boolean canRefresh = true;
+    protected boolean canLoadMore = true;
+    protected int lastVisibleItem;
     LinearLayoutManager linearLayoutManager = null;
     public int page = 1;
     public String sidx = "";
@@ -302,6 +302,7 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
         public void onScrolled (RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled (recyclerView, dx, dy);
             if(listType == LINEAR_LAYOUT_MANAGER){
+                canLoadMore=dy>0;
                 lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
             }
         }
@@ -312,7 +313,10 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
             if(listType == LINEAR_LAYOUT_MANAGER){
                 if(newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem +2 > linearLayoutManager.getItemCount()){
 //                    swipeRefreshLayout.setRefreshing (true);
-                    loadMoreData ();
+                    if( canLoadMore){
+                        loadMoreData ();
+                    }
+
                 }
             }
 
@@ -327,12 +331,16 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
      */
     protected void showList(List<T> dataList){
         if(dataList != null && dataList.size () > 0){
-            Log.d (TAG,"dataList.get(0) = " + dataList.get (0).toString ());
             rvAdapter.addData (dataList);
+            if(dataList.size ()<rows&&page != 1){
+                canLoadMore=false;
+                baseActivity.showToast (baseActivity,R.string.no_more);
+            }
         }else{
             if(page == 1){
                 setEmpty ();
             }else{
+                canLoadMore=false;
                 baseActivity.showToast (baseActivity,R.string.no_more);
             }
         }

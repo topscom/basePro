@@ -45,19 +45,19 @@ public abstract class TinyRecycleFragment<T> extends BaseFragment {
     //默认为0 单行布局
     private int listType = 0;
     //排列方式默认垂直
-    private boolean isVertical = true;
+    protected boolean isVertical = true;
     //gird布局与瀑布流布局默认单行数量
-    private int spanCount = 1;
+    protected int spanCount = 1;
     //子布局ID
-    private int layoutResId = -1;
-    private int lastVisibleItem;
+    protected int layoutResId = -1;
+    protected int lastVisibleItem;
     LinearLayoutManager linearLayoutManager = null;
     public int page = 1;
     public String sidx = "";
-    private String sord = "desc";
-    private int rows = 10;//每页显示的记录数
+    protected String sord = "desc";
+    protected int rows = 10;//每页显示的记录数
 
-    private BaseActivity baseActivity;
+    protected BaseActivity baseActivity;
 
 
 
