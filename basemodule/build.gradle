@@ -66,8 +66,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     /**MPAndroidChart 图表**/
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
-    /**android6.0以上权限问题**/
-    compile 'me.weyye.hipermission:library:1.0.7'
     /**图片选择器**/
     /**最基础的架构，仅提供了系统默认的图片选择器和拍照功能**/
     compile 'com.github.qingmei2:rximagepicker:2.2.0-alpha'
