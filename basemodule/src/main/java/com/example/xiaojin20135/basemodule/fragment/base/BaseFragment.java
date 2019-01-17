@@ -35,6 +35,7 @@ import okhttp3.MultipartBody;
 public abstract class BaseFragment extends Fragment implements IBaseView{
     public static String TAG = "";
     private PresenterImpl presenterImpl;
+    public  boolean isShowProgressDialog=true;
     public BaseFragment () {
         TAG = this.getClass ().getSimpleName ();
         Log.d("BaseActivity",TAG);
@@ -60,7 +61,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
 
     @Override
     public void showProgress () {
-        if(getActivity ()!=null){
+        if(getActivity ()!=null&&isShowProgressDialog){
             ((BaseActivity)getActivity ()).showProgress ();
         }
 

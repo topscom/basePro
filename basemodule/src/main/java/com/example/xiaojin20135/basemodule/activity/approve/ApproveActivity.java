@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -40,7 +41,7 @@ public abstract class ApproveActivity extends ToolBarActivity {
     public String approvalType = "";
     public String mobileDataAction = "";
     public String mobileForm = "";
-
+    public  boolean isDisableButton=true;
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
@@ -83,11 +84,7 @@ public abstract class ApproveActivity extends ToolBarActivity {
             mobileDataAction = mobileDataAction.substring (0,tempIndex);
         }
         mobileForm = dataMap.get ("mobileForm").toString ();
-        Log.d (TAG,"approvalNodeInstanceId = " + approvalNodeInstanceId);
-        Log.d (TAG,"sourceId = " + sourceId);
-        Log.d (TAG,"approvalAction = " + approvalAction);
-        Log.d (TAG,"mobileDataAction = " + mobileDataAction);
-        Log.d (TAG,"mobileForm = " + mobileForm);
+
     }
 
     /**
@@ -112,6 +109,17 @@ public abstract class ApproveActivity extends ToolBarActivity {
         }else if(view.getId () == R.id.un_approve_btn){
             unApprove();
         }
+        if(isDisableButton){//禁用按钮
+            if(findViewById (R.id.approve_btn)!=null){
+                Button approve_btn=findViewById (R.id.approve_btn);
+                approve_btn.setEnabled (false);
+            }
+            if(findViewById (R.id.un_approve_btn)!=null){
+                Button un_approve_btn=findViewById (R.id.un_approve_btn);
+                un_approve_btn.setEnabled (false);
+            }
+        }
+
     }
 
     /**
@@ -138,6 +146,9 @@ public abstract class ApproveActivity extends ToolBarActivity {
         approvalOpinion = approve_opition_ET.getText ().toString ();
         if(TextUtils.isEmpty (approvalOpinion)){
             approvalOpinion = "";
+            isDisableButton=false;
+            showToast (this,R.string.inputOpinion);
+            return;
         }
         tryDo();
     }

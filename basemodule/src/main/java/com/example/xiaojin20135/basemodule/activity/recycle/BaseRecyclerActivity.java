@@ -41,13 +41,13 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     //瀑布流布局
     protected static final int STAGGERED_GRID_LAYOUT_MANAGER = 2;
     //默认为0 单行布局
-    private int listType = 0;
+    protected int listType = 0;
     //排列方式默认垂直
-    private boolean isVertical = true;
+    protected boolean isVertical = true;
     //gird布局与瀑布流布局默认单行数量
-    private int spanCount = 1;
+    protected int spanCount = 1;
     //子布局ID
-    private int layoutResId = -1;
+    protected int layoutResId = -1;
     //是否可刷新，默认可以
     public boolean canRefresh = true;
     public boolean canLoadMore = true;
@@ -57,6 +57,7 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     public String sidx = "";
     private String sord = "desc";
     private int rows = 10;//每页显示的记录数
+
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {

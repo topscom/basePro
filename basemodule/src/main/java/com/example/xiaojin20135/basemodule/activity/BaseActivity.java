@@ -47,7 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     private SharedPreferences sharedPreferences;
     public static ProgressDialog progressDialog;
     private PresenterImpl presenterImpl;
-
+    public  boolean isShowProgressDialog=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -198,10 +198,13 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     @Override
     public void showProgress () {
         //等待框
-        if(progressDialog == null || !progressDialog.isShowing ()){
-            progressDialog = new ProgressDialog(this);
+        if(isShowProgressDialog){
+            if(progressDialog == null || !progressDialog.isShowing ()){
+                progressDialog = new ProgressDialog(this);
+            }
+            progressDialog.show();
         }
-        progressDialog.show();
+
     }
 
     @Override

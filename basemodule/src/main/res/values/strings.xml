@@ -49,4 +49,7 @@
     <string name="no_soft_find">sorry附件不能打开，请下载相关软件！</string>
     <string name="jump">跳过</string>
     <string name="in_now">立即体验</string>
+    <string name="load_loading_tip">努力加载中</string>
+    <string name="load_end_tip">没有更多数据了</string>
+    <string name="inputOpinion">请输入审批意见</string>
 </resources>
