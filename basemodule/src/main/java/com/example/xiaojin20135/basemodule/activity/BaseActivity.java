@@ -74,6 +74,9 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     protected void onPause() {
+        if(progressDialog!=null){
+            progressDialog.dismiss ();
+        }
         super.onPause();
     }
 
@@ -522,6 +525,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         }
         startActivityForResult (intent,requestCode);
     }
+
 
 }
 

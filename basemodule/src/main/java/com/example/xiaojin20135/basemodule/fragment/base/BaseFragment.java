@@ -391,4 +391,10 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
         }
         startActivityForResult (intent,requestCode);
     }
+
+    @Override
+    public void onPause () {
+        dismissProgress ();
+        super.onPause ();
+    }
 }
