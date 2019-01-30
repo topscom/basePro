@@ -307,7 +307,7 @@ public class UpdateChecker {
             i.addCategory("android.intent.category.DEFAULT");
             i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION|Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(i);
-            android.os.Process.killProcess(android.os.Process.myPid());
+           // android.os.Process.killProcess(android.os.Process.myPid());
         }catch (Exception e){
             e.printStackTrace();
             Toast.makeText(mContext,"安装失败，请在文件管理器中找到"+AppVersion.APK_FILENAME+"进行安装。",Toast.LENGTH_LONG);
