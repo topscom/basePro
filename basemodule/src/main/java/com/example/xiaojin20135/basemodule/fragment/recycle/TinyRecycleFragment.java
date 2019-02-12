@@ -25,10 +25,6 @@ import com.example.xiaojin20135.basemodule.fragment.base.BaseFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.xiaojin20135.basemodule.fragment.recycle.BaseRecycleFragment.GRID_LAYOUT_MANAGER;
-import static com.example.xiaojin20135.basemodule.fragment.recycle.BaseRecycleFragment.LINEAR_LAYOUT_MANAGER;
-import static com.example.xiaojin20135.basemodule.fragment.recycle.BaseRecycleFragment.STAGGERED_GRID_LAYOUT_MANAGER;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -266,7 +262,7 @@ public abstract class TinyRecycleFragment<T> extends BaseFragment {
             if(page == 1){
                 setEmpty ();
             }else{
-                baseActivity.showToast (baseActivity,R.string.no_more);
+                baseActivity.showToast (baseActivity, R.string.no_more);
             }
         }
     }

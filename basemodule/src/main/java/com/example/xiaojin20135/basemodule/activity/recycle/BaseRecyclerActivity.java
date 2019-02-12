@@ -1,9 +1,8 @@
 package com.example.xiaojin20135.basemodule.activity.recycle;
 
+import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,13 +15,11 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.xiaojin20135.basemodule.R;
-import com.example.xiaojin20135.basemodule.activity.BaseActivity;
 import com.example.xiaojin20135.basemodule.activity.ToolBarActivity;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author lixiaojin
@@ -49,14 +46,14 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
     //子布局ID
     protected int layoutResId = -1;
     //是否可刷新，默认可以
-    public boolean canRefresh = true;
-    public boolean canLoadMore = true;
-    private int lastVisibleItem;
+    protected boolean canRefresh = true;
+    protected boolean canLoadMore = true;
+    protected int lastVisibleItem;
     LinearLayoutManager linearLayoutManager = null;
     public int page = 1;
     public String sidx = "";
-    private String sord = "desc";
-    private int rows = 10;//每页显示的记录数
+    protected String sord = "desc";
+    protected int rows = 10;//每页显示的记录数
 
 
     @Override
@@ -192,7 +189,7 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
      * @createon 2018-07-14 16:31
      * @Describe 设置布局管理器
      */
-    private void chooseListTye(int listType,boolean isVertical){
+    protected void chooseListTye(int listType,boolean isVertical){
         switch (listType) {
             case LINEAR_LAYOUT_MANAGER:
                 linearLayoutManager = new LinearLayoutManager(this);
@@ -285,7 +282,7 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
      * @createon 2018-07-16 15:39
      * @Describe 加载更多监听事件
      */
-    private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener () {
+    protected RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener () {
         @Override
         public void onScrolled (RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled (recyclerView, dx, dy);
@@ -326,14 +323,14 @@ public abstract class BaseRecyclerActivity<T> extends ToolBarActivity {
             rvAdapter.addData (dataList);
             if(dataList.size ()<rows&&page != 1){
                 canLoadMore=false;
-                showToast (this,R.string.no_more);
+                showToast (this, R.string.no_more);
             }
         }else{
             if(page == 1){
                 setEmpty ();
             }else{
                 canLoadMore=false;
-                showToast (this,R.string.no_more);
+                showToast (this, R.string.no_more);
             }
         }
     }

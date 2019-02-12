@@ -10,7 +10,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.xiaojin20135.basemodule.R;
 import com.example.xiaojin20135.basemodule.activity.BaseActivity;
-import com.example.xiaojin20135.basemodule.activity.recycle.BaseRecyclerActivity;
 import com.example.xiaojin20135.basemodule.fragment.base.BaseFragment;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
@@ -56,10 +54,10 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
     LinearLayoutManager linearLayoutManager = null;
     public int page = 1;
     public String sidx = "";
-    private String sord = "desc";
-    private int rows = 10;//每页显示的记录数
+    protected String sord = "desc";
+    protected int rows = 10;//每页显示的记录数
 
-    private BaseActivity baseActivity;
+    protected BaseActivity baseActivity;
 
 
     public BaseRecycleFragment () {
@@ -334,14 +332,14 @@ public abstract class BaseRecycleFragment<T> extends BaseFragment {
             rvAdapter.addData (dataList);
             if(dataList.size ()<rows&&page != 1){
                 canLoadMore=false;
-                baseActivity.showToast (baseActivity,R.string.no_more);
+                baseActivity.showToast (baseActivity, R.string.no_more);
             }
         }else{
             if(page == 1){
                 setEmpty ();
             }else{
                 canLoadMore=false;
-                baseActivity.showToast (baseActivity,R.string.no_more);
+                baseActivity.showToast (baseActivity, R.string.no_more);
             }
         }
     }
