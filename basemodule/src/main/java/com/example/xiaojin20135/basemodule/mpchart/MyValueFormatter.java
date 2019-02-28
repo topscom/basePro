@@ -13,6 +13,6 @@ public class MyValueFormatter implements IValueFormatter {
     @Override
     public String getFormattedValue (float value, Entry entry, int dataSetIndex, ViewPortHandler
         viewPortHandler) {
-        return (int)value+"";
+        return value+"";
     }
 }

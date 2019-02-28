@@ -9,15 +9,15 @@ package com.example.xiaojin20135.basemodule.mpchart.bean;
 
 public class BarChartBaseBean {
     private String name;
-    private int count;
+    private float count;
     private int color = 0;
 
-    public BarChartBaseBean (String name, int count) {
+    public BarChartBaseBean (String name, float count) {
         this.name = name;
         this.count = count;
     }
 
-    public BarChartBaseBean (String name, int count, int color) {
+    public BarChartBaseBean (String name, float count, int color) {
         this.name = name;
         this.count = count;
         this.color = color;
@@ -35,7 +35,7 @@ public class BarChartBaseBean {
         return count;
     }
 
-    public void setCount (int count) {
+    public void setCount (float count) {
         this.count = count;
     }
 
