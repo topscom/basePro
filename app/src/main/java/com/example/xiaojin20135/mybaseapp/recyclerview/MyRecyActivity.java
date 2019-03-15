@@ -20,25 +20,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyRecyActivity extends BaseRecyclerActivity<ListItemInfo> {
-    /**
-     * @author lixiaojin
-     * @createon 2018-07-15 10:09
-     * @Describe
-     *
-     *  列表展示基础类
-     */
-    @Override
-    protected void onCreate (Bundle savedInstanceState) {
-        super.onCreate (savedInstanceState);
-        addData();
-    }
+        /**
+         * @author lixiaojin
+         * @createon 2018-07-15 10:09
+         * @Describe
+         *
+         *  列表展示基础类
+         */
+        @Override
+        protected void onCreate (Bundle savedInstanceState) {
+            super.onCreate (savedInstanceState);
+            addData();
+        }
 
-    @Override
-    protected int getLayoutId () {
-        return R.layout.activity_my_recy;
-    }
+        @Override
+        protected int getLayoutId () {
+            return R.layout.activity_my_recy;
+        }
 
-    @Override
+        @Override
     protected void initEvents () {
         super.initEvents ();
     }

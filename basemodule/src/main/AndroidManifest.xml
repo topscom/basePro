@@ -52,7 +52,7 @@
         android:theme="@style/AppTheme_my"
         tools:replace="android:label,android:name">
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="com.example.xiaojin20135.basemodule.files.TopsFileProvider"
             android:authorities="${applicationId}.providertopscomm"
             android:exported="false"
             android:grantUriPermissions="true">
