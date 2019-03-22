@@ -68,6 +68,6 @@ public class SaveToFilesActivity extends ToolBarActivity {
     */
     private void saveToFiels(String content){
         Log.d(TAG,"content = " + content);
-        FileSaveHelp.FILE_SAVE_HELP.saveToTxtFile(this,content,"hello");
+        FileSaveHelp.FILE_SAVE_HELP.saveToTxtFile(this,content,"hello","txt");
     }
 }
