@@ -19,6 +19,7 @@ import com.example.xiaojin20135.mybaseapp.datepicker.DatePickerActivity;
 import com.example.xiaojin20135.mybaseapp.datepicker.wheel.WeelPickerActivity;
 import com.example.xiaojin20135.mybaseapp.devicelabel.DeviceLabelActivity;
 import com.example.xiaojin20135.mybaseapp.download.DownloadActivity;
+import com.example.xiaojin20135.mybaseapp.file.SaveToFilesActivity;
 import com.example.xiaojin20135.mybaseapp.image.PickImageActivity;
 import com.example.xiaojin20135.mybaseapp.loaddata.LoadDataActivity;
 import com.example.xiaojin20135.mybaseapp.mpchart.MyChartActivity;
@@ -189,6 +190,9 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 break;
             case R.id.security_btn:
                 canGo (SecurityActivity.class);
+                break;
+            case R.id.save_files_btn:
+                canGo(SaveToFilesActivity.class);
                 break;
         }
     }

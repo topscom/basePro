@@ -56,4 +56,7 @@
     <string name="brvah_load_failed">加载失败，请点我重试</string>
     <string name="brvah_load_end">没有更多数据</string>
 
+    <string name="topscomm_file">topscomm</string>
+    <string name="not_null">不能为空</string>
+
 </resources>

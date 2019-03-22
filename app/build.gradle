@@ -45,18 +45,18 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
     //信鸽jar，不包含厂商通道
-   // compile 'com.tencent.xinge:xinge:4.0.3-release'
+    // compile 'com.tencent.xinge:xinge:4.0.3-release'
     //compile'com.tencent.xinge:xinge:4.2.0-beta'
     //信鸽jar，包含厂商通道
-   // compile 'com.tencent.xinge:xinge:4.0.3-otherpush-release'
+    // compile 'com.tencent.xinge:xinge:4.0.3-otherpush-release'
     //compile 'com.tencent.xinge:xinge:4.2.0-otherpush-beta'
     //jg包
-  //  compile 'com.tencent.jg:jg:1.1'
+    //  compile 'com.tencent.jg:jg:1.1'
     //wup包
-   // compile 'com.tencent.wup:wup:1.0.0.E-release'
+    // compile 'com.tencent.wup:wup:1.0.0.E-release'
     //mid包
-   // compile 'com.tencent.mid:mid:4.0.7'
+    // compile 'com.tencent.mid:mid:4.0.7'
     //华为推送
-   // compile 'com.tencent.xinge:xghw:3.2.6-release'
-   // compile 'com.tencent.xinge:mipush:3.2.6-release'
+    // compile 'com.tencent.xinge:xghw:3.2.6-release'
+    // compile 'com.tencent.xinge:mipush:3.2.6-release'
 }

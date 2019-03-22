@@ -17,4 +17,9 @@ public class ConstantUtil {
     public static final String METHODNAME = "methodName";
     public static final String MAP = "map";
     public static final String URLWEB = "url";
+
+    //zip解压密码
+    public static final String ZIP_PSW = "topscomm010203";
+    //是否设置解压密码
+    public static final boolean SET_ZIP_PSW = false;
 }

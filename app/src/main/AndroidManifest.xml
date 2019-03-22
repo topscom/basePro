@@ -50,7 +50,8 @@
         <activity android:name=".xgPush.Type2Activity" />
         <activity android:name=".xgPush.XgPushActivity" />
         <activity android:name=".datepicker.wheel.WeelPickerActivity" />
-        <activity android:name=".security.SecurityActivity"></activity>
+        <activity android:name=".security.SecurityActivity" />
+        <activity android:name=".file.SaveToFilesActivity"></activity>
     </application>
 
 </manifest>
