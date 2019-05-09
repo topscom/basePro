@@ -70,10 +70,27 @@ public enum  RetrofitManager {
     RetrofitManager(){
     }
 
-
     public void init(String url){
         BASE_URL  = url;
-        initOkHttpClient();
+        initOkHttpClient(null);
+        if(selfDefineHttps){
+            try {
+                setCertificates(httpClientBuilder, BaseApplication.getInstance ().getAssets().open("server.cer"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .client(httpClientBuilder.build ())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        iServiceApi = retrofit.create(IServiceApi.class);
+    }
+    public void init(String url,Interceptor interceptor){
+        BASE_URL  = url;
+        initOkHttpClient(interceptor);
         if(selfDefineHttps){
             try {
                 setCertificates(httpClientBuilder, BaseApplication.getInstance ().getAssets().open("server.cer"));
@@ -98,7 +115,7 @@ public enum  RetrofitManager {
         return iServiceApi;
     }
 
-    private void initOkHttpClient() {
+    private void initOkHttpClient(Interceptor interceptor) {
         ClearableCookieJar cookieJar = new PersistentCookieJar (new SetCookieCache (),new SharedPrefsCookiePersistor (BaseApplication.getInstance()));
         //创建okhttp，写入缓存机制，还有addInteceptor
         httpClientBuilder = new OkHttpClient.Builder();
@@ -109,6 +126,9 @@ public enum  RetrofitManager {
         Cache cache = new Cache(cacheFile,1024*1024*100);
         httpClientBuilder.cache(cache);
         httpClientBuilder.cookieJar(cookieJar);
+        if(interceptor!=null){
+            httpClientBuilder.addInterceptor(interceptor);
+        }
         httpClientBuilder.addInterceptor(LoggingInterceptor);
         httpClientBuilder.addInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR);
         httpClientBuilder.addNetworkInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR);

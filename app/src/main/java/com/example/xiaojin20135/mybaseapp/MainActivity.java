@@ -49,6 +49,10 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setTitleText(R.string.main_page);
 //        initMenu();
+
+        Map parsMap=new HashMap();
+
+        tryToGetData("http://186.168.5.24:8080/ami/mobileMain/mobileLogin_login",parsMap);
     }
 
     @Override
