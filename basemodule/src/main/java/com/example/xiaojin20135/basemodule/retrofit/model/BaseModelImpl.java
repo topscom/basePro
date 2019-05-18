@@ -137,11 +137,12 @@ public class BaseModelImpl extends BaseModel implements IBaseModel<ResponseBean>
         call.enqueue (new Callback<ResponseBean> () {
             @Override
             public void onResponse (Call<ResponseBean> call, Response<ResponseBean> response) {
-                ResponseBean responseBean = new ResponseBean ();
+                ResponseBean responseBean=response.body();
+                /*ResponseBean responseBean = new ResponseBean ();
                 ActionResult actionResult = new ActionResult ();
                 actionResult.setSuccess (response.isSuccessful ());
                 actionResult.setMessage (response.message ());
-                responseBean.setActionResult (actionResult);
+                responseBean.setActionResult (actionResult);*/
                 iBaseRequestCallBack.requestSuccess (responseBean,methodName);
             }
 
