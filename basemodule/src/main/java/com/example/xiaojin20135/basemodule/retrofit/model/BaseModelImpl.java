@@ -129,20 +129,76 @@ public class BaseModelImpl extends BaseModel implements IBaseModel<ResponseBean>
             }));
     }
 
+    public void upload2 (String url,final String methodName, Map paraMap, MultipartBody.Part[] filePart, final IBaseRequestCallBack<ResponseBean> iBaseRequestCallBack) {
+        compositeSubscription.add (iServiceApi.upload2 (url,paraMap,filePart)
+                .observeOn (AndroidSchedulers.mainThread ())
+                .subscribeOn (Schedulers.io())
+                .subscribe (new Subscriber<ResponseBean> () {
+                    @Override
+                    public void onStart () {
+                        super.onStart ();
+                        //在subscribe所发生的线程被调用，如果你的subscribe不是主线程，则会出错，则需要指定主线程
+                        iBaseRequestCallBack.beforeRequest ();
+                    }
+                    @Override
+                    public void onCompleted () {
+                        //回调接口，请求已完成，可以隐藏progress
+                        iBaseRequestCallBack.requestComplete ();
+                    }
+                    @Override
+                    public void onError (Throwable e) {
+                        //回调接口，请求异常
+                        iBaseRequestCallBack.requestError (e);
+                    }
+                    @Override
+                    public void onNext (ResponseBean responseBean) {
+                        //回调接口，请求成功，获取实体类对象
+                        iBaseRequestCallBack.requestSuccess (responseBean,methodName);
+
+                    }
+                }));
+    }
     @Override
     public void upload (String url,final String methodName, Map paraMap, MultipartBody.Part[] filePart, final IBaseRequestCallBack<ResponseBean> iBaseRequestCallBack) {
         Log.d (TAG,"paraMap = " + paraMap.toString ());
         Log.d (TAG,"filePart = " + filePart.toString ());
-        Call<ResponseBean> call= iServiceApi.upload (url,paraMap,filePart);
+        compositeSubscription.add (iServiceApi.upload2 (url,paraMap,filePart)
+                .observeOn (AndroidSchedulers.mainThread ())
+                .subscribeOn (Schedulers.io())
+                .subscribe (new Subscriber<ResponseBean> () {
+                    @Override
+                    public void onStart () {
+                        super.onStart ();
+                        //在subscribe所发生的线程被调用，如果你的subscribe不是主线程，则会出错，则需要指定主线程
+                        iBaseRequestCallBack.beforeRequest ();
+                    }
+                    @Override
+                    public void onCompleted () {
+                        //回调接口，请求已完成，可以隐藏progress
+                        iBaseRequestCallBack.requestComplete ();
+                    }
+                    @Override
+                    public void onError (Throwable e) {
+                        //回调接口，请求异常
+                        iBaseRequestCallBack.requestError (e);
+                    }
+                    @Override
+                    public void onNext (ResponseBean responseBean) {
+                        //回调接口，请求成功，获取实体类对象
+                        iBaseRequestCallBack.requestSuccess (responseBean,methodName);
+
+                    }
+                }));
+       /* Call<ResponseBean> call= iServiceApi.upload (url,paraMap,filePart);
         call.enqueue (new Callback<ResponseBean> () {
             @Override
             public void onResponse (Call<ResponseBean> call, Response<ResponseBean> response) {
                 ResponseBean responseBean=response.body();
-                /*ResponseBean responseBean = new ResponseBean ();
+                *//*ResponseBean responseBean = new ResponseBean ();
                 ActionResult actionResult = new ActionResult ();
                 actionResult.setSuccess (response.isSuccessful ());
                 actionResult.setMessage (response.message ());
-                responseBean.setActionResult (actionResult);*/
+                responseBean.setActionResult (actionResult);*//*
                 iBaseRequestCallBack.requestSuccess (responseBean,methodName);
             }
 
@@ -150,7 +206,7 @@ public class BaseModelImpl extends BaseModel implements IBaseModel<ResponseBean>
             public void onFailure (Call<ResponseBean> call, Throwable t) {
                 iBaseRequestCallBack.requestError (t);
             }
-        });
+        });*/
     }
 
     @Override
